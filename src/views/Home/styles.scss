@@ -1,0 +1,1631 @@
+.block1 {
+  width: 100%;
+  min-height: 100vh;
+  overflow: inherit;
+  // background-image: linear-gradient(130deg,rgb(30, 8, 61),rgb(9, 10, 13) 35%);
+  // background: #000;
+  // background: url("../../assets/images/home_gif.gif") center no-repeat;
+  // background-size: cover;
+  position: relative;
+  .meta-img {
+    display: block;
+    width: 600px;
+    max-width: 80%;
+    object-fit: contain;
+    margin-bottom: 4rem !important;
+  }
+  .tng-text {
+    display: block;
+    width: 600px;
+    max-width: 100%;
+    font-family: "PingFang SC";
+    font-size: 2.6rem;
+    letter-spacing: -0.04em;
+    background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4rem;
+  }
+  .social-link {
+    width: 50%;
+    .social-row {
+      padding: 0;
+      justify-content: flex-start;
+    }
+    .MuiTypography-root {
+      color: #fcfcfc;
+      margin-right: 3rem;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        // color: #F4D092;
+      }
+    }
+    .MuiSvgIcon-root {
+      font-size: 2rem;
+    }
+  }
+  .top_socia_link {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    .social-row {
+      justify-content: center;
+      .social-row-icon {
+        .MuiTypography-root {
+          margin-right: 1rem;
+          .MuiSvgIcon-root {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+  .bitcoin-img {
+    width: 560px;
+    object-fit: contain;
+  }
+
+  .txt_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    .mbtc-txt {
+      font-family: "PingFang SC";
+      font-style: normal;
+      //   font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      color: #25edbc;
+      text-align: center;
+      //   height: 150px;
+    }
+  }
+  .block-left {
+    position: relative;
+  }
+  .video_box {
+    height: 100%;
+  }
+  .coin-vedio {
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    // max-width: 1080px;
+    // height: 100%;
+  }
+  &.economy {
+    min-height: 44rem;
+    background: #000000;
+  }
+}
+.block2 {
+  width: 100%;
+  min-height: 100vh;
+  background: #040407;
+  font-family: "PingFang SC";
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .block-left {
+    width: 44%;
+    .logo-vedio {
+      width: 100%;
+    }
+  }
+  .diamond-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    // max-height: 100vh;
+    position: relative;
+    z-index: 8;
+    backdrop-filter: blur(6px);
+  }
+  .block-right {
+    width: 55%;
+    z-index: 10;
+    margin-left: 10px;
+    padding-right: 6rem;
+  }
+  .wimb-text {
+    width: 35rem;
+    height: 10rem;
+    font-weight: 800;
+    font-size: 4rem;
+    line-height: 78px;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    position: relative;
+    margin-bottom: 4rem;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      bottom: -1rem;
+      height: 5px;
+      background: linear-gradient(89.97deg, #25edbc 1.84%, #b067fa 105.37%);
+      border-radius: 2px;
+    }
+  }
+  .bitcoin-list {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16.5px;
+    line-height: 28px;
+    letter-spacing: -0.04em;
+    color: #25edbc;
+    margin-bottom: 4rem;
+    list-style: none;
+    padding: 0;
+    li {
+      // padding-left: 66px;
+      position: relative;
+      margin-bottom: 1.5rem;
+      // &:before {
+      //     content: "";
+      //     display: block;
+      //     width: 18px;
+      //     height: 18px;
+      //     position: absolute;
+      //     left: 30px;
+      //     top: 20px;
+      //     background: url("../../assets/images/V1.png") center no-repeat;
+      //     background-size: cover;
+      // }
+    }
+  }
+  .opt-block {
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .opt-list {
+    display: flex;
+    align-items: center;
+    .opt-audit {
+      display: block;
+      width: 120px;
+      object-fit: contain;
+      margin-left: 1rem;
+      transition: 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+      &:hover {
+        transform: scale(1.1);
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .download-btn {
+    width: 12rem;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22.1848px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    transition: all 0.2s ease-in-out;
+    background-color: #002f23;
+    border-radius: 10px;
+    border: 1px solid #25edbc;
+    color: #fff;
+    &:hover {
+      // background: linear-gradient(91.96deg, #5a017b 19.85%, #5b01cb 87.84%);
+      background-color: #25edbc;
+    }
+  }
+  .bottom_bg {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    z-index: 9;
+    background: url("../../assets/images/block2_bottom.png") no-repeat center;
+    background-size: 100% 100%;
+  }
+}
+.block3 {
+  background: #040407;
+  font-family: "PingFang SC";
+  overflow: hidden;
+  padding-bottom: 5rem;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .block-card {
+    // display: block;
+    display: flex;
+    // justify-content: space-between;
+    align-items: flex-end;
+    height: 129px;
+    width: 100%;
+    transition: 0.2s ease-in-out;
+    margin-top: 6rem;
+    cursor: pointer;
+    .card-title {
+      font-size: 2.5rem;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 37px;
+      width: 140px;
+      // text-align: right;
+      padding: 10px;
+      margin-left: 5rem;
+      // padding: 1rem 1.6rem;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+    .Fuel-img {
+      margin-left: -46px;
+    }
+    .ZFUEL_title {
+      margin-left: 3rem;
+    }
+  }
+  .block-card-first-line {
+    // margin-top: 8rem;
+    // margin-bottom: 6rem;
+  }
+  .explore_box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 32px;
+    margin-top: 30px;
+  }
+  .bottom_bg {
+    position: absolute;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    z-index: 9;
+    background: url("../../assets/images/block2_bottom.png") no-repeat center;
+    background-size: 100% 100%;
+  }
+  .block-title {
+    font-size: 2rem;
+    font-family: PingFang SC;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 220px;
+    &.explore {
+      // width: 100%;
+      width: 497px;
+      height: 80px;
+      background: #002f23;
+      border: 1px solid #25edbc;
+      border-radius: 18px;
+      line-height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .block-partner {
+    // background: #1E1E1E;
+    // border: 1px solid #D39B33;
+    box-sizing: border-box;
+    // border-radius: 20px;
+    // height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .partner-logo {
+      width: 80%;
+      max-height: 80px;
+      object-fit: contain;
+    }
+  }
+
+  .block-todo {
+    padding: 2rem;
+    height: 100%;
+    box-sizing: border-box;
+    .todo-title {
+      font-size: 1.4rem;
+      font-family: PingFang SC;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 38px;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      font-size: 1rem;
+      font-family: "Manrope";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16.5px;
+      color: #25edbc;
+      line-height: 39px;
+      text-decoration: none;
+      list-style: none;
+      position: relative;
+      padding-left: 1.5rem;
+      // &:before {
+      //     content: "";
+      //     display: block;
+      //     width: 1rem;
+      //     height: 1rem;
+      //     background: url("../../assets/images/todo.png") center no-repeat;
+      //     background-size: 100%;
+      //     position: absolute;
+      //     left: 0;
+      //     top: 0.7rem;
+      //     margin: auto;
+      // }
+      // &.done {
+      //     &:before {
+      //         content: "";
+      //         display: block;
+      //         width: 1rem;
+      //         height: 1rem;
+      //         background: url("../../assets/images/done.png") center no-repeat;
+      //         background-size: 100%;
+      //         position: absolute;
+      //         left: 0;
+      //         top: 0.7rem;
+      //         margin: auto;
+      //     }
+      // }
+    }
+  }
+  .roadmap {
+    .MuiGrid-item:nth-child(1) {
+      box-sizing: border-box;
+      padding: 0px 0px 2px 2px;
+      border-radius: 0 0 0 50px;
+      // background-image: linear-gradient(to right, #D39B33 0%, #A033D3 100%);
+      position: relative;
+      // &::before {
+      //     content: "";
+      //     display: block;
+      //     width: 24px;
+      //     height: 24px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: -10px;
+      //     top: 4px;
+      //     z-index: 99;
+      // }
+      &::after {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        background: #040407;
+        left: -10px;
+        top: -6px;
+        z-index: 90;
+      }
+      .block-todo {
+        background: #040407;
+        border-radius: 0 0 0 50px;
+        // outline: #040407 dashed 3px;
+        position: relative;
+        padding-top: 0;
+      }
+    }
+    .MuiGrid-item:nth-child(2) {
+      box-sizing: border-box;
+      padding: 0px 0px 2px 0px;
+      // background: #A033D3;
+      position: relative;
+      // &::before {
+      //     content: "";
+      //     display: block;
+      //     width: 24px;
+      //     height: 24px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: -12px;
+      //     top: 4px;
+      //     z-index: 99;
+      // }
+      // &::after {
+      //     content: "";
+      //     display: block;
+      //     width: 16px;
+      //     height: 16px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: -7px;
+      //     bottom: -8px;
+      //     z-index: 9999;
+      // }
+      .block-todo {
+        background: #040407;
+        outline: #040407 dashed 3px;
+        position: relative;
+        padding-top: 0;
+        // &::before {
+        //     content: "";
+        //     display: block;
+        //     width: 1px;
+        //     height: calc(100% - 16px);
+        //     box-sizing: border-box;
+        //     background: #D39B33;
+        //     position: absolute;
+        //     left: 0;
+        //     bottom: 0;
+        // }
+      }
+    }
+    .MuiGrid-item:nth-child(3) {
+      box-sizing: border-box;
+      padding: 0px 0px 0 0px;
+      position: relative;
+      // &::before {
+      //     content: "";
+      //     display: block;
+      //     width: 24px;
+      //     height: 24px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #040407;
+      //     left: -12px;
+      //     top: 4px;
+      //     z-index: 99;
+      // }
+      // &::after {
+      //     content: "";
+      //     display: block;
+      //     width: 16px;
+      //     height: 16px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: -7px;
+      //     z-index: 9999;
+      //     bottom: -8px;
+      // }
+      .block-todo {
+        background: #040407;
+        outline: #040407 dashed 3px;
+        position: relative;
+        padding-top: 0;
+        // &::before {
+        //     content: "";
+        //     display: block;
+        //     width: 1px;
+        //     height: calc(100% - 16px);
+        //     box-sizing: border-box;
+        //     background: #D39B33;
+        //     position: absolute;
+        //     left: 0;
+        //     bottom: 0;
+        // }
+      }
+    }
+    .MuiGrid-item:nth-child(6) {
+      box-sizing: border-box;
+      padding: 2px 2px 2px 0px;
+      border-radius: 0 50px 50px 0;
+      // background: #A033D3;
+      position: relative;
+      z-index: 999;
+      // &::before {
+      //     content: "";
+      //     display: block;
+      //     width: 24px;
+      //     height: 24px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #040407;
+      //     left: -12px;
+      //     top: 2.5rem;
+      //     z-index: 99;
+      // }
+      // &::after {
+      //     content: "";
+      //     display: block;
+      //     width: 16px;
+      //     height: 16px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: -7px;
+      //     bottom: -8px;
+      // }
+      .block-todo {
+        background: #040407;
+        outline: #040407 dashed 3px;
+        position: relative;
+        border-radius: 0 50px 50px 0;
+        // &::before {
+        //     content: "";
+        //     display: block;
+        //     width: 1px;
+        //     box-sizing: border-box;
+        //     background: #D39B33;
+        //     position: absolute;
+        //     left: 0;
+        //     top: 2.5rem;
+        //     bottom: 0;
+        // }
+      }
+    }
+    .MuiGrid-item:nth-child(5) {
+      z-index: 999;
+      box-sizing: border-box;
+      padding: 0px 0px 2px 0px;
+      // background: #A033D3;
+      position: relative;
+      // &::before {
+      //     content: "";
+      //     display: block;
+      //     width: 24px;
+      //     height: 24px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #040407;
+      //     left: -12px;
+      //     top: 2.5rem;
+      //     z-index: 99;
+      // }
+      // &::after {
+      //     content: "";
+      //     display: block;
+      //     width: 16px;
+      //     height: 16px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: -7px;
+      //     bottom: -8px;
+      //     z-index: 99;
+      // }
+      .block-todo {
+        background: #040407;
+        outline: #040407 dashed 3px;
+        position: relative;
+        // &::before {
+        //     content: "";
+        //     display: block;
+        //     width: 1px;
+        //     box-sizing: border-box;
+        //     background: #D39B33;
+        //     position: absolute;
+        //     left: 0;
+        //     top: 2.5rem;
+        //     bottom: 0;
+        // }
+        // &:after {
+        //     content: "";
+        //     display: block;
+        //     width: 100%;
+        //     height: 2px;
+        //     background: #A033D3;
+        //     position: absolute;
+        //     top: -2px;
+        //     left: 0;
+        //     right: 0;
+        // }
+      }
+    }
+    .MuiGrid-item:nth-child(4) {
+      box-sizing: border-box;
+      padding: 0px;
+      // background: #A033D3;
+      position: relative;
+      // &::before {
+      //     content: "";
+      //     display: block;
+      //     width: 24px;
+      //     height: 24px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #040407;
+      //     left: 2rem;
+      //     top: 2.5rem;
+      //     z-index: 99;
+      // }
+      // &::after {
+      //     content: "";
+      //     display: block;
+      //     width: 16px;
+      //     height: 16px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: calc(2rem + 3px);
+      //     bottom: -8px;
+      //     z-index: 99;
+      // }
+      .block-todo {
+        // padding-left: 5rem;
+        background: #040407;
+        position: relative;
+        // &::before {
+        //     content: "";
+        //     display: block;
+        //     width: 1px;
+        //     box-sizing: border-box;
+        //     background: #D39B33;
+        //     position: absolute;
+        //     left: calc(2rem + 10px);
+        //     top: 2.5rem;
+        //     bottom: 0;
+        // }
+      }
+    }
+    .MuiGrid-item:nth-child(7) {
+      box-sizing: border-box;
+      padding: 2px 0px 2px 2px;
+      border-radius: 50px 0 0 50px;
+      // background: #A033D3;
+      position: relative;
+      margin: -2px;
+      // &::before {
+      //     content: "";
+      //     display: block;
+      //     width: 24px;
+      //     height: 24px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #040407;
+      //     left: 2rem;
+      //     top: 2.5rem;
+      //     z-index: 99;
+      // }
+      // &::after {
+      //     content: "";
+      //     display: block;
+      //     width: 16px;
+      //     height: 16px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: calc(2rem + 3px);
+      //     bottom: -6px;
+      // }
+      .block-todo {
+        background: #040407;
+        outline: #040407 dashed 3px;
+        position: relative;
+        border-radius: 50px 0 0 50px;
+        padding-left: 5rem;
+        // &::before {
+        //     content: "";
+        //     display: block;
+        //     width: 1px;
+        //     box-sizing: border-box;
+        //     background: #D39B33;
+        //     position: absolute;
+        //     left: calc(2rem + 9px);
+        //     top: 2.5rem;
+        //     bottom: 0;
+        // }
+      }
+    }
+    .MuiGrid-item:nth-child(8) {
+      box-sizing: border-box;
+      padding: 0px 0px 2px 0;
+      // background: #A033D3;
+      position: relative;
+      margin: -2px;
+      left: -4px;
+      // &::before {
+      //     content: "";
+      //     display: block;
+      //     width: 24px;
+      //     height: 24px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #040407;
+      //     left: 2rem;
+      //     top: 2.5rem;
+      //     z-index: 99;
+      // }
+      // &::after {
+      //     content: "";
+      //     display: block;
+      //     width: 16px;
+      //     height: 16px;
+      //     box-sizing: border-box;
+      //     border: 2px solid #D39B33;
+      //     border-radius: 50%;
+      //     position: absolute;
+      //     background: #D39B33;
+      //     left: calc(2rem + 5px);
+      //     bottom: -6px;
+      // }
+      .block-todo {
+        background: #040407;
+        outline: #040407 dashed 3px;
+        position: relative;
+        padding-left: 5rem;
+        // &::before {
+        //     content: "";
+        //     display: block;
+        //     width: 1px;
+        //     box-sizing: border-box;
+        //     background: #D39B33;
+        //     position: absolute;
+        //     left: calc(2rem + 12px);
+        //     top: 2.5rem;
+        //     bottom: 0;
+        // }
+      }
+    }
+  }
+}
+.block4 {
+  background: #000000;
+  font-family: "PingFang SC";
+  font-style: normal;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .card-text {
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 2.25rem;
+    letter-spacing: -0.055em;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  .card-info {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #ffffff;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  }
+  .card-img {
+    width: 95%;
+    object-fit: cover;
+  }
+}
+.block5 {
+  background: #040407;
+  font-family: "PingFang SC";
+  font-style: normal;
+  min-height: calc(100vh - 300px);
+  .foundation-bg {
+    background: url("../../assets/images/golden-bitcoin.png") no-repeat;
+    background-position: calc(100% - 3rem) 13rem;
+    background-size: 400px;
+  }
+  .gradient-text {
+    font-weight: 800;
+    font-size: 2.5rem;
+    line-height: 46px;
+    letter-spacing: -0.04em;
+    background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    font-family: PingFang SC;
+  }
+  .normal-text {
+    padding-left: 2rem;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 41px;
+    color: #ffffff;
+    font-family: PingFang SC;
+    max-width: 60%;
+  }
+  .board-list {
+    margin-top: 2rem;
+    .notMobile {
+      max-width: 13%;
+    }
+    .board-card {
+      overflow: hidden;
+      border-radius: 5px;
+      background: #040407;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      .board-img-box {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        flex-grow: 1;
+        border: 1px solid #d39b33;
+        box-sizing: border-box;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          &.occupy-img {
+            background: #040407;
+            outline: none;
+            border: none;
+          }
+        }
+      }
+
+      .MuiCardContent-root {
+        padding: 0;
+        color: #ffffff;
+        min-height: 6rem;
+        .MuiTypography-h6 {
+          padding-top: 0.2rem;
+          font-size: 1rem;
+          line-height: 2rem;
+          font-family: "PingFang SC";
+        }
+        .MuiTypography-body2 {
+          font-family: "PingFang SC";
+        }
+      }
+    }
+    .lg-card {
+      max-width: 12%;
+      flex-basis: 12%;
+    }
+  }
+  .meta-img,
+  .foundation-img,
+  .golden-img {
+    display: none;
+  }
+}
+.other_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+  padding-bottom: 0;
+  .partner_box {
+    width: 1170px;
+    height: 380px;
+    background: url("../../assets/images/parter_bg.png") no-repeat center;
+    background-size: cover;
+    padding: 10px;
+    border: 1px solid #25edbc;
+    border-radius: 18px;
+    position: relative;
+    .block-title {
+      position: absolute;
+      left: 0px;
+      top: -10px;
+      line-height: initial;
+      color: #25edbc;
+      padding: 5px 10px;
+      font-size: 78px;
+      // border:1px solid #25EDBC;
+    }
+    .MuiGrid-container {
+      padding-top: 70px;
+      .MuiGrid-item {
+        .block-partner {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 170px;
+          }
+        }
+      }
+    }
+  }
+  .new_block_title {
+    line-height: inherit;
+    color: #fff;
+    font-size: 54px;
+    margin-bottom: 40px;
+  }
+  .content_tainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .system_content {
+      text-align: center;
+      width: 733px;
+      color: #25edbc;
+      font-size: 20px;
+    }
+  }
+  .system_nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    margin-top: 80px;
+    li {
+      list-style: none;
+      width: 372px;
+      height: 416px;
+      background: url("../../assets/images/Group_2843.png") no-repeat center;
+      background-size: 100% 100%;
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1px;
+
+        .left {
+          color: #fff;
+          font-size: 24px;
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          padding-top: 30px;
+          align-items: center;
+        }
+        .right {
+          width: 84px;
+          height: 84px;
+          background: url("../../assets/images/right1.png") no-repeat center;
+          background-size: cover;
+        }
+        .right2 {
+          background: url("../../assets/images/right2.png") no-repeat center;
+          background-size: cover;
+        }
+        .right3 {
+          background: url("../../assets/images/right3.png") no-repeat center;
+          background-size: cover;
+        }
+      }
+      .bottom_content {
+        padding: 0;
+        margin: 0;
+        padding: 0 20px;
+        color: #25edbc;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+.community {
+  .community_container {
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+  }
+  .left_community_box {
+    width: 372px;
+    height: 307px;
+    background: url("../../assets/images/cobg.gif") no-repeat center;
+    background-size: 100% 100%;
+  }
+  .right_community_box {
+    width: 779px;
+    height: 540px;
+    background: url("../../assets/images/right_cobg.png") no-repeat center;
+    background-size: 100% 100%;
+    padding: 5px 10px;
+    margin-top: -20px;
+    box-sizing: border-box;
+    position: relative;
+    .title_box {
+      width: 100%;
+      height: 68px;
+      position: absolute;
+      top: -33px;
+      background: url("../../assets/images/announcement.png") no-repeat center;
+      background-size: 100% 100%;
+    }
+    .right_community_conent {
+      width: 100%;
+      height: 100%;
+      background: url("../../assets/images/right_coin.png") no-repeat center;
+      background-size: contain;
+      padding: 19px;
+      box-sizing: border-box;
+      .content_container {
+        margin-bottom: 20px;
+      }
+      .content_top {
+        display: flex;
+        p {
+          margin: 0;
+          padding: 0;
+          color: #fff;
+          font-size: 20px;
+          position: relative;
+          padding-top: 10px;
+          &::before {
+            content: "";
+            width: 50%;
+            height: 4px;
+            background: #25edbc;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 5px;
+          }
+        }
+      }
+      .bottom_content {
+        margin-top: 10px;
+        display: flex;
+
+        p {
+          width: 60px;
+          text-align: right;
+          margin: 0;
+          padding: 0;
+          font-family: "Lexend Deca";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 25.1542px;
+          color: #25edbc;
+        }
+        .right {
+          margin-left: 25px;
+          display: flex;
+          .left_img {
+            width: 198.83px;
+            height: 158px;
+            background: url("../../assets/images/right_content.png") no-repeat center;
+            background-size: cover;
+          }
+          .right_text {
+            margin-left: 25px;
+            flex: 1;
+            p {
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              text-align: left;
+            }
+            .title {
+              color: #fff;
+              font-weight: 400;
+              font-size: 29.7596px;
+            }
+            .text {
+              font-family: "Manrope";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 10.6517px;
+              color: #25edbc;
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+      .content_container_box {
+        padding: 15px 20px;
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        box-sizing: border-box;
+        &::-webkit-scrollbar {
+          display: block !important;
+          width: 15.72px;
+          height: 162.64px;
+        }
+        &::-webkit-scrollbar-track {
+          // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          // border-radius: 10px;
+          // background-color: #aaaaaa;
+          // width: 2px;
+
+          background: transparent;
+          box-shadow: inset 0px 0px 5px #aaaaaa;
+          border-radius: 7px;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+          height: 20px;
+          border-radius: 10px;
+          background: #25edbc;
+          border-radius: 13.6676px;
+        }
+      }
+    }
+  }
+}
+.zfuel {
+  position: relative;
+  .word_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    .title {
+      font-family: "PingFang SC";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 86.2714px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #25edbc 28.57%, #e4fff8 75.26%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    .content {
+      font-weight: 400;
+      font-size: 33.5267px;
+      color: #fff;
+      font-family: "PingFang SC";
+    }
+  }
+}
+.isMobile {
+  .block1 {
+    .top_socia_link {
+      bottom: 50px;
+      left: 50% !important;
+      transform: translateX(-50%);
+    }
+    .meta-img {
+      margin: auto;
+      margin-top: 2rem;
+      margin-bottom: 2rem !important;
+    }
+    .tng-text {
+      line-height: 1.8rem;
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: bold;
+      margin-bottom: 3rem;
+    }
+    .social-link {
+      display: block;
+      width: 100%;
+      // padding: 0 0.5rem;
+      left: 0;
+      margin-left: 0;
+      .txt_container {
+        padding: 0 2.2rem;
+        box-sizing: border-box;
+      }
+      .MuiTypography-root {
+        margin-right: 0;
+      }
+    }
+    .video_box {
+      height: 100%;
+    }
+    .coin-vedio {
+      position: inherit;
+      width: 100%;
+      top: 0;
+    }
+    .mbtc-txt {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-size: 1.3rem;
+      line-height: 1.5rem;
+      position: static;
+    }
+    &.economy {
+      min-height: 30rem;
+    }
+  }
+  .block2 {
+    position: relative;
+    margin-bottom: -30px;
+    display: flex;
+    flex-direction: column;
+    .block-left {
+      position: static;
+      left: 0;
+      right: 0;
+      top: 0;
+      overflow: hidden;
+      margin: 0 auto;
+      width: 100%;
+      .logo-vedio {
+        width: 100%;
+        margin-bottom: 45px;
+      }
+    }
+    .diamond-img {
+      // width: 150%;
+      // margin-left: -50%;
+      width: 100%;
+      height: auto;
+      margin-bottom: 70px;
+    }
+    .block-right {
+      width: 90%;
+      overflow: hidden;
+      top: -60px;
+      position: relative;
+
+      // padding-left: 1rem;
+      padding-right: 0;
+      margin: 0 auto;
+    }
+    .wimb-text {
+      height: auto;
+      width: 100%;
+      font-size: 3.3rem;
+      line-height: 3.3rem;
+      text-align: center !important;
+      margin-bottom: 2.6rem;
+      &:after {
+        // bottom: -0.6rem;
+      }
+    }
+    .bitcoin-list {
+      li {
+        margin-bottom: 1rem;
+      }
+      margin-bottom: 2.6rem;
+    }
+    .download-btn {
+      margin-left: calc(50% - 6rem);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .opt-list {
+      justify-content: space-around;
+    }
+    .opt-audit {
+      width: 45%;
+      margin: 2px 4px 0 0;
+      height: 5rem;
+      margin-left: 0;
+    }
+  }
+  .block3 {
+    position: relative;
+    margin-top: 2rem;
+    .explore {
+      // display: none;
+    }
+    .block-title {
+      line-height: 10rem;
+      font-size: 30px;
+      &.explore {
+        width: 300px;
+      }
+    }
+    .block-card {
+      height: 260px;
+      border-radius: 5px;
+      &:hover {
+        transform: scale(1);
+      }
+    }
+    .block-partner {
+      border-radius: 8px;
+      height: 60px;
+    }
+    .transfored {
+      position: relative;
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 40px;
+        height: 82%;
+        left: 0;
+        top: 2rem;
+        bottom: 0;
+        background-image: linear-gradient(to bottom, #d39b33 0%, #a033d3 20%);
+        border-radius: 20px 0 0 0;
+      }
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 40px;
+        height: calc(82% - 2px);
+        left: 2px;
+        top: calc(2rem + 2px);
+        border-radius: 20px 0 0 0;
+        outline: #040407 dashed 3px;
+        background: #040407;
+      }
+      .block-todo {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 5rem;
+        li {
+          line-height: 2rem;
+          &:before {
+            top: 0.5rem;
+          }
+          &.done {
+            &:before {
+              top: 0.5rem;
+            }
+          }
+        }
+      }
+      .MuiGrid-item {
+        z-index: 10;
+        position: relative;
+        &::before {
+          content: "";
+          display: block;
+          width: 3rem;
+          height: 2px;
+          box-sizing: border-box;
+          position: absolute;
+          left: 0rem;
+          top: 2.1rem;
+          // background-image: linear-gradient(to right, #A033D3 0, #A033D3 30%, transparent 50%);
+          // background-size: 8px 2px;
+          // background-repeat: repeat-x;
+          background-color: #a033d3;
+        }
+        &::after {
+          content: "";
+          display: block;
+          width: 20px;
+          height: 20px;
+          box-sizing: border-box;
+          border: 2px solid #d39b33;
+          border-radius: 50%;
+          position: absolute;
+          background: #040407;
+          left: 3rem;
+          top: 1.6rem;
+        }
+      }
+      .MuiGrid-item:first-child {
+        &::before {
+          display: none;
+        }
+        &::after {
+          content: "";
+          display: block;
+          width: 20px;
+          height: 20px;
+          box-sizing: border-box;
+          border: 2px solid #d39b33;
+          border-radius: 50%;
+          position: absolute;
+          background: #d39b33;
+          left: 3rem;
+          top: 1.6rem;
+        }
+      }
+      .MuiGrid-item:last-child {
+        &::before {
+          display: none;
+        }
+        & > .block-todo {
+          position: relative;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 40px;
+            height: 240px;
+            left: 0;
+            top: -200px;
+            background: #a033d3;
+            border-radius: 0 0 0 20px;
+            z-index: 1;
+          }
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 40px;
+            height: 240px;
+            left: 2px;
+            top: -202px;
+            border-radius: 0 0 0 20px;
+            outline: #040407 dashed 3px;
+            background: #040407;
+            z-index: 2;
+          }
+        }
+      }
+    }
+    .block-card {
+      height: 100px;
+      border-radius: 0;
+      .btcz-img {
+        width: 204px;
+        height: 177px;
+      }
+      .Fuel-img {
+        width: 272px;
+        height: 187px;
+        margin-left: -46px;
+      }
+      .NftMiner-img {
+        width: 211px;
+        height: 211px;
+      }
+      .NftMiner-img {
+        width: 230px;
+        height: 182px;
+      }
+      .card-title {
+        // text-align: right;
+        margin-left: 1rem;
+        // padding: 0;
+      }
+      .ZFUEL_title {
+        margin-left: 0;
+      }
+    }
+  }
+  .block4 {
+    .card-img {
+      width: 100%;
+    }
+    .card-text {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-info {
+      margin-bottom: 1.5rem;
+    }
+  }
+  .block5 {
+    text-align: center;
+    .meta-img {
+      width: 100%;
+      object-fit: cover;
+      margin-top: 3rem;
+      display: inline-block;
+    }
+    .foundation-img {
+      margin-top: 1rem;
+      width: 70%;
+      object-fit: cover;
+      display: inline-block;
+    }
+    .golden-img {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      display: inline-block;
+    }
+    .gradient-text {
+      font-size: 1.6rem;
+      padding-bottom: 0rem;
+      padding-top: 2rem;
+    }
+    .normal-text {
+      padding-left: 0;
+      max-width: 100%;
+      line-height: 1.8rem;
+    }
+    .board-card {
+      .MuiCardContent-root {
+        .MuiTypography-body2 {
+          height: 3rem;
+        }
+      }
+    }
+  }
+  .other_box {
+    margin-top: 3rem;
+    .system_nav {
+      flex-direction: column;
+      justify-content: center;
+      li {
+        margin: 0 auto;
+        margin-bottom: 10px;
+      }
+    }
+    .block-title {
+      line-height: inherit;
+      font-size: 40px;
+    }
+  }
+  .community {
+    .community_container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .left_community_box {
+        margin-top: 20px;
+      }
+      .right_community_box {
+        width: 378px;
+        height: 540px;
+        margin-top: 20px;
+        background: url("../../assets/images/phone_coright.png") no-repeat center;
+        background-size: cover;
+        .right_community_conent {
+          background: url("../../assets/images/phone_right_content.png") no-repeat center;
+          background-size: contain;
+          .content_container_box {
+            padding-left: 0;
+            .content_container {
+              margin-bottom: 50px;
+              .bottom_content {
+                display: block;
+                .left {
+                  display: flex;
+                  .left_img {
+                    width: 198.83px;
+                    height: 158px;
+                    background: url("../../assets/images/right_content.png") no-repeat center;
+                    background-size: cover;
+                    margin-left: 20px;
+                    margin-top: -44px;
+                  }
+                }
+                .right {
+                  margin-left: 0;
+                  margin-top: 10px;
+                  .right_text {
+                    margin-left: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .zfuel {
+    .word_box {
+      width: 278px;
+      justify-content: space-around;
+    }
+  }
+}
