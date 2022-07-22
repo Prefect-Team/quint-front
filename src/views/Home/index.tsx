@@ -233,7 +233,7 @@ export function Home() {
   return (
     <div className={isSmallScreen ? "isMobile" : ""}>
       <div className="block1">
-        <div className="video_box">
+        <div className="video_box add_margin">
           <video
             src={window.location.origin + (isSmallScreen ? "/phone_animation.mp4" : "/Homepage_animation.mp4")}
             muted
