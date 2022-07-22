@@ -54,6 +54,7 @@
       display: flex;
       justify-content: space-around;
       .social-row-icon {
+        margin-left: 26px;
         .MuiTypography-root {
           .MuiSvgIcon-root {
             font-size: 1.5rem;
@@ -276,6 +277,9 @@
 .social-row {
   display: flex;
   justify-content: space-around;
+  .add_margin {
+    margin-left: 26px;
+  }
   .social-row-icon {
     .MuiTypography-root {
       .MuiSvgIcon-root {

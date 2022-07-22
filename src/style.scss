@@ -37,7 +37,17 @@ body {
   overflow: hidden;
   transition: all ease 0.33ms;
 }
-
+button {
+  outline: none;
+  border: none;
+}
+li {
+  list-style: none;
+}
+p,ul {
+  margin: 0;
+  padding: 0;
+}
 .MuiDrawer-paperAnchorDockedLeft {
   border-right: 0 !important;
 }

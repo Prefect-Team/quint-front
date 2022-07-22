@@ -25,7 +25,7 @@ import { Container, useMediaQuery, Typography, Card, CardMedia, CardContent, Gri
 export function Foundation() {
   const isSmallScreen = useMediaQuery("(max-width: 650px)");
   const isVerySmallScreen = useMediaQuery("(max-width: 379px)");
-  const isLargeScreen = useMediaQuery("(min-width: 1280px)");
+  const isLargeScreen = useMediaQuery("(min-width: 1120px)");
 
   const personList = [
     // {

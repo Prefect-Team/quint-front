@@ -1,5 +1,5 @@
 import "./styles.scss";
-import { Trans, t } from "@lingui/macro";
+import { t } from "@lingui/macro";
 // import MetaBitcon from "../../assets/images/meta-bitcoin.png";
 // import MetaBitconMobile from "../../assets/images/meta-bitcoin-mobile.png";
 
@@ -10,12 +10,6 @@ import { Trans, t } from "@lingui/macro";
 // import CardPOOL from "../../assets/images/card-pool.png";
 
 // import HugeDiamondGif from "../../assets/images/b_coins.gif";
-
-import BtcZ from "../../assets/images/coinn.png";
-import Fuel from "../../assets/images/fuel.png";
-import NftMiner from "../../assets/images/miner1.png";
-import NftPool from "../../assets/images/Daco.png";
-import ExplorBg from "../../assets/images/Rectangle.png";
 
 import PartnerBitcoin from "../../assets/images/bitmain-logo.png";
 import PartnerBitmain from "../../assets/images/new-binance-chain-logo.png";
@@ -29,9 +23,18 @@ import Partner1inch from "../../assets/images/linch_logo.png";
 import PartnerCertik from "../../assets/images/certik.png";
 import PartnerShark from "../../assets/images/sharkteam.png";
 
-// import Social from "../../components/Sidebar/Social";
+import nftImg1 from "../../assets/images/Mask_Group.png";
+import nftImg2 from "../../assets/images/Mask_Group2.png";
+import nftImg3 from "../../assets/images/Mask_Group3.png";
+import humanImg from "../../assets/images/human.png";
+import bigImg from "../../assets/images/big_bgblock.png";
 
-import { Container, useMediaQuery, Link, Typography, Button, Grid, Box } from "@material-ui/core";
+import firstWork from "../../assets/images/Composition_04.png";
+import secondWork from "../../assets/images/Composition_13.png";
+import thirdWork from "../../assets/images/Composition_11.png";
+import forthWork from "../../assets/images/Composition_06.png";
+// import Social from "../../components/Sidebar/Social";
+import { Container, useMediaQuery, Typography, Box } from "@material-ui/core";
 
 const transforRoad = (arr: any) => {
   const tempArr = [...arr];
@@ -227,226 +230,299 @@ export function Home() {
       grid: 6,
     },
   ];
-
+  const nftLisf = [
+    { img: nftImg1, price: "5000.00" },
+    { img: nftImg2, price: "4000.00" },
+    { img: nftImg3, price: "6000.00" },
+  ];
+  const forthList = [
+    {
+      num: "10%",
+      price: "1000",
+    },
+    {
+      num: "20%",
+      price: "2000",
+    },
+    {
+      num: "30%",
+      price: "3000",
+    },
+    {
+      num: "40%",
+      price: "4000",
+    },
+    {
+      num: "50%",
+      price: "5000",
+    },
+    {
+      num: "60%",
+      price: "6000",
+    },
+    {
+      num: "70%",
+      price: "7000",
+    },
+    {
+      num: "80%",
+      price: "8000",
+    },
+    {
+      num: "90%",
+      price: "9000",
+    },
+    {
+      num: "100%",
+      price: "10000",
+    },
+  ];
+  const workList = [
+    {
+      img: firstWork,
+      steps: "Step 1",
+      title: "Connect wallet",
+      content: ["Copywriting", "Copywriting", "Copywriting"],
+    },
+    {
+      img: secondWork,
+      steps: "Step 2",
+      title: "Buy Quint on Pancakeswap",
+      content: ["Copywriting", "Copywriting", "Copywriting"],
+    },
+    {
+      img: thirdWork,
+      steps: "Step 3",
+      title: "Buy NFT using Quint",
+      content: ["Copywriting", "Copywriting", "Copywriting"],
+    },
+    {
+      img: forthWork,
+      steps: "Step 4",
+      title: "Refer friends get rewards",
+      content: ["Copywriting", "Copywriting", "Copywriting"],
+    },
+  ];
   const transforedRoadMap = transforRoad(roadMap);
-
   return (
     <div className={isSmallScreen ? "isMobile" : ""}>
       <div className="block1">
-        <div className="video_box add_margin">
-          <video
-            src={window.location.origin + (isSmallScreen ? "/phone_animation.mp4" : "/Homepage_animation.mp4")}
-            muted
-            autoPlay
-            loop
-            playsInline={true}
-            controls={false}
-            className="coin-vedio"
-          ></video>
-        </div>
-        <Box className="social-link top_socia_link" display="flex" justifyContent="flex-start" flexDirection="column">
-          <div className="txt_container">
-            <Typography className="mbtc-txt">
-              <Trans>Bitcoin zero is an innovative payment network and a new kind of money.</Trans>
-            </Typography>
-          </div>
-          {/* <Social /> */}
-        </Box>
+        <Container
+          style={{
+            paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
+            paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
+            paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "3rem",
+            width: "1120px",
+          }}
+        >
+          <Box className="box_contianer" display="flex" justifyContent="flex-start" flexDirection="row">
+            <div className="left">
+              <Typography className="mbtc-txt add_margin">BE A QUINTER!</Typography>
+              <Typography className="mbtc-txt">INVEST IN THE FUTURE...</Typography>
+              <button>Buy on Pancakeswap</button>
+              <p className="bottom_arrow"></p>
+            </div>
+          </Box>
+        </Container>
       </div>
       <div className="block2">
-        {/* <Container
+        <Container
           style={{
-            paddingLeft: isSmallScreen || isVerySmallScreen ? "1rem" : "3rem",
-            paddingRight: isSmallScreen || isVerySmallScreen ? "1rem" : "3rem",
-            paddingTop: isSmallScreen || isVerySmallScreen ? "2rem" : "6rem",
-            display: isSmallScreen ? "block" : "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
+            paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            width: "1120px",
           }}
-        > */}
-        <div className="block-left">
-          {/* <img src={HugeDiamondGif} alt="" className="diamond-img" /> */}
-          <video
-            src={window.location.origin + "/logo_animation.mp4"}
-            muted
-            autoPlay
-            loop
-            playsInline={true}
-            controls={false}
-            className="logo-vedio"
-          ></video>
-        </div>
-        <div className="block-right">
-          <Typography variant="body1" align="left" className="wimb-text">
-            {t`What is`} <br />
-            {t`Bitcoin Zero?`}
-          </Typography>
-          <ul className="bitcoin-list">
-            <li>
-              <p>
-                Bitcoin Zero uses peer-to-NFT technology to operate with no central authority or banks; managing
-                transactions and the issuing of bitcoins zero is carried out collectively by the network. Bitcoin zero
-                is open-source; its design is public, nobody owns or controls Bitcoin zero and everyone can take part.
-                Through many of its unique properties, Bitcoin zero allows exciting uses that could not be covered by
-                any previous payment system.
-              </p>
-            </li>
-          </ul>
-          <Box sx={{ display: { xs: "block", md: "flex" } }} className="opt-block">
-            <Button className="download-btn" onClick={paperHandler}>
-              <Typography>{t`Meta White Paper`}</Typography>
-            </Button>
-            {/* <div className="opt-list">
-                <Link href="https://www.certik.com/projects/meta-bitcoin" target="_blank" className="opt-audit">
-                  <img src={PartnerCertik} />
-                </Link>
-                <Link
-                  href="https://www.sharkteam.org/report/audit/20220331002C_en.pdf"
-                  target="_blank"
-                  className="opt-audit"
-                >
-                  <img src={PartnerShark} />
-                </Link>
-              </div> */}
-          </Box>
-        </div>
-        {/* </Container> */}
-        <div className="bottom_bg"></div>
+        >
+          <div className="top_container">
+            <div className="left_box">
+              <p className="title">NFT MarketPlace</p>
+              <p className="content">We've got everything you need to start trading.</p>
+            </div>
+            <div className="right_box">View more</div>
+          </div>
+          <div className="bottom_container">
+            <ul>
+              {nftLisf &&
+                nftLisf.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      <div className="top_li">
+                        <img src={item.img} alt="" />
+                      </div>
+                      <div className="middle_li">
+                        <div className="left_middle">
+                          <img src={humanImg} alt="" />
+                        </div>
+                        <div className="right_middle">
+                          <p className="top_right">Bitcoin -Limited Edition</p>
+                          <p className="bottom_right">Created By Calvin </p>
+                        </div>
+                      </div>
+                      <div className="bottom_li">
+                        <p className="title_bottom">Current Price</p>
+                        <p className="content_bottom">{item.price} QUINT</p>
+                      </div>
+                      <div className="buy_box">
+                        <button>Buy Now</button>
+                      </div>
+                    </li>
+                  );
+                })}
+            </ul>
+          </div>
+        </Container>
       </div>
       <div className="block3">
         <Container
           style={{
-            paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "3rem",
-            paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "3rem",
-            paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "4rem",
+            paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "3rem",
+            width: "1120px",
           }}
         >
-          <Grid container spacing={isSmallScreen ? 3 : 8}>
-            <Grid item xs={12} sm={12} md={6}>
-              <Link
-                className="block-card block-card-first-line"
-                href="#/economy#mbtc"
-                underline="none"
-                style={{
-                  background: `url(${ExplorBg}) no-repeat`,
-                  backgroundSize: "cover",
-                }}
-              >
-                <img src={BtcZ} alt="" className="btcz-img" />
-                <Typography className="card-title">{t`BTCZ`}</Typography>
-              </Link>
-            </Grid>
-            <Grid item xs={12} sm={12} md={6}>
-              <Link
-                className="block-card block-card-first-line"
-                href="#/economy#mfuel"
-                underline="none"
-                style={{
-                  background: `url(${ExplorBg}) no-repeat`,
-                  backgroundSize: "cover",
-                }}
-              >
-                <img src={Fuel} alt="" className="Fuel-img" />
-                <Typography className="card-title">{t`ZFUEL`}</Typography>
-              </Link>
-            </Grid>
-            <Grid item xs={12} sm={12} md={6}>
-              <Link
-                className="block-card"
-                href="#/economy#miner"
-                underline="none"
-                style={{
-                  background: `url(${ExplorBg}) no-repeat`,
-                  backgroundSize: "cover",
-                }}
-              >
-                <img src={NftMiner} alt="" className="NftMiner-img" />
-                <Typography className="card-title">{t`NFT MINER`}</Typography>
-              </Link>
-            </Grid>
-            <Grid item xs={12} sm={12} md={6}>
-              <Link
-                className="block-card"
-                href="#/economy#pool"
-                underline="none"
-                style={{
-                  background: `url(${ExplorBg}) no-repeat`,
-                  backgroundSize: "cover",
-                }}
-              >
-                <img src={NftPool} alt="" className="NftMiner-img" />
-                <Typography className="card-title">{t`NFT POOL`}</Typography>
-              </Link>
-            </Grid>
-            <div className="explore_box">
-              <Typography variant="h4" align="center" className="block-title explore">
-                {t`Explore for more.`}
-              </Typography>
-            </div>
-            <div className="bottom_bg"></div>
-          </Grid>
+          <img src={bigImg} alt="" />
         </Container>
       </div>
-      <div className="block3 other_box">
+      <div className="block2 other_box">
         <Container
           style={{
-            paddingLeft: isSmallScreen || isVerySmallScreen ? "1rem" : "3rem",
-            paddingRight: isSmallScreen || isVerySmallScreen ? "1rem" : "3rem",
-            paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "4rem",
+            paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            width: "1120px",
           }}
         >
-          <Typography variant="h4" align="center" className="block-title new_block_title">
-            {t`Innovation in Payment Systems`}
-          </Typography>
-          <div className="content_tainer">
-            <p className="system_content">
-              BTCZ isn't just about sending money. It has many features and opens many possibilities that the community
-              is still exploring. Here are some of the technologies currently being researched, and in some cases, being
-              turned into real products and services. The most interesting uses of Bitcoin zero are probably still to be
-              discovered.
-            </p>
+          <div className="top_container">
+            <div className="left_box">
+              <p className="title">Referral</p>
+              <p className="content">VERY GOAL HAS ITS OWN PATH TO SUCCESS</p>
+            </div>
           </div>
-          <ul className="system_nav">
-            <li>
-              <div className="top">
-                <div className="left">Control against fraud</div>
-                <div className="right"></div>
-              </div>
-              <p className="bottom_content">
-                An unprecedented level of security is possible with Bitcoin zero. The network provides users with
-                protection against most prevalent types of fraud like chargebacks or unwanted charges, and bitcoins are
-                impossible to counterfeit. Users can backup or encrypt their wallets. Hardware wallets make it very
-                difficult to steal or lose money. Bitcoin is designed to allow its users to have complete control over
-                their money.
+          <div className="bottom_container">
+            <div className="top_word">
+              <p className="first">Total rewards</p>
+              <p className="second">
+                <span className="number">11,566</span>
+                <span className="cont">QUINT</span>
               </p>
-            </li>
-            <li>
-              <div className="top">
-                <div className="left">Global accessibility</div>
-                <div className="right right2"></div>
-              </div>
-              <p className="bottom_content">
-                With Bitcoin zero, all payments in the world can be fully interoperable. Bitcoin allows any bank,
-                business or individual to securely send and receive payments anywhere at any time, with or without a
-                bank account. Bitcoin is available in a large number of countries that still remain out of reach for
-                most payment systems due to their own limitations. Bitcoin increases global access to commerce and it
-                can help international trades to flourish.
+              <p className="third">
+                You're earning of the trading fees your <br />
+                referrals pay. Learn more
               </p>
-            </li>
-            <li>
-              <div className="top">
-                <div className="left">Cost efficiency</div>
-                <div className="right right3"></div>
+            </div>
+            <div className="center_content">
+              <p className="title">Invite friends to earn money</p>
+              <div className="second_line">
+                <div className="left">
+                  <p className="title_second">Referral link</p>
+                  <div className="input_box"></div>
+                </div>
+                <div className="left">
+                  <p className="title_second">Referral code</p>
+                  <div className="input_box"></div>
+                </div>
               </div>
-              <p className="bottom_content">
-                With the use of cryptography, secure payments are possible without slow and costly middlemen. A Bitcoin
-                transaction can be much cheaper than its alternatives and be completed in a short time. This means
-                Bitcoin holds some potential to become a common way to transfer any currency in the future. BTCZ could
-                also play a role in reducing poverty in many countries by cutting high transaction fees on workers'
-                salary.
-              </p>
-            </li>
-          </ul>
+              <div className="second_line third_line">
+                <p className="title_second">Referral rewards</p>
+                <div className="content_box">
+                  <div className="left_cont">
+                    <div className="top_con add_margin">
+                      <p className="num">0000</p>
+                      <p className="num name">Berus</p>
+                    </div>
+                    <div className="top_con">
+                      <p className="num">0000</p>
+                      <p className="num name">Qunint</p>
+                    </div>
+                  </div>
+                  <div className="right_cont">Claim rewards</div>
+                </div>
+              </div>
+              <div className="forth_line">
+                <p className="title">Referral Percentage</p>
+                <ul>
+                  {forthList &&
+                    forthList.map((item, index) => {
+                      return (
+                        <li key={index}>
+                          <div className="top_cont">
+                            <p className="left">Rank{index + 1}</p>
+                            <p className="right">{item.num}</p>
+                          </div>
+                          <div className="top_cont bottom_cont">
+                            <p className="left">Target</p>
+                            <p className="right">
+                              <span className="price_color">{item.price}</span>
+                              <span className="quint_color">Quint</span>
+                            </p>
+                          </div>
+                        </li>
+                      );
+                    })}
+                </ul>
+              </div>
+            </div>
+            <div className="action_conatiner">
+              <button className="waller_box">My wallet</button>
+              <button className="confirm_box">CONFIRM</button>
+            </div>
+            <div className="foot_cont">
+              <div className="contanier">
+                <p className="title">BEFORE YOU START</p>
+                <div className="request">
+                  <p className="cont">
+                    1. Download Dapp Wallet app or extension
+                    <br />
+                    2. Switch to Binance Smart Chain Network
+                    <br />
+                    3. Transfer BNB tokens to your Quint wallet
+                    <br />
+                    4. Get an invitation code
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </div>
+      <div className="block4">
+        <Container
+          style={{
+            paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
+            paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
+            paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "3rem",
+            width: "1120px",
+          }}
+        >
+          <p className="big_title">How it work</p>
+          <p className="contro">Provide you with a convenient and fast way to make money</p>
+          <div className="content_box">
+            <ul>
+              {workList &&
+                workList.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      <div className="top_img">
+                        <img src={item.img} alt="" />
+                      </div>
+                      <div className="steps">{item.steps}</div>
+                      <div className="bottom_con">
+                        <p className="title">{item.title}</p>
+                        {item.content.map((ite, inx) => {
+                          return (
+                            <p key={inx + "con"} className="sub_title">
+                              {ite}
+                            </p>
+                          );
+                        })}
+                      </div>
+                    </li>
+                  );
+                })}
+            </ul>
+          </div>
         </Container>
       </div>
     </div>

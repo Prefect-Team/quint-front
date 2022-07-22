@@ -1,12 +1,13 @@
 import { Link, SvgIcon, useMediaQuery } from "@material-ui/core";
-import { ReactComponent as Telegram } from "../../assets/icons/telegram.svg";
-import { ReactComponent as Github } from "../../assets/icons/github.svg";
-import { ReactComponent as Medium } from "../../assets/icons/medium.svg";
-import { ReactComponent as Twitter } from "../../assets/icons/twitter.svg";
-// import { ReactComponent as MBTCTalk } from "../../assets/icons/bitcoin.svg";
+import { ReactComponent as Telegram } from "../../assets/images/telegram-line.svg";
+import { ReactComponent as Github } from "../../assets/images/github.svg";
+import { ReactComponent as Facebook } from "../../assets/images/Facebook.svg";
+import { ReactComponent as Twitter } from "../../assets/images/Twitter.svg";
+import { ReactComponent as Instagram } from "../../assets/images/Instagram.svg";
 
 import React from "react";
 import { useLocation } from "react-router-dom";
+import "./Sidebar.scss";
 
 const Social: React.FC = () => {
   const location = useLocation();
@@ -16,29 +17,29 @@ const Social: React.FC = () => {
 
   return (
     <div className="social-row">
-      {/* <div className="social-row-icon">
+      <div className="social-row-icon add_margin">
         <Link href="https://metabitcointalk.com/" target="_blank" className="social-row-icon">
-          <SvgIcon component={MBTCTalk} />
+          <SvgIcon component={Facebook} />
         </Link>
-      </div> */}
-      <div className="social-row-icon">
+      </div>
+      <div className="social-row-icon add_margin">
         <Link href="https://twitter.com/MetaMBTC" target="_blank" className="social-row-icon">
           <SvgIcon component={Twitter} />
         </Link>
       </div>
-      <div className="social-row-icon">
+      <div className="social-row-icon add_margin">
         <Link href="https://t.me/MBTC_Official_Channel" target="_blank" className="social-row-icon">
-          <SvgIcon component={Telegram} />
+          <SvgIcon component={Instagram} />
         </Link>
       </div>
-      <div className="social-row-icon">
+      <div className="social-row-icon add_margin">
         <Link href="https://github.com/meta-btc" target="_blank">
           <SvgIcon component={Github} />
         </Link>
       </div>
-      <div className="social-row-icon">
+      <div className="social-row-icon add_margin">
         <Link href="https://medium.com/@MetaBitcoin" target="_blank" className="social-row-icon">
-          <SvgIcon component={Medium} />
+          <SvgIcon component={Telegram} />
         </Link>
       </div>
     </div>
