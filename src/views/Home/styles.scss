@@ -247,9 +247,68 @@
           }
           .input_box {
             margin-top: 12px;
-            background: #353945;
-            border-radius: 12px;
+            // background: #353945;
+            // border-radius: 12px;
             height: 48px;
+            // padding-left: 16px;
+            display: flex;
+            align-items: center;
+            .MuiFormControl-root {
+              width: 100%;
+              background: #353945;
+              border-radius: 12px;
+              height: 100%;
+              
+              .MuiInputBase-root {
+                height: 100%;
+                padding-left: 16px;
+              }
+              .Mui-focused {
+                border: 1px solid #58BD7D;
+                border-radius: 12px;
+              }
+            }
+            .MuiInput-underline:before {
+              border-bottom: none;
+              transition: none;
+            }
+            .MuiInput-underline::after {
+              border-bottom: none;
+            }
+            .MuiInputBase-root {
+              color: #fff;
+            }
+            .add_icon {
+              .MuiInputBase-root {
+                padding-left: 52px;
+              }
+              &::before {
+                content: "";
+                width: 24px;
+              height: 24px;
+              position: absolute;
+              left: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              background: url("../../assets/images/Line.png") no-repeat center;
+              background-size: cover;
+              }
+            }
+          }
+          .link_box {
+            position: relative;
+            // padding-left: 51px;
+            &::before {
+              content: "";
+              width: 24px;
+              height: 24px;
+              position: absolute;
+              left: 16px;
+              top: 50%;
+              transform: translateY(-50%);
+              background: url("../../assets/images/Line.png") no-repeat center;
+              background-size: cover;
+            }
           }
         }
       }

@@ -25,6 +25,7 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import { Menu as MenuIcon } from "@material-ui/icons";
+
 import Headroom from "headroom.js";
 // import { LocaleSwitcher } from "@olympusdao/component-library";
 // import { i18n } from "@lingui/core";

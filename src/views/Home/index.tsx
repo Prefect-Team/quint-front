@@ -1,15 +1,5 @@
 import "./styles.scss";
 import { t } from "@lingui/macro";
-// import MetaBitcon from "../../assets/images/meta-bitcoin.png";
-// import MetaBitconMobile from "../../assets/images/meta-bitcoin-mobile.png";
-
-// import HugeDiamond from "../../assets/images/huge-diamond.png";
-// import CardMBTC from "../../assets/images/card-mbtc.png";
-// import CardMFUEL from "../../assets/images/card-mfuel.png";
-// import CardMINER from "../../assets/images/card-miner.png";
-// import CardPOOL from "../../assets/images/card-pool.png";
-
-// import HugeDiamondGif from "../../assets/images/b_coins.gif";
 
 import PartnerBitcoin from "../../assets/images/bitmain-logo.png";
 import PartnerBitmain from "../../assets/images/new-binance-chain-logo.png";
@@ -33,8 +23,9 @@ import firstWork from "../../assets/images/Composition_04.png";
 import secondWork from "../../assets/images/Composition_13.png";
 import thirdWork from "../../assets/images/Composition_11.png";
 import forthWork from "../../assets/images/Composition_06.png";
-// import Social from "../../components/Sidebar/Social";
-import { Container, useMediaQuery, Typography, Box } from "@material-ui/core";
+import { useState } from "react";
+// import { Input } from "@olympusdao/component-library";
+import { Container, useMediaQuery, Typography, Box, FormControl, InputAdornment, Input } from "@material-ui/core";
 
 const transforRoad = (arr: any) => {
   const tempArr = [...arr];
@@ -304,6 +295,14 @@ export function Home() {
     },
   ];
   const transforedRoadMap = transforRoad(roadMap);
+  const [link, setLink] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const handleChangeLink = (e: any) => {
+    setLink(e.target.value);
+  };
+  const handleChangeAdress = (e: any) => {
+    setAddress(e.target.value);
+  };
   return (
     <div className={isSmallScreen ? "isMobile" : ""}>
       <div className="block1">
@@ -417,11 +416,29 @@ export function Home() {
               <div className="second_line">
                 <div className="left">
                   <p className="title_second">Referral link</p>
-                  <div className="input_box"></div>
+                  <div className="input_box link_box">
+                    <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
+                      <Input
+                        id="link"
+                        type="number"
+                        value={link}
+                        onChange={e => handleChangeLink(e)}
+                        startAdornment={
+                          <InputAdornment position="start">
+                            <span style={{ color: "#58BD7D" }}>https://</span>
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                  </div>
                 </div>
                 <div className="left">
                   <p className="title_second">Referral code</p>
-                  <div className="input_box"></div>
+                  <div className="input_box">
+                    <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
+                      <Input id="address" type="number" value={address} onChange={e => handleChangeAdress(e)} />
+                    </FormControl>
+                  </div>
                 </div>
               </div>
               <div className="second_line third_line">
