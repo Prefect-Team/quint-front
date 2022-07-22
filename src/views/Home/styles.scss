@@ -197,6 +197,7 @@
     width: 100%;
     padding: 40px;
     margin-top: 40px;
+    box-sizing: border-box;
     .top_word {
       .first {
         font-size: 13px;
@@ -377,8 +378,8 @@
             backdrop-filter: blur(100px);
             border-radius: 10px;
             padding: 12px 16px;
-            margin-right: 30px;
-            margin-bottom: 28px;
+            margin-right: 26px;
+            margin-bottom: 26px;
             .top_cont {
               width: 100%;
               display: flex;
@@ -396,7 +397,11 @@
             .bottom_cont {
               margin-top: 8px;
             }
+            &:nth-child(5n) {
+              margin-right: 0;
+            }
           }
+          
         }
       }
     }
