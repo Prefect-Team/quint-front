@@ -22,9 +22,12 @@ import {
   // MenuItem,
   Collapse,
   // Button,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import { Menu as MenuIcon } from "@material-ui/icons";
+import { Menu as MenuIcon, ExpandMore as ExpandMoreIcon } from "@material-ui/icons";
 
 import Headroom from "headroom.js";
 // import { LocaleSwitcher } from "@olympusdao/component-library";
@@ -92,10 +95,10 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                 </Link>
               ))}
             </Box>
-            <Box sx={{ flexGrow: 1, justifyContent: "space-between", display: { xs: "flex", md: "none" } }}>
+            <Box sx={{ flexGrow: 1, justifyContent: "flex-end", display: { xs: "flex", md: "none" } }}>
               {anchorElNav ? (
                 <Box onClick={handleCloseNavMenu}>
-                  <img src={MenuClose} alt="BTCZ" className="menu-icon-close" />
+                  <img src={MenuClose} alt="Quint" className="menu-icon-close" />
                 </Box>
               ) : (
                 <MenuIcon aria-haspopup="true" onClick={handleOpenNavMenu} className="menu-icon"></MenuIcon>
@@ -130,41 +133,50 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
           style={{
             paddingTop: isSmallScreen || isVerySmallScreen ? "2rem" : "0",
             paddingBottom: isSmallScreen || isVerySmallScreen ? "2rem" : "0rem",
-            width: "1120px",
+            width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
           <div className="top_cont">
             <div className="left_first">
               <img src={isFoundation ? LogoCoin : Logo} alt="Quint" className="header-logo" />
             </div>
-            <div className="left_second">
-              <Link underline="none">About</Link>
-              <Link underline="none">Projects</Link>
-              <Link underline="none">What We Do</Link>
-              <Link underline="none">Press</Link>
-              <Link underline="none">Press</Link>
-            </div>
-            <div className="left_second">
-              <Link underline="none" className="concact">
-                contact
-              </Link>
-              <Link underline="none">Projects</Link>
-              <Link underline="none">What We Do</Link>
-              <Link underline="none">Press</Link>
-              <Link underline="none">Press</Link>
-            </div>
-            <div className="left_second last_left">
-              <Link underline="none" className="concact">
-                newsletter
-              </Link>
-              <Link underline="none" className="newsletter">
-                Subscribe our newsletter
-              </Link>
-              <div className="input_box">
-                <input type="text" placeholder="Enter your email" />
-                <p className="go_bg"></p>
-              </div>
-            </div>
+            <Accordion className="foot_according">
+              <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+                <Typography>footer nav</Typography>
+              </AccordionSummary>
+              <AccordionDetails className="details_container">
+                <Box>
+                  <div className="left_second">
+                    <Link underline="none">About</Link>
+                    <Link underline="none">Projects</Link>
+                    <Link underline="none">What We Do</Link>
+                    <Link underline="none">Press</Link>
+                    <Link underline="none">Press</Link>
+                  </div>
+                  <div className="left_second">
+                    <Link underline="none" className="concact">
+                      contact
+                    </Link>
+                    <Link underline="none">Projects</Link>
+                    <Link underline="none">What We Do</Link>
+                    <Link underline="none">Press</Link>
+                    <Link underline="none">Press</Link>
+                  </div>
+                  <div className="left_second last_left">
+                    <Link underline="none" className="concact">
+                      newsletter
+                    </Link>
+                    <Link underline="none" className="newsletter">
+                      Subscribe our newsletter
+                    </Link>
+                    <div className="input_box">
+                      <input type="text" placeholder="Enter your email" />
+                      <p className="go_bg"></p>
+                    </div>
+                  </div>
+                </Box>
+              </AccordionDetails>
+            </Accordion>
           </div>
           <div className="bottom_cont">
             <div className="left_text">Copyright © </div>

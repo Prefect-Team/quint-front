@@ -632,368 +632,223 @@
 }
 .isMobile {
   .block1 {
-    .top_socia_link {
-      bottom: 50px;
-      left: 50% !important;
-      transform: translateX(-50%);
-    }
-    .meta-img {
-      margin: auto;
-      margin-top: 2rem;
-      margin-bottom: 2rem !important;
-    }
-    .tng-text {
-      line-height: 1.8rem;
-      text-align: center;
-      font-size: 1.7rem;
-      font-weight: bold;
-      margin-bottom: 3rem;
-    }
-    .social-link {
-      display: block;
+    background: none;
+    min-height: auto;
+    .box_contianer {
       width: 100%;
-      // padding: 0 0.5rem;
-      left: 0;
-      margin-left: 0;
-      .txt_container {
-        padding: 0 2.2rem;
-        box-sizing: border-box;
+      padding: 32px;
+      margin-top: 56px;
+      box-sizing: border-box;
+      .left {
+        .mbtc-txt {
+          font-size: 46px;
+        }
+        .bottom_arrow {
+          display: none;
+          
+          
+        }
       }
-      .MuiTypography-root {
-        margin-right: 0;
-      }
-    }
-    .video_box {
-      height: 100%;
-    }
-    .coin-vedio {
-      position: inherit;
-      width: 100%;
-      top: 0;
-    }
-    .mbtc-txt {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      font-size: 1.3rem;
-      line-height: 1.5rem;
-      position: static;
-    }
-    &.economy {
-      min-height: 30rem;
     }
   }
   .block2 {
-    position: relative;
-    margin-bottom: -30px;
-    display: flex;
-    flex-direction: column;
-    .block-left {
-      position: static;
-      left: 0;
-      right: 0;
-      top: 0;
-      overflow: hidden;
-      margin: 0 auto;
+    width: 100%;
+    margin-top: 32px;
+    padding: 32px;
+    box-sizing: border-box;
+    .top_container {
+      .left_box {
+        .title {
+          font-size: 32px;
+        }
+        .content {
+          font-size: 16px;
+          color: #777E91;
+          margin-top: 20px;
+          width: 100%;
+        }
+      }
+      .right_box {
+        display: none;
+      }
+    }
+    .bottom_container {
       width: 100%;
-      .logo-vedio {
+      ul {
         width: 100%;
-        margin-bottom: 45px;
-      }
-    }
-    .diamond-img {
-      // width: 150%;
-      // margin-left: -50%;
-      width: 100%;
-      height: auto;
-      margin-bottom: 70px;
-    }
-    .block-right {
-      width: 90%;
-      overflow: hidden;
-      top: -60px;
-      position: relative;
-
-      // padding-left: 1rem;
-      padding-right: 0;
-      margin: 0 auto;
-    }
-    .wimb-text {
-      height: auto;
-      width: 100%;
-      font-size: 3.3rem;
-      line-height: 3.3rem;
-      text-align: center !important;
-      margin-bottom: 2.6rem;
-      &:after {
-        // bottom: -0.6rem;
-      }
-    }
-    .bitcoin-list {
-      li {
-        margin-bottom: 1rem;
-      }
-      margin-bottom: 2.6rem;
-    }
-    .download-btn {
-      margin-left: calc(50% - 6rem);
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    .opt-list {
-      justify-content: space-around;
-    }
-    .opt-audit {
-      width: 45%;
-      margin: 2px 4px 0 0;
-      height: 5rem;
-      margin-left: 0;
-    }
-  }
-  .block3 {
-    position: relative;
-    margin-top: 2rem;
-    .explore {
-      // display: none;
-    }
-    .block-title {
-      line-height: 10rem;
-      font-size: 30px;
-      &.explore {
-        width: 300px;
-      }
-    }
-    .block-card {
-      height: 260px;
-      border-radius: 5px;
-      &:hover {
-        transform: scale(1);
-      }
-    }
-    .block-partner {
-      border-radius: 8px;
-      height: 60px;
-    }
-    .transfored {
-      position: relative;
-      &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 40px;
-        height: 82%;
-        left: 0;
-        top: 2rem;
-        bottom: 0;
-        background-image: linear-gradient(to bottom, #d39b33 0%, #a033d3 20%);
-        border-radius: 20px 0 0 0;
-      }
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 40px;
-        height: calc(82% - 2px);
-        left: 2px;
-        top: calc(2rem + 2px);
-        border-radius: 20px 0 0 0;
-        outline: #040407 dashed 3px;
-        background: #040407;
-      }
-      .block-todo {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: 5rem;
+        flex-direction: column;
         li {
-          line-height: 2rem;
-          &:before {
-            top: 0.5rem;
+          width: 100%;
+          background: none;
+          padding: 0;
+          margin-bottom: 52px;
+          img {
+            width: 100%;
+            height: auto;
           }
-          &.done {
-            &:before {
-              top: 0.5rem;
+          .buy_box {
+            width: 100%;
+            margin-top: 23px;
+            button {
+              width: 100%;
             }
           }
         }
       }
-      .MuiGrid-item {
-        z-index: 10;
-        position: relative;
-        &::before {
-          content: "";
-          display: block;
-          width: 3rem;
-          height: 2px;
-          box-sizing: border-box;
-          position: absolute;
-          left: 0rem;
-          top: 2.1rem;
-          // background-image: linear-gradient(to right, #A033D3 0, #A033D3 30%, transparent 50%);
-          // background-size: 8px 2px;
-          // background-repeat: repeat-x;
-          background-color: #a033d3;
-        }
-        &::after {
-          content: "";
-          display: block;
-          width: 20px;
-          height: 20px;
-          box-sizing: border-box;
-          border: 2px solid #d39b33;
-          border-radius: 50%;
-          position: absolute;
-          background: #040407;
-          left: 3rem;
-          top: 1.6rem;
-        }
-      }
-      .MuiGrid-item:first-child {
-        &::before {
-          display: none;
-        }
-        &::after {
-          content: "";
-          display: block;
-          width: 20px;
-          height: 20px;
-          box-sizing: border-box;
-          border: 2px solid #d39b33;
-          border-radius: 50%;
-          position: absolute;
-          background: #d39b33;
-          left: 3rem;
-          top: 1.6rem;
-        }
-      }
-      .MuiGrid-item:last-child {
-        &::before {
-          display: none;
-        }
-        & > .block-todo {
-          position: relative;
-          &::before {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 40px;
-            height: 240px;
-            left: 0;
-            top: -200px;
-            background: #a033d3;
-            border-radius: 0 0 0 20px;
-            z-index: 1;
-          }
-          &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 40px;
-            height: 240px;
-            left: 2px;
-            top: -202px;
-            border-radius: 0 0 0 20px;
-            outline: #040407 dashed 3px;
-            background: #040407;
-            z-index: 2;
-          }
-        }
-      }
     }
-    .block-card {
-      height: 100px;
-      border-radius: 0;
-      .btcz-img {
-        width: 204px;
-        height: 177px;
+    .phone_right_box {
+      width: 100%;
+      height: 48px;
+      border-radius: 50px;
+      border: 2px solid #fcfcfd;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fcfcfd;
+      font-size: 16px;
+    }
+  }
+  .block3 {
+    img {
+      width: 100%;
+    }
+  }
+
+  .other_box {
+    .bottom_container {
+      padding: 16px;
+      border: none;
+      .top_word {
+        .first {
+          font-weight: 500;
+        }
       }
-      .Fuel-img {
-        width: 272px;
-        height: 187px;
-        margin-left: -46px;
+      .center_content {
+        background: none;
+        padding: 0;
+        .add_phone_bg {
+          background: #23262F;
+          border-radius: 16px;
+          padding: 40px 0;
+        }
+        .second_line {
+          flex-direction: column;
+          .left {
+            &:first-child {
+              margin: 0;
+              margin-bottom: 16px;
+            }
+          }
+        }
+        .third_line {
+          width: 100%;
+          box-sizing: border-box;
+          .content_box {
+            flex-direction: column;
+            background: none;
+            padding: 0;
+            width: 100%;
+            .left_cont {
+              width: 100%;
+              .top_con  {
+                padding: 16px;
+                width: 100%;
+                border: 2px solid #353945;
+                border-radius: 15px;
+                box-sizing: border-box;
+                .num {
+                  font-size: 14px;
+                }
+                .name {
+                  font-size: 14px;
+                  margin-left: 10px;
+                }
+              }
+            }
+            .right_cont {
+              width: 100%;
+              margin-top: 16px;
+              height: 48px;
+            }
+          }
+        }
+        .forth_line {
+          padding: 0;
+          padding-top: 32px;
+          .add_phone_bg {
+            padding: 32px;
+            ul {
+              li {
+                width: 100%;
+              }
+            }
+          }
+        }
       }
-      .NftMiner-img {
-        width: 211px;
-        height: 211px;
+      .action_conatiner {
+        flex-direction: column;
+        .waller_box {
+          width: 100%;
+          background: none;
+          width: 100%;
+          height: 48px;
+          border-radius: 50px;
+          border: 2px solid #fcfcfd;
+          background-size: cover;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fcfcfd;
+          font-size: 16px;
+        }
+        .confirm_box {
+          width: 100%;
+          margin-top: 32px;
+        }
       }
-      .NftMiner-img {
-        width: 230px;
-        height: 182px;
-      }
-      .card-title {
-        // text-align: right;
-        margin-left: 1rem;
-        // padding: 0;
-      }
-      .ZFUEL_title {
-        margin-left: 0;
+      .foot_cont {
+        padding-top: 0;
+        .contanier {
+          padding-top: 32px;
+          .title {
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 23px;
+          }
+        }
       }
     }
   }
   .block4 {
-    .card-img {
+    padding: 0 32px;
+    box-sizing: border-box;
+    .big_title {
+      font-size: 40px;
+    }
+    .phone_content_box {
       width: 100%;
-    }
-    .card-text {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .card-info {
-      margin-bottom: 1.5rem;
-    }
-  }
-  .block5 {
-    text-align: center;
-    .meta-img {
-      width: 100%;
-      object-fit: cover;
-      margin-top: 3rem;
-      display: inline-block;
-    }
-    .foundation-img {
-      margin-top: 1rem;
-      width: 70%;
-      object-fit: cover;
-      display: inline-block;
-    }
-    .golden-img {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      width: 100%;
-      display: inline-block;
-    }
-    .gradient-text {
-      font-size: 1.6rem;
-      padding-bottom: 0rem;
-      padding-top: 2rem;
-    }
-    .normal-text {
-      padding-left: 0;
-      max-width: 100%;
-      line-height: 1.8rem;
-    }
-    .board-card {
-      .MuiCardContent-root {
-        .MuiTypography-body2 {
-          height: 3rem;
+      ul {
+        width: 100%;
+        margin-top: 16px;
+        li {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 16px;
+          .steps {
+            font-size: 12px;
+            color: #777E91;
+          }
+          .bottom_con {
+            font-size: 16px;
+            color: #fcfcfd;
+            margin-top: 8px;
+          }
         }
       }
     }
-  }
-  .other_box {
-    margin-top: 3rem;
-    .system_nav {
-      flex-direction: column;
-      justify-content: center;
-      li {
-        margin: 0 auto;
-        margin-bottom: 10px;
-      }
-    }
-    .block-title {
-      line-height: inherit;
-      font-size: 40px;
-    }
-  }
+  } 
   .community {
     .community_container {
       display: flex;

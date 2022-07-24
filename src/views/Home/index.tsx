@@ -18,6 +18,7 @@ import nftImg2 from "../../assets/images/Mask_Group2.png";
 import nftImg3 from "../../assets/images/Mask_Group3.png";
 import humanImg from "../../assets/images/human.png";
 import bigImg from "../../assets/images/big_bgblock.png";
+import phoneBigImg from "../../assets/images/phone_all.png";
 
 import firstWork from "../../assets/images/Composition_04.png";
 import secondWork from "../../assets/images/Composition_13.png";
@@ -311,7 +312,7 @@ export function Home() {
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
             paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
             paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "3rem",
-            width: "1120px",
+            width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
           <Box className="box_contianer" display="flex" justifyContent="flex-start" flexDirection="row">
@@ -330,7 +331,7 @@ export function Home() {
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
             paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
             paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
-            width: "1120px",
+            width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
           <div className="top_container">
@@ -338,7 +339,7 @@ export function Home() {
               <p className="title">NFT MarketPlace</p>
               <p className="content">We've got everything you need to start trading.</p>
             </div>
-            <div className="right_box">View more</div>
+            {isSmallScreen || isVerySmallScreen ? null : <div className="right_box">View more</div>}
           </div>
           <div className="bottom_container">
             <ul>
@@ -370,6 +371,7 @@ export function Home() {
                 })}
             </ul>
           </div>
+          {isSmallScreen || isVerySmallScreen ? <div className="phone_right_box">View more</div> : null}
         </Container>
       </div>
       <div className="block3">
@@ -378,10 +380,10 @@ export function Home() {
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
             paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
             paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "3rem",
-            width: "1120px",
+            width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
-          <img src={bigImg} alt="" />
+          <img src={isSmallScreen || isVerySmallScreen ? phoneBigImg : bigImg} alt="" />
         </Container>
       </div>
       <div className="block2 other_box">
@@ -390,7 +392,7 @@ export function Home() {
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
             paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
             paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
-            width: "1120px",
+            width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
           <div className="top_container">
@@ -412,73 +414,78 @@ export function Home() {
               </p>
             </div>
             <div className="center_content">
-              <p className="title">Invite friends to earn money</p>
-              <div className="second_line">
-                <div className="left">
-                  <p className="title_second">Referral link</p>
-                  <div className="input_box link_box">
-                    <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
-                      <Input
-                        id="link"
-                        type="number"
-                        value={link}
-                        onChange={e => handleChangeLink(e)}
-                        startAdornment={
-                          <InputAdornment position="start">
-                            <span style={{ color: "#58BD7D" }}>https://</span>
-                          </InputAdornment>
-                        }
-                      />
-                    </FormControl>
+              <div className="add_phone_bg">
+                <p className="title">Invite friends to earn money</p>
+                <div className="second_line">
+                  <div className="left">
+                    <p className="title_second">Referral link</p>
+                    <div className="input_box link_box">
+                      <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
+                        <Input
+                          id="link"
+                          type="number"
+                          value={link}
+                          onChange={e => handleChangeLink(e)}
+                          startAdornment={
+                            <InputAdornment position="start">
+                              <span style={{ color: "#58BD7D" }}>https://</span>
+                            </InputAdornment>
+                          }
+                        />
+                      </FormControl>
+                    </div>
+                  </div>
+                  <div className="left">
+                    <p className="title_second">Referral code</p>
+                    <div className="input_box">
+                      <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
+                        <Input id="address" type="number" value={address} onChange={e => handleChangeAdress(e)} />
+                      </FormControl>
+                    </div>
                   </div>
                 </div>
-                <div className="left">
-                  <p className="title_second">Referral code</p>
-                  <div className="input_box">
-                    <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
-                      <Input id="address" type="number" value={address} onChange={e => handleChangeAdress(e)} />
-                    </FormControl>
+                <div className="second_line third_line">
+                  <p className="title_second">Referral rewards</p>
+                  <div className="content_box">
+                    <div className="left_cont">
+                      <div className="top_con add_margin">
+                        <p className="num">0000</p>
+                        <p className="num name">Berus</p>
+                      </div>
+                      <div className="top_con">
+                        <p className="num">0000</p>
+                        <p className="num name">Qunint</p>
+                      </div>
+                    </div>
+                    <div className="right_cont">Claim rewards</div>
                   </div>
                 </div>
               </div>
-              <div className="second_line third_line">
-                <p className="title_second">Referral rewards</p>
-                <div className="content_box">
-                  <div className="left_cont">
-                    <div className="top_con add_margin">
-                      <p className="num">0000</p>
-                      <p className="num name">Berus</p>
-                    </div>
-                    <div className="top_con">
-                      <p className="num">0000</p>
-                      <p className="num name">Qunint</p>
-                    </div>
-                  </div>
-                  <div className="right_cont">Claim rewards</div>
-                </div>
-              </div>
+
               <div className="forth_line">
-                <p className="title">Referral Percentage</p>
-                <ul>
-                  {forthList &&
-                    forthList.map((item, index) => {
-                      return (
-                        <li key={index}>
-                          <div className="top_cont">
-                            <p className="left">Rank{index + 1}</p>
-                            <p className="right">{item.num}</p>
-                          </div>
-                          <div className="top_cont bottom_cont">
-                            <p className="left">Target</p>
-                            <p className="right">
-                              <span className="price_color">{item.price}</span>
-                              <span className="quint_color">Quint</span>
-                            </p>
-                          </div>
-                        </li>
-                      );
-                    })}
-                </ul>
+                <div className="add_phone_bg">
+                  <p className="title">Referral Percentage</p>
+                  <ul>
+                    {forthList &&
+                      forthList.map((item, index) => {
+                        return (
+                          <li key={index}>
+                            <div className="top_cont">
+                              <p className="left">Rank{index + 1}</p>
+                              <p className="right">{item.num}</p>
+                            </div>
+                            <div className="top_cont bottom_cont">
+                              <p className="left">Target</p>
+                              <p className="right">
+                                <span className="price_color">{item.price}</span>
+                                <span className="quint_color">Quint</span>
+                              </p>
+                            </div>
+                          </li>
+                        );
+                      })}
+                  </ul>
+                </div>
               </div>
             </div>
             <div className="action_conatiner">
@@ -510,36 +517,57 @@ export function Home() {
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
             paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
             paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "3rem",
-            width: "1120px",
+            width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
           <p className="big_title">How it work</p>
           <p className="contro">Provide you with a convenient and fast way to make money</p>
-          <div className="content_box">
-            <ul>
-              {workList &&
-                workList.map((item, index) => {
-                  return (
-                    <li key={index}>
-                      <div className="top_img">
-                        <img src={item.img} alt="" />
-                      </div>
-                      <div className="steps">{item.steps}</div>
-                      <div className="bottom_con">
-                        <p className="title">{item.title}</p>
-                        {item.content.map((ite, inx) => {
-                          return (
-                            <p key={inx + "con"} className="sub_title">
-                              {ite}
-                            </p>
-                          );
-                        })}
-                      </div>
-                    </li>
-                  );
-                })}
-            </ul>
-          </div>
+          {isSmallScreen || isVerySmallScreen ? (
+            <div className="phone_content_box">
+              <ul>
+                {workList &&
+                  workList.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <div className="top_img">
+                          <img src={item.img} alt="" />
+                        </div>
+                        <div className="steps">{item.steps}</div>
+                        <div className="bottom_con">
+                          <p className="title">{item.title}</p>
+                        </div>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+          ) : (
+            <div className="content_box">
+              <ul>
+                {workList &&
+                  workList.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <div className="top_img">
+                          <img src={item.img} alt="" />
+                        </div>
+                        <div className="steps">{item.steps}</div>
+                        <div className="bottom_con">
+                          <p className="title">{item.title}</p>
+                          {item.content.map((ite, inx) => {
+                            return (
+                              <p key={inx + "con"} className="sub_title">
+                                {ite}
+                              </p>
+                            );
+                          })}
+                        </div>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+          )}
         </Container>
       </div>
     </div>
