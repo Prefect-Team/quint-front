@@ -18,7 +18,7 @@ import nftImg2 from "../../assets/images/Mask_Group2.png";
 import nftImg3 from "../../assets/images/Mask_Group3.png";
 import humanImg from "../../assets/images/human.png";
 import bigImg from "../../assets/images/big_bgblock.png";
-import phoneBigImg from "../../assets/images/phone_all.png";
+import phoneBigImg from "../../assets/images/phone_centerbg.png";
 
 import firstWork from "../../assets/images/Composition_04.png";
 import secondWork from "../../assets/images/Composition_13.png";

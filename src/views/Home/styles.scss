@@ -632,7 +632,8 @@
 }
 .isMobile {
   .block1 {
-    background: none;
+    background: url("../../assets/images/phone_topbg.png") no-repeat center;
+    background-size: cover;
     min-height: auto;
     .box_contianer {
       width: 100%;
