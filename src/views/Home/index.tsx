@@ -25,12 +25,25 @@ import secondWork from "../../assets/images/Composition_13.png";
 import thirdWork from "../../assets/images/Composition_11.png";
 import forthWork from "../../assets/images/Composition_06.png";
 import { useEffect, useState } from "react";
-// import { Input } from "@olympusdao/component-library";
-import { Container, useMediaQuery, Typography, Box, FormControl, InputAdornment, Input } from "@material-ui/core";
+import {
+  Container,
+  useMediaQuery,
+  Typography,
+  Box,
+  FormControl,
+  InputAdornment,
+  Input,
+  Backdrop,
+  CircularProgress,
+} from "@material-ui/core";
 import { CUR_NETWORK_ID } from "src/constants/network";
-import { useWeb3Context } from "src/hooks";
+import { useWeb3Context } from "src/hooks/web3Context";
 import { useHistory } from "react-router-dom";
-
+import { error, info } from "../../slices/MessagesSlice";
+import { useDispatch } from "react-redux";
+import { Referral_ADDRESS, Referral_ABI } from "src/contract";
+import { ethers } from "ethers";
+import { bnToNum } from "src/helpers";
 const transforRoad = (arr: any) => {
   const tempArr = [...arr];
   const tempItem = tempArr[3];
@@ -43,7 +56,8 @@ export function Home() {
   const history = useHistory();
   const isSmallScreen = useMediaQuery("(max-width: 650px)");
   const isVerySmallScreen = useMediaQuery("(max-width: 379px)");
-  const { networkId, provider, connected } = useWeb3Context();
+  const { connected, provider, address, networkId } = useWeb3Context();
+  const signer = provider.getSigner();
   // usePathForNetwork({ pathName: "home", networkID: networkId, history });
 
   const paperHandler = () => {
@@ -303,7 +317,10 @@ export function Home() {
   ];
   const transforedRoadMap = transforRoad(roadMap);
   const [link, setLink] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
+  const [urlAddress, setAddress] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+  const [nftList, setNftList] = useState<Array<any>>(nftLisf);
+  const dispatch = useDispatch();
   const handleChangeLink = (e: any) => {
     setLink(e.target.value);
   };
@@ -311,11 +328,49 @@ export function Home() {
     setAddress(e.target.value);
   };
 
+  const checkMfuelApproved = async () => {
+    try {
+      const mFuelContract = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      const allowance = await mFuelContract.allowance(address, Referral_ADDRESS);
+      if (allowance.toString() === "0" || allowance.toString().length < 1) {
+        const approveTx = await mFuelContract.approve(Referral_ADDRESS, ethers.constants.MaxUint256);
+        await approveTx.wait();
+      } else {
+        return {};
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // 拿到nft价格
+  const getPrice = async (type: string) => {
+    setLoading(true);
+    console.log(nftList, "nftList", type);
+    try {
+      // await checkMfuelApproved();
+      const fetchPriceContract = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      const tx = await fetchPriceContract.fetchPrice(type);
+      console.log(tx, "tx");
+      nftList[Number(type) - 1].price = bnToNum(tx).toString();
+      console.log(nftList, "123");
+      setNftList(nftList);
+      setLoading(false);
+      dispatch(info(t`Success to fetchPrice`));
+    } catch (err) {
+      console.log({ err });
+      setLoading(false);
+      dispatch(error(t`Fail to fetchPrice`));
+    }
+  };
   useEffect(() => {
     if (provider && networkId === CUR_NETWORK_ID) {
       // 执行合约操作
+      getPrice("1");
+      getPrice("2");
+      getPrice("3");
     }
-  }, [networkId, connected]);
+  }, [connected]);
   return (
     <div className={isSmallScreen ? "isMobile" : ""}>
       <div className="block1">
@@ -355,8 +410,8 @@ export function Home() {
           </div>
           <div className="bottom_container">
             <ul>
-              {nftLisf &&
-                nftLisf.map((item, index) => {
+              {nftList &&
+                nftList.map((item: any, index: number) => {
                   return (
                     <li key={index}>
                       <div className="top_li">
@@ -582,6 +637,12 @@ export function Home() {
           )}
         </Container>
       </div>
+      <Backdrop open={loading}>
+        <CircularProgress color="inherit" />
+        <Typography variant="h5" style={{ marginLeft: "1rem" }}>
+          {t`Communicating with blockchain nodes...`}
+        </Typography>
+      </Backdrop>
     </div>
   );
 }

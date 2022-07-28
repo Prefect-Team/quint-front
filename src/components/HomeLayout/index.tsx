@@ -25,17 +25,12 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Backdrop,
-  CircularProgress,
 } from "@material-ui/core";
 import React, { useState } from "react";
 import { Menu as MenuIcon, ExpandMore as ExpandMoreIcon } from "@material-ui/icons";
-import { error, info } from "../../slices/MessagesSlice";
+
 import Headroom from "headroom.js";
 import { useWeb3Context } from "src/hooks/web3Context";
-import { ethers } from "ethers";
-import { useDispatch } from "react-redux";
-import { Referral_ADDRESS, Referral_ABI } from "src/contract";
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
   const isSmallScreen = useMediaQuery("(max-width: 650px)");
@@ -44,11 +39,8 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
   const isFoundation = location.pathname === "/foundation";
   const [zoomed, setZoomed] = useState(false);
   const { connected, provider, address } = useWeb3Context();
-  const signer = provider.getSigner();
-  const [loading, setLoading] = useState(false);
-  console.log(connected, address, "address");
+
   const [anchorElNav, setAnchorElNav] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const header: HTMLElement = document.querySelector(".fixed-header") as HTMLElement;
@@ -63,46 +55,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
   const handleCloseNavMenu = () => {
     setAnchorElNav(false);
   };
-  const checkMfuelApproved = async () => {
-    try {
-      const mFuelContract = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
-      const allowance = await mFuelContract.allowance(address, Referral_ADDRESS);
-      if (allowance.toString() === "0" || allowance.toString().length < 1) {
-        const approveTx = await mFuelContract.approve(Referral_ADDRESS, ethers.constants.MaxUint256);
-        await approveTx.wait();
-      } else {
-        return {};
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const withdrawMiner = async (type: number) => {
-    setLoading(true);
-    try {
-      // await checkMfuelApproved();
-      const fetchPriceContract = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
-      const tx = await fetchPriceContract.fetchPrice(type);
 
-      await tx.wait();
-      setLoading(false);
-      dispatch(info(t`Success to unstake`));
-    } catch (err) {
-      console.log({ err });
-      setLoading(false);
-      dispatch(error(t`Fail to unstake`));
-    }
-  };
-  useEffect(() => {
-    console.log("useEffectuseEffect");
-    try {
-      withdrawMiner(1);
-      withdrawMiner(2);
-      withdrawMiner(3);
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
   const links = [
     {
       name: t`Home`,
@@ -268,12 +221,6 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
           </div>
         </Container>
       </div>
-      <Backdrop open={loading}>
-        <CircularProgress color="inherit" />
-        <Typography variant="h5" style={{ marginLeft: "1rem" }}>
-          {t`Communicating with blockchain nodes...`}
-        </Typography>
-      </Backdrop>
     </div>
   );
 }

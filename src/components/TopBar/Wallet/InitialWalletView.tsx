@@ -125,9 +125,9 @@ const WalletTotalValue = () => {
   useEffect(() => {
     try {
       if (provider && userAddress && networkId === CUR_NETWORK_ID) {
-        getMBTCToken();
-        getMfuel();
-        getNftNum();
+        // getMBTCToken();
+        // getMfuel();
+        // getNftNum();
       }
     } catch (err) {
       console.log(err);
