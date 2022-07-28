@@ -259,13 +259,13 @@
               background: #353945;
               border-radius: 12px;
               height: 100%;
-              
+
               .MuiInputBase-root {
                 height: 100%;
                 padding-left: 16px;
               }
               .Mui-focused {
-                border: 1px solid #58BD7D;
+                border: 1px solid #58bd7d;
                 border-radius: 12px;
               }
             }
@@ -286,13 +286,13 @@
               &::before {
                 content: "";
                 width: 24px;
-              height: 24px;
-              position: absolute;
-              left: 20px;
-              top: 50%;
-              transform: translateY(-50%);
-              background: url("../../assets/images/Line.png") no-repeat center;
-              background-size: cover;
+                height: 24px;
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: url("../../assets/images/Line.png") no-repeat center;
+                background-size: cover;
               }
             }
           }
@@ -343,7 +343,7 @@
           }
           .right_cont {
             width: 159px;
-            height: 38px;
+            height: 48px;
             font-weight: 700;
             font-size: 16px;
             display: flex;
@@ -388,6 +388,7 @@
                 color: #8dc351;
                 .price_color {
                   color: #58bd7d;
+                  margin-right: 4px;
                 }
                 .quint_color {
                   color: #fcfcfd;
@@ -401,7 +402,6 @@
               margin-right: 0;
             }
           }
-          
         }
       }
     }
@@ -520,23 +520,22 @@
               width: 12px;
               height: 12px;
               border-radius: 12px;
-              border: 2px solid #B1B5C4;
+              border: 2px solid #b1b5c4;
               position: absolute;
               right: -30px;
               top: 50%;
               transform: translateY(-50%);
             }
-              &::after {
-                content: "";
-                width: 115px;
-                border-bottom: 1px dashed #B1B5C4;
-                height: 1px;
-                position: absolute;
-                right: -145px;
-                top: 50%;
-                transform: translateY(-50%);
-              }
-             
+            &::after {
+              content: "";
+              width: 115px;
+              border-bottom: 1px dashed #b1b5c4;
+              height: 1px;
+              position: absolute;
+              right: -145px;
+              top: 50%;
+              transform: translateY(-50%);
+            }
           }
         }
         &:nth-child(2) {
@@ -547,7 +546,7 @@
               width: 12px;
               height: 12px;
               border-radius: 12px;
-              border: 2px solid #B1B5C4;
+              border: 2px solid #b1b5c4;
               position: absolute;
               left: -22px;
               top: 50%;
@@ -558,7 +557,7 @@
               width: 12px;
               height: 12px;
               border-radius: 12px;
-              border: 2px solid #B1B5C4;
+              border: 2px solid #b1b5c4;
               position: absolute;
               right: -23px;
               top: 50%;
@@ -567,12 +566,12 @@
           }
           &::after {
             content: "";
-              width: 115px;
-              border-bottom: 1px dashed #B1B5C4;
-              height: 1px;
-              position: absolute;
-              top: 49px;
-              right: -54px;
+            width: 115px;
+            border-bottom: 1px dashed #b1b5c4;
+            height: 1px;
+            position: absolute;
+            top: 49px;
+            right: -54px;
           }
         }
         &:nth-child(3) {
@@ -583,7 +582,7 @@
               width: 12px;
               height: 12px;
               border-radius: 12px;
-              border: 2px solid #B1B5C4;
+              border: 2px solid #b1b5c4;
               position: absolute;
               left: -27px;
               top: 50%;
@@ -594,7 +593,7 @@
               width: 12px;
               height: 12px;
               border-radius: 12px;
-              border: 2px solid #B1B5C4;
+              border: 2px solid #b1b5c4;
               position: absolute;
               right: -23px;
               top: 50%;
@@ -603,12 +602,12 @@
           }
           &::after {
             content: "";
-              width: 115px;
-              border-bottom: 1px dashed #B1B5C4;
-              height: 1px;
-              position: absolute;
-              top: 49px;
-              right: -54px;
+            width: 115px;
+            border-bottom: 1px dashed #b1b5c4;
+            height: 1px;
+            position: absolute;
+            top: 49px;
+            right: -54px;
           }
         }
         &:nth-child(4) {
@@ -618,7 +617,7 @@
               width: 12px;
               height: 12px;
               border-radius: 12px;
-              border: 2px solid #B1B5C4;
+              border: 2px solid #b1b5c4;
               position: absolute;
               left: -27px;
               top: 50%;
@@ -646,8 +645,6 @@
         }
         .bottom_arrow {
           display: none;
-          
-          
         }
       }
     }
@@ -664,7 +661,7 @@
         }
         .content {
           font-size: 16px;
-          color: #777E91;
+          color: #777e91;
           margin-top: 20px;
           width: 100%;
         }
@@ -729,7 +726,7 @@
         background: none;
         padding: 0;
         .add_phone_bg {
-          background: #23262F;
+          background: #23262f;
           border-radius: 16px;
           padding: 40px 0;
         }
@@ -752,7 +749,7 @@
             width: 100%;
             .left_cont {
               width: 100%;
-              .top_con  {
+              .top_con {
                 padding: 16px;
                 width: 100%;
                 border: 2px solid #353945;
@@ -839,7 +836,7 @@
           margin-bottom: 16px;
           .steps {
             font-size: 12px;
-            color: #777E91;
+            color: #777e91;
           }
           .bottom_con {
             font-size: 16px;
@@ -849,7 +846,7 @@
         }
       }
     }
-  } 
+  }
   .community {
     .community_container {
       display: flex;

@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/macro";
-import { Box, Button, Divider, IconButton, Typography, useMediaQuery, useTheme, withStyles } from "@material-ui/core";
-import { Skeleton } from "@material-ui/lab";
+import { Box, Button, IconButton, Typography, useMediaQuery, useTheme, withStyles } from "@material-ui/core";
+// import { Skeleton } from "@material-ui/lab";
 // import { Icon } from "@olympusdao/component-library";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
@@ -15,12 +15,13 @@ import {
 } from "src/contract";
 import { useAppSelector, useWeb3Context } from "src/hooks";
 import useCurrentTheme from "src/hooks/useTheme";
-import MbtcIcon from "../../../assets/icons/wallet_btczlogo.png";
-import NtfIcon from "../../../assets/icons/ntf_btczlogo.png";
-import MFuelIcon from "../../../views/TreasuryDashboard/assets/mfuel-logo2.png";
+// import MbtcIcon from "../../../assets/icons/wallet_btczlogo.png";
+import QuintLogo from "../../../assets/images/quint_logo.png";
+// import NtfIcon from "../../../assets/icons/ntf_btczlogo.png";
+// import MFuelIcon from "../../../views/TreasuryDashboard/assets/mfuel-logo2.png";
 import WalletAddressEns from "./WalletAddressEns";
-import { useMBTCPrice } from "src/hooks/useProtocolMetrics";
-import { formatNumber } from "../../../helpers";
+// import { useMBTCPrice } from "src/hooks/useProtocolMetrics";
+// import { formatNumber } from "../../../helpers";
 import { useDispatch } from "react-redux";
 import { Encrypt } from "src/helpers/aes";
 import baseUrl from "src/helpers/baseUrl";
@@ -118,7 +119,7 @@ const WalletTotalValue = () => {
     }
   };
 
-  const mbtcPrice = useMBTCPrice().data || 0;
+  // const mbtcPrice = useMBTCPrice().data || 0;
 
   useEffect(() => {
     try {
@@ -135,37 +136,36 @@ const WalletTotalValue = () => {
   return (
     <Box className="tooBar-container toobar_container" onClick={() => setCurrency(currency === "USD" ? "OHM" : "USD")}>
       <WalletAddressEns />
-      <Typography variant="h3" style={{ fontWeight: 700, color: "#fff", cursor: "pointer" }} className="tooBar-price">
+      {/* <Typography variant="h3" style={{ fontWeight: 700, color: "#fff", cursor: "pointer" }} className="tooBar-price">
         {!isLoading ? (
           `$ ${formatNumber(mbtcPrice * Number(mbtcBalance), 2)}`
         ) : (
           <Skeleton variant="text" width={"100%"} />
         )}
-      </Typography>
+      </Typography> */}
       <div className="address-list">
         <div className="address-list-item">
           <div className="first_item">
-            <img src={MbtcIcon} className="icon" />
-            <div className="name">{t`BTCZ`}</div>
+            <img src={QuintLogo} className="icon" />
+            <div className="name">{t`Quint`}</div>
           </div>
           <div className="count-only">{mbtcBalance}</div>
           {/* <div className="value">≈$10000</div> */}
         </div>
-        <div className="address-list-item">
+        {/* <div className="address-list-item">
           <div className="first_item">
             <img src={MFuelIcon} className="icon" />
             <div className="name">{t`ZFUEL`}</div>
           </div>
           <div className="count-only">{mfuelBalance}</div>
-          {/* <div className="value">≈$10000</div> */}
-        </div>
-        <div className="address-list-item">
+        </div> */}
+        {/* <div className="address-list-item">
           <div className="first_item">
             <img src={NtfIcon} className="icon" />
             <div className="name">{t`NFT Miner`}</div>
           </div>
           <div className="count-only">{num}</div>
-        </div>
+        </div> */}
       </div>
     </Box>
   );
@@ -184,18 +184,12 @@ function InitialWalletView({ onClose }: { onClose: () => void }) {
           className="toolBar-title"
           sx={{ display: "flex", justifyContent: "space-between", padding: theme.spacing(3, 0) }}
         >
-          <Typography variant="h1" component="div" style={{ color: "#25EDBC", fontWeight: "800", fontSize: "22px" }}>
+          <Typography variant="h1" component="div" style={{ color: "#fff", fontWeight: "500", fontSize: "24px" }}>
             {t`My Wallet`}
           </Typography>
-          {/* <CloseButton className="toolBar-close" size="small" onClick={onClose} aria-label="close wallet">
-            <Icon name="x" />
-          </CloseButton> */}
         </Box>
         <WalletTotalValue />
-        <Box sx={{ margin: theme.spacing(2, -3) }}>
-          <Divider color="secondary" />
-        </Box>
-        <Box sx={{ marginX: "auto" }} style={{ display: "flex", justifyContent: "center" }}>
+        <Box className="bottom_box" sx={{ marginX: "auto" }} style={{ display: "flex", justifyContent: "center" }}>
           <DisconnectButton />
         </Box>
       </Box>

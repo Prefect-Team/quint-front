@@ -229,44 +229,44 @@ export function Home() {
   ];
   const forthList = [
     {
-      num: "10%",
-      price: "1000",
-    },
-    {
-      num: "20%",
-      price: "2000",
+      num: "25%",
+      price: "0",
     },
     {
       num: "30%",
-      price: "3000",
+      price: "2",
+    },
+    {
+      num: "35%",
+      price: "4",
     },
     {
       num: "40%",
-      price: "4000",
+      price: "8",
+    },
+    {
+      num: "45%",
+      price: "16",
     },
     {
       num: "50%",
-      price: "5000",
+      price: "32",
+    },
+    {
+      num: "55%",
+      price: "64",
     },
     {
       num: "60%",
-      price: "6000",
-    },
-    {
-      num: "70%",
-      price: "7000",
+      price: "128",
     },
     {
       num: "80%",
-      price: "8000",
-    },
-    {
-      num: "90%",
-      price: "9000",
+      price: "256",
     },
     {
       num: "100%",
-      price: "10000",
+      price: "512",
     },
   ];
   const workList = [
@@ -488,10 +488,10 @@ export function Home() {
                 </div>
               </div>
             </div>
-            <div className="action_conatiner">
+            {/* <div className="action_conatiner">
               <button className="waller_box">My wallet</button>
               <button className="confirm_box">CONFIRM</button>
-            </div>
+            </div> */}
             <div className="foot_cont">
               <div className="contanier">
                 <p className="title">BEFORE YOU START</p>

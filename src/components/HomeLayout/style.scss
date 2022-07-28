@@ -45,7 +45,7 @@
   .menu-icon {
     font-size: 2rem;
     margin-left: 2rem;
-    color: #777E91;
+    color: #777e91;
   }
   .menu-icon-close {
     width: 2em;
@@ -53,25 +53,25 @@
     margin-left: 2rem;
   }
   .top_btnbox {
-    width: 204px;
+    width: 199px;
     height: 44px;
     border-radius: 50px;
     button {
       border: none;
       outline: none;
       background: none;
-      width: 50%;
+      width: 100%;
       cursor: pointer;
     }
-    .referral_btn {
-      background: linear-gradient(225deg, #3772ff 14.89%, #3772ff 85.85%);
-      color: #fff;
-      border-radius: 50px 0 0 50px;
-    }
+    // .referral_btn {
+    //   background: linear-gradient(225deg, #3772ff 14.89%, #3772ff 85.85%);
+    //   color: #fff;
+    //   border-radius: 50px 0 0 50px;
+    // }
     .wallet_btn {
-      color: #485470;
-      background: #fff;
-      border-radius: 0px 50px 50px 0px;
+      color: #fff;
+      background: linear-gradient(225deg, #3772ff 14.89%, #3772ff 85.85%);
+      border-radius: 50px;
     }
   }
 }
@@ -170,6 +170,29 @@
 .isMobile {
   .fixed-header {
     padding: 0;
+    background: #141416 !important;
+    backdrop-filter: blur(40px);
+    // height: 100vh;
+    // transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    .MuiCollapse-entered {
+      height: calc(100vh - 56px) !important;
+      .MuiCollapse-wrapper {
+        height: 100%;
+        .MuiCollapse-wrapperInner {
+          height: 100%;
+          .wallet_top {
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+          }
+          // display: flex;
+          // flex-direction: column;
+          // justify-content: space-between;
+        }
+      }
+    }
   }
   .bottom {
     // padding-top: 7vh;
@@ -185,7 +208,7 @@
     .top_cont {
       flex-direction: column;
       border: none;
-      .foot_according  {
+      .foot_according {
         background: none;
         box-shadow: none;
         color: #fcfcfc;
@@ -193,7 +216,7 @@
           color: #fcfcfc;
           .MuiIconButton-label {
             .MuiSvgIcon-root {
-              color: #777E91;
+              color: #777e91;
             }
           }
         }
@@ -212,10 +235,10 @@
         padding-right: 0;
         margin-left: 0;
         padding-top: 32px;
-        border-top:1px solid #23262F;
+        border-top: 1px solid #23262f;
       }
       .last_left {
-        border-bottom:1px solid #23262F;
+        border-bottom: 1px solid #23262f;
         padding-bottom: 32px;
       }
     }
@@ -224,7 +247,7 @@
       margin-top: 57px;
       .left_text {
         font-size: 12px;
-        color: #777E91;
+        color: #777e91;
       }
       .right_con {
         margin-top: 25px;

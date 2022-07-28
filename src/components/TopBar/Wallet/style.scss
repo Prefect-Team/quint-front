@@ -2,9 +2,11 @@
   width: 100%;
   height: 460px;
   .tooBar-price {
-    padding: 20px 0;
+    padding: 16px 0;
     display: flex;
     justify-content: center;
+    font-size: 22px;
+    border-bottom: 1px solid #353945;
   }
   .small-icon {
     margin-left: 0.5rem;
@@ -16,11 +18,13 @@
   box-sizing: border-box;
   min-height: 60px;
   margin-top: 2rem;
+
   .address-list-item {
-    height: 60px;
+    padding: 16px 0;
     width: 100%;
-    margin-bottom: 33px;
+    margin-bottom: 0px !important;
     line-height: 60px;
+    border-bottom: 1px solid #353945;
     position: relative;
     .icon {
       float: left;
@@ -72,13 +76,19 @@
 .wallet_box {
   // padding: 2px;
   // padding-right: 10px;
-  background: #25edbc;
+  // background: #25edbc;
   border-radius: 50px;
-  height: 44px;
-  margin-top: 6px;
+  height: 100%px;
+  // margin-top: 6px;
   position: relative;
   .wallet_btn {
     z-index: 10;
+    width: 199px !important;
+    height: 44px;
+    background: linear-gradient(225deg, #3772ff 14.89%, #3772ff 85.85%);
+    color: #fff;
+    font-size: 17px;
+    text-transform: none;
   }
 }
 .cancle_bg {
@@ -86,28 +96,28 @@
   transition: background linear 0.5s;
 }
 .wallet_container {
-  width: 215px;
+  width: 256px;
   height: 0;
-  background: url("../../../assets/images/wallet_bg.png") no-repeat center;
-  background-size: cover;
+  // background: url("../../../assets/images/wallet_bg.png") no-repeat center;
+  // background-size: cover;
+  background: #23262f;
+  box-shadow: 0px 16px 64px -48px rgba(31, 47, 70, 0.4);
+  border-radius: 12px;
   position: absolute;
-  top: 19px;
-  left: 0px;
+  top: 65px;
+  left: -75px;
   z-index: 9;
   transition: height linear 0.3s;
 
   .init_container {
     height: 100%;
     display: none;
-    background: linear-gradient(106.33deg, #003c2d 0.52%, #000000 99.71%);
-    backdrop-filter: blur(73.9453px);
-    border-radius: 7.39453px;
     padding-bottom: 20px;
     overflow-y: scroll;
     .init_box {
       padding: 0;
       .toobar_container {
-        padding: 0 10px;
+        // padding: 0 10px;
         height: auto;
         .address-list {
           margin-top: 0;
@@ -145,31 +155,54 @@
         width: 100%;
         padding: 0;
         justify-content: space-between;
-        border-bottom: 1px solid #25edbc;
+        border-bottom: 1px solid #353945;
+        margin-top: 12px;
         a {
           font-weight: normal;
-          font-size: 12px;
+          font-size: 14px;
+          color: #58bd7d;
           min-height: auto !important;
         }
       }
     }
+    .bottom_box {
+      margin-top: 16px;
+      .disconnectd_btn {
+        text-transform: none;
+        box-shadow: none;
+      }
+    }
   }
   .disconnectd_btn:hover {
-    background: #25edbc;
+    background: #3772ff;
   }
 }
 .open_wallet {
-  height: 335px;
-  padding: 10px;
-  padding-top: 40px;
+  height: 278px;
+  padding: 16px;
+  // padding-top: 40px;
+  box-sizing: border-box;
   padding-bottom: 10px;
   .init_box {
     background: none;
     box-shadow: none;
     backdrop-filter: initial;
+    .toolBar-title {
+      padding: 0 !important;
+    }
   }
   .MuiBox-root {
     display: block;
+  }
+  &::before {
+    content: "";
+    width: 24px;
+    height: 12px;
+    background: url("../../../assets/images/up_trangle.png") no-repeat center;
+    background-size: cover;
+    position: absolute;
+    top: -9px;
+    left: 170px;
   }
 }
 @media (max-width: 750px) {

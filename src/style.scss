@@ -44,7 +44,8 @@ button {
 li {
   list-style: none;
 }
-p,ul {
+p,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -245,7 +246,7 @@ a:hover svg {
       left: 57px;
       min-height: 60px;
       top: 275px;
-
+      // padding-top: 16px;
       .address-list-item {
         height: 60px;
         width: 100%;
@@ -398,8 +399,6 @@ a:hover svg {
       background-position: center;
     }
   }
-
-
 }
 
 // select popover 样式
@@ -481,14 +480,14 @@ a:hover svg {
 
 .btcz-btn-solid {
   border-radius: 58.5075px !important;
-  border: 1px solid #19dd8b !important;
+  // border: 1px solid #19dd8b !important;
   box-sizing: border-box;
   font-family: "Manrope";
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
-  height: 40px;
-  line-height: 40px;
+  height: 48px;
+  line-height: 48px;
   padding: 0 20px;
   text-transform: uppercase;
   color: #dfdfdf !important;
@@ -618,10 +617,9 @@ a:hover svg {
           cursor: pointer;
           transition: all 0.2s ease-in-out;
           background: #25edbc;
-           &:hover {
+          &:hover {
             transform: scale(1.1);
           }
-
         }
       }
     }

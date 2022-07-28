@@ -7,6 +7,7 @@ import NFTStore from "./NFTStore.json";
 import MFuel from "./MFuel.json";
 import IERC20 from "./IERC20.json";
 import Mint from "./Mint.json";
+import Referral from "./Referral.json";
 
 export const ERC721Pausable_ABI = ERC721Pausable.abi;
 export const MBTCStaking_ABI = MBTCStaking.abi;
@@ -17,6 +18,7 @@ export const NFTStore_ABI = NFTStore.abi;
 export const MFuel_ABI = MFuel.abi;
 export const IERC20_ABI = IERC20.abi;
 export const Mint_ABI = Mint.abi;
+export const Referral_ABI = Referral.abi;
 
 // production
 export const MBTCStaking_ADDRESS = "0x14bC11c85Dcd4b47CD15A8510B33b312140688B8";
@@ -30,6 +32,7 @@ export const BUSD_ADDRESS = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
 export const factory_ADDRESS = "0xdaF107Cb6CBc9402F58C266E6632528d38C29612";
 export const Mint_ADDRESS = "0x55Ff3e6f223aaa82a6df6e94194fE3d1828183F1";
 export const ERC20_ADDRESS = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
+export const Referral_ADDRESS = "0x7973096515d38E046509258d1CD190ff4dd1a3Fe";
 
 // test
 // export const MBTCStaking_ADDRESS = "0x56325DAC0CbFb7Fe6A120C8590f9aACcCf8E11D9";

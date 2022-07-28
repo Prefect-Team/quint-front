@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
 // import { Button, SwipeableDrawer, Typography, useTheme, withStyles, useMediaQuery } from "@material-ui/core";
-import { Button, Typography, useTheme, useMediaQuery } from "@material-ui/core";
+import { Button, useTheme, useMediaQuery } from "@material-ui/core";
 
 import { useState } from "react";
 import { useWeb3Context } from "src/hooks/web3Context";
@@ -13,8 +13,8 @@ const WalletButton = ({ openWallet }: { openWallet: () => void }) => {
   const label = connected ? address.slice(0, 7) + "..." + address.slice(-4) : t`Connect Wallet`;
   const theme = useTheme();
   return (
-    <Button className="btcz-btn-solid wallet_btn" onClick={onClick}>
-      <Typography>{label}</Typography>
+    <Button className="wallet_btn" onClick={onClick}>
+      {label}
     </Button>
   );
 };
