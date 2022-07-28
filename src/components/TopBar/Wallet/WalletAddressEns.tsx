@@ -26,7 +26,7 @@ export default function WalletAddressEns() {
     <div className="wallet-link">
       {ens?.avatar && <img className="avatar" src={ens.avatar} alt={address} />}
 
-      <Link href={`https://bscscan.com/address/${address}`} target="_blank">
+      <Link href={`https://testnet.bscscan.com/address/${address}`} target="_blank">
         {content}
       </Link>
       <div className="small-icon" onClick={() => goCopy(address)}>

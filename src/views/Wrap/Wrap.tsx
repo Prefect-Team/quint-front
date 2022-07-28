@@ -23,7 +23,7 @@ const Wrap: FC = () => {
             <div className={`stake-user-data`}>
               <Box width="100%" p={1} sx={{ textAlign: "center" }}>
                 <Typography style={{ margin: "0 0 20px 0" }}>
-                  {t`Please switch network to Binance Smart Chain Mainnet!`}
+                  {t`Please switch network to Binance Smart Chain Testnet!`}
                 </Typography>
               </Box>
             </div>

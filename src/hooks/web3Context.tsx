@@ -9,6 +9,7 @@ import Web3Modal from "web3modal";
 import { NetworkId, NETWORKS } from "../constants";
 
 import BianceWalletLogo from "../assets/images/binance-wallet.png";
+import { CUR_NETWORK_ID } from "src/constants/network";
 
 /**
  * determine if in IFrame for Ledger Live
@@ -120,8 +121,8 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   const [connectionError, setConnectionError] = useState<IConnectionError | null>(null);
   const [address, setAddress] = useState("");
   // NOTE (appleseed): loading eth mainnet as default rpc provider for a non-connected wallet
-  const [provider, setProvider] = useState<JsonRpcProvider>(Providers.getStaticProvider(NetworkId.BSC));
-  const [networkId, setNetworkId] = useState(56);
+  const [provider, setProvider] = useState<JsonRpcProvider>(Providers.getStaticProvider(NetworkId.BSC_TESTNET));
+  const [networkId, setNetworkId] = useState(CUR_NETWORK_ID);
   const [networkName, setNetworkName] = useState("");
   const [providerUri, setProviderUri] = useState("");
   const [providerInitialized, setProviderInitialized] = useState(false);

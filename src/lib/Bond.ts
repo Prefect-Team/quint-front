@@ -3,7 +3,6 @@ import { OHMTokenStackProps } from "@olympusdao/component-library";
 import { BigNumber, ethers } from "ethers";
 import { abi as ierc20Abi } from "src/abi/IERC20.json";
 import { addresses, NetworkId } from "src/constants";
-import { getTokenPrice } from "src/helpers";
 import { getBondCalculator } from "src/helpers/BondCalculator";
 import { EthContract, PairContract } from "src/typechain";
 
@@ -114,14 +113,9 @@ export abstract class Bond {
 
   // TODO (appleseed): improve this logic
   async getBondReservePrice(NetworkId: NetworkId, provider: StaticJsonRpcProvider | JsonRpcSigner) {
-    let marketPrice: number;
-    if (this.isLP) {
-      const pairContract = this.getContractForReserve(NetworkId, provider);
-      const reserves = await pairContract.getReserves();
-      marketPrice = Number(reserves[1].toString()) / Number(reserves[0].toString()) / 10 ** 9;
-    } else {
-      marketPrice = await getTokenPrice("convex-finance");
-    }
+    const pairContract = this.getContractForReserve(NetworkId, provider);
+    const reserves = await pairContract.getReserves();
+    const marketPrice = Number(reserves[1].toString()) / Number(reserves[0].toString()) / 10 ** 9;
     return marketPrice;
   }
 }

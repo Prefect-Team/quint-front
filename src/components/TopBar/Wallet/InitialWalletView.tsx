@@ -25,6 +25,7 @@ import WalletAddressEns from "./WalletAddressEns";
 import { useDispatch } from "react-redux";
 import { Encrypt } from "src/helpers/aes";
 import baseUrl from "src/helpers/baseUrl";
+import { CUR_NETWORK_ID } from "src/constants/network";
 const DisconnectButton = () => {
   const { disconnect } = useWeb3Context();
   return (
@@ -123,7 +124,7 @@ const WalletTotalValue = () => {
 
   useEffect(() => {
     try {
-      if (provider && userAddress && networkId === 56) {
+      if (provider && userAddress && networkId === CUR_NETWORK_ID) {
         getMBTCToken();
         getMfuel();
         getNftNum();

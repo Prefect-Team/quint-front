@@ -247,13 +247,7 @@ export const eth = new CustomBond({
     },
   },
   customTreasuryBalanceFunc: async function (this: CustomBond, NetworkId, provider) {
-    const ethBondContract = this.getContractForBond(NetworkId, provider);
-    let ethPrice: BigNumberish = await ethBondContract.assetPrice();
-    ethPrice = Number(ethPrice.toString()) / Math.pow(10, 8);
-    const token = this.getContractForReserve(NetworkId, provider);
-    let ethAmount: BigNumberish = await token.balanceOf(addresses[NetworkId].TREASURY_ADDRESS);
-    ethAmount = Number(ethAmount.toString()) / Math.pow(10, 18);
-    return ethAmount * ethPrice;
+    return 0 * 0;
   },
 });
 
@@ -362,11 +356,7 @@ export const cvx_expired = new CustomBond({
     },
   },
   customTreasuryBalanceFunc: async function (this: CustomBond, NetworkId, provider) {
-    const cvxPrice: number = await getTokenPrice("convex-finance");
-    const token = this.getContractForReserve(NetworkId, provider);
-    let cvxAmount: BigNumberish = await token.balanceOf(addresses[NetworkId].TREASURY_ADDRESS);
-    cvxAmount = Number(cvxAmount.toString()) / Math.pow(10, 18);
-    return cvxAmount * cvxPrice;
+    return 0 * 0;
   },
 });
 

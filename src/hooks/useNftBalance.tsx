@@ -4,6 +4,7 @@ import { useWeb3Context } from "./web3Context";
 import { useHistory } from "react-router-dom";
 import { Encrypt } from "src/helpers/aes";
 import baseUrl from "src/helpers/baseUrl";
+import { CUR_NETWORK_ID } from "src/constants/network";
 export const useNftBalance = () => {
   const { address, networkId } = useWeb3Context();
   const history = useHistory();
@@ -33,7 +34,7 @@ export const useNftBalance = () => {
     }
     return 0;
   });
-  if (networkId === 56) {
+  if (networkId === CUR_NETWORK_ID) {
     return [data];
   } else {
     return [0];

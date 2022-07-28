@@ -374,26 +374,14 @@ export const NETWORKS: { [key: number]: INetwork } = {
 // ... stuck on the wrong view
 
 interface IViewsForNetwork {
-  dashboard: boolean;
-  mine: boolean;
-  pool: boolean;
-  market: boolean;
-  mynft: boolean;
+  home: boolean;
 }
 
 export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
   [NetworkId.BSC]: {
-    dashboard: true,
-    mine: true,
-    pool: true,
-    market: true,
-    mynft: true,
+    home: true,
   },
   [NetworkId.BSC_TESTNET]: {
-    dashboard: true,
-    mine: true,
-    pool: true,
-    market: true,
-    mynft: true,
+    home: true,
   },
 };

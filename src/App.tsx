@@ -23,6 +23,7 @@ import { Economy } from "./views/Home/economy";
 import { Foundation } from "./views/Home/foundation";
 import { Community } from "./views/Home/community";
 import { ZFuel } from "./views/Home/zfuel";
+import { Wrap } from "./views";
 
 const DEBUG = false;
 
@@ -151,6 +152,9 @@ function App() {
             <Route exact strict path="/foundation" component={Foundation}></Route>
             <Route exact strict path="/community" component={Community}></Route>
             <Route exact strict path="/zfuel" component={ZFuel}></Route>
+            <Route path="/error">
+              <Wrap />
+            </Route>
             <Route component={NotFound} />
           </Switch>
         </HomeLayout>

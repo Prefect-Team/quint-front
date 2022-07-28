@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 
 import { NetworkId } from "../networkDetails";
 import { GUniV3Lp__factory, IERC20__factory, UniswapV2Lp, UniswapV2Lp__factory } from "../typechain";
-import { getTokenByContract, getTokenPrice } from "./";
+import { getTokenByContract } from "./";
 
 // const pricingFunctionHelper = async (provider: ethers.providers.JsonRpcProvider, quoteToken: string) => {
 //   const baseContract = UniswapV2Lp__factory.connect(quoteToken, provider);
@@ -51,7 +51,7 @@ const DaiDetails: V2BondDetails = {
   name: "DAI",
   bondIconSvg: ["DAI"],
   pricingFunction: async () => {
-    return getTokenPrice("dai");
+    return 0;
   },
   isLP: false,
   lpUrl: "",
@@ -61,7 +61,7 @@ const sOhmDetails: V2BondDetails = {
   name: "sOHM",
   bondIconSvg: ["sOHM"],
   pricingFunction: async () => {
-    return getTokenPrice("olympus");
+    return 0;
   },
   isLP: false,
   lpUrl: "",
@@ -101,7 +101,7 @@ const EthDetails: V2BondDetails = {
   name: "ETH",
   bondIconSvg: ["wETH"],
   pricingFunction: async () => {
-    return getTokenPrice("ethereum");
+    return 0;
   },
   isLP: false,
   lpUrl: "",
@@ -111,7 +111,7 @@ const CvxDetails: V2BondDetails = {
   name: "CVX",
   bondIconSvg: ["CVX"],
   pricingFunction: async () => {
-    return getTokenPrice("convex-finance");
+    return 0;
   },
   isLP: false,
   lpUrl: "",

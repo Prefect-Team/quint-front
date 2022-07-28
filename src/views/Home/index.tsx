@@ -24,9 +24,12 @@ import firstWork from "../../assets/images/Composition_04.png";
 import secondWork from "../../assets/images/Composition_13.png";
 import thirdWork from "../../assets/images/Composition_11.png";
 import forthWork from "../../assets/images/Composition_06.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { Input } from "@olympusdao/component-library";
 import { Container, useMediaQuery, Typography, Box, FormControl, InputAdornment, Input } from "@material-ui/core";
+import { CUR_NETWORK_ID } from "src/constants/network";
+import { useWeb3Context } from "src/hooks";
+import { useHistory } from "react-router-dom";
 
 const transforRoad = (arr: any) => {
   const tempArr = [...arr];
@@ -37,8 +40,11 @@ const transforRoad = (arr: any) => {
 };
 
 export function Home() {
+  const history = useHistory();
   const isSmallScreen = useMediaQuery("(max-width: 650px)");
   const isVerySmallScreen = useMediaQuery("(max-width: 379px)");
+  const { networkId, provider, connected } = useWeb3Context();
+  // usePathForNetwork({ pathName: "home", networkID: networkId, history });
 
   const paperHandler = () => {
     window.open(window.location.origin + "/whitepaper.pdf");
@@ -304,6 +310,12 @@ export function Home() {
   const handleChangeAdress = (e: any) => {
     setAddress(e.target.value);
   };
+
+  useEffect(() => {
+    if (provider && networkId === CUR_NETWORK_ID) {
+      // 执行合约操作
+    }
+  }, [networkId, connected]);
   return (
     <div className={isSmallScreen ? "isMobile" : ""}>
       <div className="block1">
