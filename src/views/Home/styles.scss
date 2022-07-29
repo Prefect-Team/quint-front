@@ -282,6 +282,9 @@
             .add_icon {
               .MuiInputBase-root {
                 padding-left: 52px;
+                .MuiInputBase-inputMarginDense {
+                  padding-top: 8px;
+                }
               }
               &::before {
                 content: "";

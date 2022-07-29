@@ -44,13 +44,6 @@ import { useDispatch } from "react-redux";
 import { Referral_ADDRESS, Referral_ABI } from "src/contract";
 import { ethers } from "ethers";
 import { bnToNum } from "src/helpers";
-const transforRoad = (arr: any) => {
-  const tempArr = [...arr];
-  const tempItem = tempArr[3];
-  tempArr[3] = tempArr[5];
-  tempArr[5] = tempItem;
-  return tempArr;
-};
 
 export function Home() {
   const history = useHistory();
@@ -80,168 +73,6 @@ export function Home() {
     PartnerShark,
   ];
 
-  const roadMap = [
-    {
-      name: t`Q2 2022`,
-      list: [
-        {
-          item: t`Launch of Meta Bitcoin`,
-          done: true,
-        },
-        {
-          item: t`BTCZ Foundation`,
-          done: true,
-        },
-        {
-          item: t`BTCZ roadshow debut`,
-          done: true,
-        },
-      ],
-      grid: 4,
-    },
-    {
-      name: t`Q3 2022`,
-      list: [
-        {
-          item: t`BTCZ miner M-1 series release`,
-          done: true,
-        },
-        {
-          item: t`Web3 DApp & NFT market launch`,
-          done: true,
-        },
-        {
-          item: t`BTCZ genesis block; first BTCZ mined`,
-          done: true,
-        },
-        {
-          item: t`Listing on DEX`,
-          done: true,
-        },
-        {
-          item: t`External audits`,
-          done: true,
-        },
-      ],
-      grid: 4,
-    },
-    {
-      name: t`Q4 2022`,
-      list: [
-        {
-          item: t`Metabitcointalk.com the world's first Web3 forum for BTCZ`,
-          done: false,
-        },
-        {
-          item: t`BTCZ pool P-1 series release`,
-          done: false,
-        },
-        {
-          item: t`Mining UX improvement`,
-          done: false,
-        },
-        {
-          item: t`Airdrops platform & app`,
-          done: false,
-        },
-        {
-          item: t`Listing on major exchanges`,
-          done: false,
-        },
-      ],
-      grid: 4,
-    },
-    {
-      name: t`Q1 2023`,
-      list: [
-        {
-          item: t`Development of payment use cases`,
-          done: false,
-        },
-        {
-          item: t`Intense marketing & community push`,
-          done: false,
-        },
-        {
-          item: t`BTCZ DeFi launch`,
-          done: false,
-        },
-      ],
-      grid: 4,
-    },
-    {
-      name: t`Q2 2023`,
-      list: [
-        {
-          item: t`Staking & Mining related products`,
-          done: false,
-        },
-        {
-          item: t`Development of FPGA miner`,
-          done: false,
-        },
-        {
-          item: t`Development of ASIC miner`,
-          done: false,
-        },
-      ],
-      grid: 4,
-    },
-    {
-      name: t`Q3 2023`,
-      list: [
-        {
-          item: t`wMBTC token launch`,
-          done: false,
-        },
-        {
-          item: t`BTCZ cross chain bridge `,
-          done: false,
-        },
-        {
-          item: t`Integration with DeFi applications`,
-          done: false,
-        },
-      ],
-      grid: 4,
-    },
-    {
-      name: t`Q4 2023`,
-      list: [
-        {
-          item: t`BTCZ mining in 3D metaverse`,
-          done: false,
-        },
-        {
-          item: t`BTCZ metaverse ecosystem launch`,
-          done: false,
-        },
-        {
-          item: t`Support BTCZ DeFi/GameFi/SocialFi applications`,
-          done: false,
-        },
-      ],
-      grid: 6,
-    },
-    {
-      name: t`H1 2024`,
-      list: [
-        {
-          item: t`1T market cap`,
-          done: false,
-        },
-        {
-          item: t`BTCZ investment fund and trust`,
-          done: false,
-        },
-        {
-          item: t`Expand BTCZ metaverse to art, finance, entertainment, and tech`,
-          done: false,
-        },
-      ],
-      grid: 6,
-    },
-  ];
   const nftLisf = [
     { img: nftImg1, price: "5000.00" },
     { img: nftImg2, price: "4000.00" },
@@ -315,11 +146,12 @@ export function Home() {
       content: ["Copywriting", "Copywriting", "Copywriting"],
     },
   ];
-  const transforedRoadMap = transforRoad(roadMap);
   const [link, setLink] = useState<string>("");
   const [urlAddress, setAddress] = useState<string>("");
+  const [linkParam, setLinkParam] = useState<string>("");
+  const [share, setShare] = useState<string>("");
   const [loading, setLoading] = useState(false);
-  const [nftList, setNftList] = useState<Array<any>>(nftLisf);
+  const [nftListPrice, setNftListPrice] = useState<Array<string>>([]);
   const dispatch = useDispatch();
   const handleChangeLink = (e: any) => {
     setLink(e.target.value);
@@ -344,17 +176,24 @@ export function Home() {
   };
 
   // 拿到nft价格
-  const getPrice = async (type: string) => {
+  const getPrice = async (type: Array<string>) => {
     setLoading(true);
-    console.log(nftList, "nftList", type);
     try {
       // await checkMfuelApproved();
       const fetchPriceContract = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
-      const tx = await fetchPriceContract.fetchPrice(type);
-      console.log(tx, "tx");
-      nftList[Number(type) - 1].price = bnToNum(tx).toString();
-      console.log(nftList, "123");
-      setNftList(nftList);
+      Promise.all([
+        fetchPriceContract.fetchPrice(type[0]),
+        fetchPriceContract.fetchPrice(type[1]),
+        fetchPriceContract.fetchPrice(type[2]),
+      ])
+        .then(res => {
+          const priceList = res.map(item => bnToNum(item).toString());
+          setNftListPrice(priceList);
+        })
+        .catch(err => {
+          setLoading(false);
+          dispatch(error(t`Fail to fetchPrice`));
+        });
       setLoading(false);
       dispatch(info(t`Success to fetchPrice`));
     } catch (err) {
@@ -363,12 +202,29 @@ export function Home() {
       dispatch(error(t`Fail to fetchPrice`));
     }
   };
+  const getUserInfo = async () => {
+    setLoading(true);
+    try {
+      const fetchUserInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      const tx = await fetchUserInfo.fetchUserData(address);
+      console.log(tx, bnToNum(tx.Parent).toString(), "123tx");
+      const code = bnToNum(tx.Parent).toString();
+      const share = bnToNum(tx.Share).toString();
+      setShare(share);
+      setLinkParam(code);
+      setLoading(false);
+      dispatch(info(t`Success to unstake`));
+    } catch (err) {
+      console.log({ err });
+      setLoading(false);
+      dispatch(error(t`Fail to fetchUserInfo`));
+    }
+  };
   useEffect(() => {
     if (provider && networkId === CUR_NETWORK_ID) {
       // 执行合约操作
-      getPrice("1");
-      getPrice("2");
-      getPrice("3");
+      getPrice(["1", "2", "3"]);
+      getUserInfo();
     }
   }, [connected]);
   return (
@@ -410,8 +266,8 @@ export function Home() {
           </div>
           <div className="bottom_container">
             <ul>
-              {nftList &&
-                nftList.map((item: any, index: number) => {
+              {nftLisf &&
+                nftLisf.map((item: any, index: number) => {
                   return (
                     <li key={index}>
                       <div className="top_li">
@@ -428,7 +284,7 @@ export function Home() {
                       </div>
                       <div className="bottom_li">
                         <p className="title_bottom">Current Price</p>
-                        <p className="content_bottom">{item.price} QUINT</p>
+                        <p className="content_bottom">{nftListPrice[index]} QUINT</p>
                       </div>
                       <div className="buy_box">
                         <button>Buy Now</button>
@@ -472,8 +328,8 @@ export function Home() {
             <div className="top_word">
               <p className="first">Total rewards</p>
               <p className="second">
-                <span className="number">11,566</span>
-                <span className="cont">QUINT</span>
+                <span className="number">{share}</span>
+                <span className="cont">BUSD</span>
               </p>
               <p className="third">
                 You're earning of the trading fees your <br />
@@ -490,9 +346,9 @@ export function Home() {
                       <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
                         <Input
                           id="link"
-                          type="number"
-                          value={link}
+                          value={"quint.io?referral=" + linkParam}
                           onChange={e => handleChangeLink(e)}
+                          // disabled
                           startAdornment={
                             <InputAdornment position="start">
                               <span style={{ color: "#58BD7D" }}>https://</span>
@@ -506,7 +362,7 @@ export function Home() {
                     <p className="title_second">Referral code</p>
                     <div className="input_box">
                       <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
-                        <Input id="address" type="number" value={address} onChange={e => handleChangeAdress(e)} />
+                        <Input id="address" value={linkParam} onChange={e => handleChangeAdress(e)} />
                       </FormControl>
                     </div>
                   </div>
@@ -516,13 +372,13 @@ export function Home() {
                   <div className="content_box">
                     <div className="left_cont">
                       <div className="top_con add_margin">
-                        <p className="num">0000</p>
-                        <p className="num name">Berus</p>
+                        <p className="num">{share}</p>
+                        <p className="num name">busd</p>
                       </div>
-                      <div className="top_con">
+                      {/* <div className="top_con">
                         <p className="num">0000</p>
-                        <p className="num name">Qunint</p>
-                      </div>
+                        <p className="num name">Quint</p>
+                      </div> */}
                     </div>
                     <div className="right_cont">Claim rewards</div>
                   </div>
