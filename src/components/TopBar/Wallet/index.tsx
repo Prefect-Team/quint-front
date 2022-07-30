@@ -1,12 +1,13 @@
 import { t } from "@lingui/macro";
 // import { Button, SwipeableDrawer, Typography, useTheme, withStyles, useMediaQuery } from "@material-ui/core";
-import { Button, useTheme, useMediaQuery } from "@material-ui/core";
+import { Button, useTheme, useMediaQuery, Box } from "@material-ui/core";
 
 import { useState } from "react";
 import { useWeb3Context } from "src/hooks/web3Context";
 import InitialWalletView from "./InitialWalletView";
 import "./style.scss";
-
+import walletIcon from "../../../assets/images/wallet.png";
+import UserIcon from "../../../assets/images/user.png";
 const WalletButton = ({ openWallet }: { openWallet: () => void }) => {
   const { connect, connected, address } = useWeb3Context();
   const onClick = connected ? openWallet : connect;
@@ -16,6 +17,18 @@ const WalletButton = ({ openWallet }: { openWallet: () => void }) => {
     <Button className="wallet_btn" onClick={onClick}>
       {label}
     </Button>
+  );
+};
+
+const MobileWalletButton = ({ openWallet }: { openWallet: () => void }) => {
+  const { connect, connected, address } = useWeb3Context();
+  const onClick = connected ? openWallet : connect;
+  const label = connected ? address.slice(0, 7) + "..." + address.slice(-4) : t`Connect Wallet`;
+  const theme = useTheme();
+  return (
+    <Box className="img_box" onClick={onClick}>
+      {connected ? <img src={UserIcon} className="user_img" /> : <img src={walletIcon} />}
+    </Box>
   );
 };
 
@@ -33,7 +46,6 @@ export function Wallet() {
   const [isWalletOpen, setWalletOpen] = useState(false);
   const closeWallet = () => setWalletOpen(false);
   const openWallet = () => setWalletOpen(!isWalletOpen);
-
   // only enable backdrop transition on ios devices,
   // because we can assume IOS is hosted on hight-end devices and will not drop frames
   // also disable discovery on IOS, because of it's 'swipe to go back' feat
@@ -43,7 +55,11 @@ export function Wallet() {
 
   return (
     <div className={isWalletOpen ? "wallet_box" : "wallet_box cancle_bg"}>
-      <WalletButton openWallet={openWallet} />
+      {isSmallScreen || isVerySmallScreen ? (
+        <MobileWalletButton openWallet={openWallet} />
+      ) : (
+        <WalletButton openWallet={openWallet} />
+      )}
       <div className={isWalletOpen ? "wallet_container open_wallet" : "wallet_container"}>
         <InitialWalletView onClose={closeWallet} />
       </div>

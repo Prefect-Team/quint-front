@@ -38,8 +38,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
   const location = useLocation();
   const isFoundation = location.pathname === "/foundation";
   const [zoomed, setZoomed] = useState(false);
-  const { connected, provider, address } = useWeb3Context();
-
+  const { connected, provider, address, connect } = useWeb3Context();
   const [anchorElNav, setAnchorElNav] = useState(false);
 
   useEffect(() => {
@@ -100,12 +99,13 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                   <img src={MenuClose} alt="Quint" className="menu-icon-close" />
                 </Box>
               ) : (
-                <MenuIcon aria-haspopup="true" onClick={handleOpenNavMenu} className="menu-icon"></MenuIcon>
+                <Box className="right_con">
+                  <Wallet />
+                  <MenuIcon aria-haspopup="true" onClick={handleOpenNavMenu} className="menu-icon"></MenuIcon>
+                </Box>
               )}
             </Box>
             <Box sx={{ justifyContent: "flex-end", display: { xs: "none", md: "flex" } }} className="top_btnbox">
-              {/* <button className="referral_btn">Referral</button> */}
-              {/* <button className="wallet_btn">Wallet</button> */}
               <Wallet />
             </Box>
           </Toolbar>
@@ -119,12 +119,12 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                     </Link>
                   </Box>
                 ))}
+                {connected ? null : (
+                  <div className="wallet_top" onClick={handleCloseNavMenu}>
+                    <Wallet />
+                  </div>
+                )}
               </Box>
-              {connected ? null : (
-                <div className="wallet_top">
-                  <Wallet />
-                </div>
-              )}
             </Collapse>
           </Box>
         </Container>

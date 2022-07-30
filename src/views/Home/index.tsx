@@ -41,7 +41,7 @@ import { useWeb3Context } from "src/hooks/web3Context";
 import { useHistory } from "react-router-dom";
 import { error, info } from "../../slices/MessagesSlice";
 import { useDispatch } from "react-redux";
-import { Referral_ADDRESS, Referral_ABI } from "src/contract";
+import { Referral_ADDRESS, Referral_ABI, ERC20_ADDRESS, IERC20_ABI } from "src/contract";
 import { ethers } from "ethers";
 import { bnToNum } from "src/helpers";
 
@@ -202,12 +202,12 @@ export function Home() {
       dispatch(error(t`Fail to fetchPrice`));
     }
   };
+  // 获取用户信息
   const getUserInfo = async () => {
     setLoading(true);
     try {
       const fetchUserInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const tx = await fetchUserInfo.fetchUserData(address);
-      console.log(tx, bnToNum(tx.Parent).toString(), "123tx");
       const code = bnToNum(tx.Parent).toString();
       const share = bnToNum(tx.Share).toString();
       setShare(share);
@@ -218,6 +218,42 @@ export function Home() {
       console.log({ err });
       setLoading(false);
       dispatch(error(t`Fail to fetchUserInfo`));
+    }
+  };
+  //提取分红
+  const getWithdraw = async () => {
+    setLoading(true);
+    try {
+      const shareWithdrawInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      const tx = await shareWithdrawInfo.shareWithdraw();
+      setLoading(false);
+      dispatch(info(t`Success to shareWithdraw`));
+      getUserInfo();
+    } catch (err) {
+      console.log({ err });
+      setLoading(false);
+      dispatch(error(t`Fail to shareWithdraw`));
+    }
+  };
+  // 买入NFT
+  const buyNft = async (type: string) => {
+    console.log(type, "type");
+    setLoading(true);
+    try {
+      const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      const txOne = await PurchaseInfo.fetchPaytype();
+      const approvalInfo = new ethers.Contract(ERC20_ADDRESS, IERC20_ABI, signer);
+      const txTwo = await approvalInfo.approve(txOne);
+      console.log(txOne, txTwo, "txone");
+      const tx = await PurchaseInfo.Purchase(type);
+      console.log(tx, "tx买入");
+      setLoading(false);
+      dispatch(info(t`Success to shareWithdraw`));
+      getUserInfo();
+    } catch (err) {
+      console.log({ err });
+      setLoading(false);
+      dispatch(error(t`Fail to shareWithdraw`));
     }
   };
   useEffect(() => {
@@ -287,7 +323,7 @@ export function Home() {
                         <p className="content_bottom">{nftListPrice[index]} QUINT</p>
                       </div>
                       <div className="buy_box">
-                        <button>Buy Now</button>
+                        <button onClick={() => buyNft(index.toString())}>Buy Now</button>
                       </div>
                     </li>
                   );
@@ -380,7 +416,9 @@ export function Home() {
                         <p className="num name">Quint</p>
                       </div> */}
                     </div>
-                    <div className="right_cont">Claim rewards</div>
+                    <div className="right_cont" onClick={getWithdraw}>
+                      Claim rewards
+                    </div>
                   </div>
                 </div>
               </div>
