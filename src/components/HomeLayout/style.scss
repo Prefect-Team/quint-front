@@ -60,7 +60,6 @@
     margin-left: 2rem;
   }
   .top_btnbox {
-    width: 199px;
     height: 44px;
     border-radius: 50px;
     button {
@@ -70,16 +69,87 @@
       width: 100%;
       cursor: pointer;
     }
-    // .referral_btn {
-    //   background: linear-gradient(225deg, #3772ff 14.89%, #3772ff 85.85%);
-    //   color: #fff;
-    //   border-radius: 50px 0 0 50px;
-    // }
     .wallet_btn {
       color: #fff;
       background: linear-gradient(225deg, #3772ff 14.89%, #3772ff 85.85%);
       border-radius: 50px;
     }
+    .nft_btn {
+      background: #58BD7D;
+      width: 165px;
+      height: 44px;
+      margin-right: 24px;
+    }
+    .nft_container {
+      position: relative;
+      .nft_content {
+        position: absolute;
+        top: 65px;
+        right: 85px;
+        z-index: 9;
+        transition: height linear 0.3s;
+        width: 806px;
+        height: 0;
+        background: rgba(53, 57, 69, 0.83);
+        backdrop-filter: blur(30);
+        box-shadow: 0px 16px 64px -48px rgba(31, 47, 70, 0.4);
+        border-radius: 12px;
+        ul {
+          display: none;
+        }
+      }
+      .open_nft {
+        height: 634px;
+        padding: 24px;
+        box-sizing: border-box;
+        &::before {
+          content: "";
+          width: 32px;
+          height: 12px;
+          background: url("../../assets/images/nft_up.png") no-repeat center;
+          background-size: cover;
+          position: absolute;
+          top: -12px;
+          right: 20px;
+        }
+        ul {
+          display: block;
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          height: 100%;
+          overflow: scroll;
+          li {
+           width: 220px;
+           height: 280px;
+          padding: 24px 12px;
+          box-sizing: border-box;
+          background: rgba(255, 255, 255, 0.07);
+          border: 0.767568px solid rgba(255, 255, 255, 0.3);
+          border-radius: 12px;
+          margin-right: 44px;
+          margin-bottom: 24px;
+            img {
+              width: 100%;
+              height: auto;
+            }
+            p {
+              margin-top: 5px;
+              font-size: 20px;
+              color: #58BD7D;
+              span {
+                color: #fff;
+              }
+            }
+          }
+          li:nth-child(3n){
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
   }
 }
 .header-logo {
@@ -203,6 +273,81 @@
     }
     .right_con {
       display: flex;
+      .nft_btn {
+        background: #58BD7D;
+        width: 88px;
+        height: 34px;
+        margin-right: 24px;
+        border-radius: 20px;
+        color: #fff;
+      }
+      .nft_container {
+        position: relative;
+        .nft_content {
+          position: absolute;
+          top: 65px;
+          right: 16px;
+          z-index: 9;
+          transition: height linear 0.3s;
+          width: 256px;
+          height: 0;
+          background: #23262F;
+          box-shadow: 0px 16px 64px -48px rgba(31, 47, 70, 0.4);
+          border-radius: 12px;
+          backdrop-filter: blur(30);
+          ul {
+            display: none;
+          }
+        }
+        .open_nft {
+          height: 634px;
+          padding: 24px 16px;
+          box-sizing: border-box;
+          
+          &::before {
+            content: "";
+            width: 32px;
+            height: 12px;
+            background: url("../../assets/images/up_trangle.png") no-repeat center;
+            background-size: cover;
+            position: absolute;
+            top: -12px;
+            right: 20px;
+          }
+          ul {
+            display: block;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            // flex-wrap: wrap;
+            overflow: scroll;
+            height: 100%;
+            li {
+             width: 220px;
+             height: 280px;
+            padding: 24px 12px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.07);
+            border: 0.767568px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            margin-bottom: 24px;
+              img {
+                width: 100%;
+                height: auto;
+              }
+              p {
+                margin-top: 5px;
+                font-size: 20px;
+                color: #58BD7D;
+                span {
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
   .bottom {

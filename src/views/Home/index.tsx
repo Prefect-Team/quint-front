@@ -365,7 +365,7 @@ export function Home() {
               <p className="first">Total rewards</p>
               <p className="second">
                 <span className="number">{share}</span>
-                <span className="cont">BUSD</span>
+                <span className="cont">Quint</span>
               </p>
               <p className="third">
                 You're earning of the trading fees your <br />
@@ -409,7 +409,7 @@ export function Home() {
                     <div className="left_cont">
                       <div className="top_con add_margin">
                         <p className="num">{share}</p>
-                        <p className="num name">busd</p>
+                        <p className="num name">quint</p>
                       </div>
                       {/* <div className="top_con">
                         <p className="num">0000</p>

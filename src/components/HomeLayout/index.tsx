@@ -10,6 +10,7 @@ import MenuClose from "../../assets/icons/nav-close.svg";
 import Social from "../../components/Sidebar/Social";
 // import logoUrl from "../../assets/images/bottom_logo.png";
 import Wallet from "../TopBar/Wallet";
+import MyNft from "../TopBar/MyNft";
 import {
   AppBar,
   Container,
@@ -60,22 +61,22 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
       name: t`Home`,
       href: "#/home",
     },
-    {
-      name: t`undetermined`,
-      href: "#/community",
-    },
-    {
-      name: t`undetermined`,
-      href: "#/zfuel",
-    },
-    {
-      name: t`undetermined`,
-      href: "#/community",
-    },
-    {
-      name: t`undetermined`,
-      href: "#/zfuel",
-    },
+    // {
+    //   name: t`undetermined`,
+    //   href: "#/community",
+    // },
+    // {
+    //   name: t`undetermined`,
+    //   href: "#/zfuel",
+    // },
+    // {
+    //   name: t`undetermined`,
+    //   href: "#/community",
+    // },
+    // {
+    //   name: t`undetermined`,
+    //   href: "#/zfuel",
+    // },
   ];
 
   return (
@@ -100,12 +101,14 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                 </Box>
               ) : (
                 <Box className="right_con">
+                  <MyNft />
                   <Wallet />
                   <MenuIcon aria-haspopup="true" onClick={handleOpenNavMenu} className="menu-icon"></MenuIcon>
                 </Box>
               )}
             </Box>
             <Box sx={{ justifyContent: "flex-end", display: { xs: "none", md: "flex" } }} className="top_btnbox">
+              <MyNft />
               <Wallet />
             </Box>
           </Toolbar>

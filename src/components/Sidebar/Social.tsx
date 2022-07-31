@@ -18,27 +18,27 @@ const Social: React.FC = () => {
   return (
     <div className="social-row">
       <div className="social-row-icon add_margin">
-        <Link href="https://metabitcointalk.com/" target="_blank" className="social-row-icon">
+        <Link href="#" target="_blank" className="social-row-icon">
           <SvgIcon component={Facebook} />
         </Link>
       </div>
       <div className="social-row-icon add_margin">
-        <Link href="https://twitter.com/MetaMBTC" target="_blank" className="social-row-icon">
+        <Link href="#" target="_blank" className="social-row-icon">
           <SvgIcon component={Twitter} />
         </Link>
       </div>
       <div className="social-row-icon add_margin">
-        <Link href="https://t.me/MBTC_Official_Channel" target="_blank" className="social-row-icon">
+        <Link href="#" target="_blank" className="social-row-icon">
           <SvgIcon component={Instagram} />
         </Link>
       </div>
       <div className="social-row-icon add_margin">
-        <Link href="https://github.com/meta-btc" target="_blank">
+        <Link href="#" target="_blank">
           <SvgIcon component={Github} />
         </Link>
       </div>
       <div className="social-row-icon add_margin">
-        <Link href="https://medium.com/@MetaBitcoin" target="_blank" className="social-row-icon">
+        <Link href="#" target="_blank" className="social-row-icon">
           <SvgIcon component={Telegram} />
         </Link>
       </div>
