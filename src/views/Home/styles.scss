@@ -285,6 +285,8 @@
                 padding-left: 52px;
                 .MuiInputBase-inputMarginDense {
                   padding-top: 8px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
                 }
               }
               &::before {

@@ -38,15 +38,19 @@ import {
 } from "@material-ui/core";
 import { CUR_NETWORK_ID } from "src/constants/network";
 import { useWeb3Context } from "src/hooks/web3Context";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { error, info } from "../../slices/MessagesSlice";
 import { useDispatch } from "react-redux";
 import { Referral_ADDRESS, Referral_ABI, ERC20_ADDRESS, ERC20_ABI } from "src/contract";
 import { ethers } from "ethers";
 import { bnToNum } from "src/helpers";
+import BN from "bignumber.js";
 
 export function Home() {
+  const maxInt = new BN("2").pow(new BN("256").minus(new BN("1")));
   const history = useHistory();
+  const location = useLocation();
+  const search = location.search.split("?")[1];
   const isSmallScreen = useMediaQuery("(max-width: 650px)");
   const isVerySmallScreen = useMediaQuery("(max-width: 379px)");
   const { connected, provider, address, networkId } = useWeb3Context();
@@ -152,6 +156,7 @@ export function Home() {
   const [share, setShare] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [nftListPrice, setNftListPrice] = useState<Array<string>>([]);
+  const [referralCode, setReferralCode] = useState<string>("");
   const dispatch = useDispatch();
   const handleChangeLink = (e: any) => {
     setLink(e.target.value);
@@ -160,13 +165,16 @@ export function Home() {
     setAddress(e.target.value);
   };
 
-  const checkMfuelApproved = async () => {
+  const checkApproved = async (txOne: string) => {
     try {
-      const mFuelContract = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
-      const allowance = await mFuelContract.allowance(address, Referral_ADDRESS);
+      const allowanceInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
+      const allowance = await allowanceInfo.allowance(address, ERC20_ADDRESS);
       if (allowance.toString() === "0" || allowance.toString().length < 1) {
-        const approveTx = await mFuelContract.approve(Referral_ADDRESS, ethers.constants.MaxUint256);
-        await approveTx.wait();
+        const approvalInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
+        const txTwo = await approvalInfo.approve(txOne, maxInt.c?.join(""));
+        const txCB = await txTwo.wait();
+        console.log(txCB, "txCD");
+        return txCB;
       } else {
         return {};
       }
@@ -195,7 +203,7 @@ export function Home() {
           dispatch(error(t`Fail to fetchPrice`));
         });
       setLoading(false);
-      dispatch(info(t`Success to fetchPrice`));
+      // dispatch(info(t`Success to fetchPrice`));
     } catch (err) {
       console.log({ err });
       setLoading(false);
@@ -206,14 +214,47 @@ export function Home() {
   const getUserInfo = async () => {
     setLoading(true);
     try {
+      // 用户信息
       const fetchUserInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const tx = await fetchUserInfo.fetchUserData(address);
+      console.log(tx, "userinfo");
       const code = bnToNum(tx.Parent).toString();
       const share = bnToNum(tx.Share).toString();
+
       setShare(share);
       setLinkParam(code);
       setLoading(false);
-      dispatch(info(t`Success to unstake`));
+      // dispatch(info(t`Success to unstake`));
+    } catch (err) {
+      console.log({ err });
+      setLoading(false);
+      dispatch(error(t`Fail to fetchUserInfo`));
+    }
+  };
+
+  // 获取推荐人信息
+  const getRerferralInfo = async () => {
+    const fetchUserInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+    const tx = await fetchUserInfo.fetchUserData(search);
+    const level = bnToNum(tx.Level).toString();
+    if (!level) {
+      setReferralCode("master");
+    } else {
+      setReferralCode(search);
+    }
+  };
+  // 获取推荐码
+  const getAddress = async () => {
+    setLoading(true);
+    try {
+      const fetchAdress = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      const tx = await fetchAdress.fetchMasterAddress();
+      console.log(tx, "address");
+      setReferralCode(tx);
+      // const code = bnToNum(tx.Parent).toString();
+      // const share = bnToNum(tx.Share).toString();
+      setLoading(false);
+      // dispatch(info(t`Success to unstake`));
     } catch (err) {
       console.log({ err });
       setLoading(false);
@@ -242,13 +283,21 @@ export function Home() {
     try {
       const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const txOne = await PurchaseInfo.fetchPaytype();
+
       const approvalInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
-      const txTwo = await approvalInfo.approve(txOne);
-      console.log(txOne, txTwo, "txone");
-      const tx = await PurchaseInfo.Purchase(type);
-      console.log(tx, "tx买入");
+      console.log(txOne, maxInt.c?.join(""));
+      const txTwo = await approvalInfo.approve(Referral_ADDRESS, maxInt.c?.join(""));
+      const txCB = await txTwo.wait();
+      // const txCB = await checkApproved(txOne);
+      console.log(txCB, "txcB");
+      if (txCB.status) {
+        // const url = referralCode;
+        console.log(referralCode, type);
+        const tx = await PurchaseInfo.Purchase(referralCode, type);
+        console.log(tx, "tx买入");
+      }
       setLoading(false);
-      dispatch(info(t`Success to shareWithdraw`));
+      // dispatch(info(t`Success to shareWithdraw`));
       getUserInfo();
     } catch (err) {
       console.log({ err });
@@ -257,10 +306,15 @@ export function Home() {
     }
   };
   useEffect(() => {
-    if (provider && networkId === CUR_NETWORK_ID) {
+    if (provider && networkId === CUR_NETWORK_ID && address) {
       // 执行合约操作
       getPrice(["1", "2", "3"]);
       getUserInfo();
+      if (!search) {
+        getAddress();
+      } else {
+        getRerferralInfo();
+      }
     }
   }, [connected]);
   return (
@@ -323,7 +377,7 @@ export function Home() {
                         <p className="content_bottom">{nftListPrice[index]} QUINT</p>
                       </div>
                       <div className="buy_box">
-                        <button onClick={() => buyNft(index.toString())}>Buy Now</button>
+                        <button onClick={() => buyNft((index + 1).toString())}>Buy Now</button>
                       </div>
                     </li>
                   );
@@ -382,7 +436,7 @@ export function Home() {
                       <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
                         <Input
                           id="link"
-                          value={"quint.io?referral=" + linkParam}
+                          value={"quint.io?referral=" + referralCode}
                           onChange={e => handleChangeLink(e)}
                           // disabled
                           startAdornment={
@@ -398,7 +452,7 @@ export function Home() {
                     <p className="title_second">Referral code</p>
                     <div className="input_box">
                       <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
-                        <Input id="address" value={linkParam} onChange={e => handleChangeAdress(e)} />
+                        <Input id="address" value={referralCode} onChange={e => handleChangeAdress(e)} />
                       </FormControl>
                     </div>
                   </div>
