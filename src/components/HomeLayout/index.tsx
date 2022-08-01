@@ -10,6 +10,7 @@ import MenuClose from "../../assets/icons/nav-close.svg";
 import Social from "../../components/Sidebar/Social";
 // import logoUrl from "../../assets/images/bottom_logo.png";
 import Wallet from "../TopBar/Wallet";
+import Messages from "../Messages/Messages";
 import MyNft from "../TopBar/MyNft";
 import {
   AppBar,
@@ -133,6 +134,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
         </Container>
       </AppBar>
       {children}
+      <Messages />
       <div className="bottom">
         <Container
           style={{
