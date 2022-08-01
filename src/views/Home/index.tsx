@@ -41,7 +41,7 @@ import { useWeb3Context } from "src/hooks/web3Context";
 import { useHistory } from "react-router-dom";
 import { error, info } from "../../slices/MessagesSlice";
 import { useDispatch } from "react-redux";
-import { Referral_ADDRESS, Referral_ABI, ERC20_ADDRESS, IERC20_ABI } from "src/contract";
+import { Referral_ADDRESS, Referral_ABI, ERC20_ADDRESS, ERC20_ABI } from "src/contract";
 import { ethers } from "ethers";
 import { bnToNum } from "src/helpers";
 
@@ -242,7 +242,7 @@ export function Home() {
     try {
       const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const txOne = await PurchaseInfo.fetchPaytype();
-      const approvalInfo = new ethers.Contract(ERC20_ADDRESS, IERC20_ABI, signer);
+      const approvalInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
       const txTwo = await approvalInfo.approve(txOne);
       console.log(txOne, txTwo, "txone");
       const tx = await PurchaseInfo.Purchase(type);

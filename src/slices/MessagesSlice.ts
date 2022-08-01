@@ -38,6 +38,7 @@ const messagesSlice = createSlice({
   reducers: {
     // Creates an error message
     error(state, action: PayloadAction<string>) {
+      console.log(state, action, "state");
       createMessage(state, "error", "Error", action.payload);
     },
     // Creates an information message

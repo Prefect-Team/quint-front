@@ -19,10 +19,6 @@ import { trackGAEvent } from "./helpers/analytics";
 import { getAllInverseBonds } from "./slices/InverseBondSlice";
 import { Home } from "./views/Home";
 import HomeLayout from "./components/HomeLayout";
-import { Economy } from "./views/Home/economy";
-import { Foundation } from "./views/Home/foundation";
-import { Community } from "./views/Home/community";
-import { ZFuel } from "./views/Home/zfuel";
 import { Wrap } from "./views";
 
 const DEBUG = false;
@@ -104,7 +100,7 @@ function App() {
       setWalletChecked(true);
     }
     if (shouldTriggerSafetyCheck()) {
-      dispatch(info("Safety Check: Always verify you're on btcz!"));
+      dispatch(info("Safety Check: Always verify you're on quint!"));
     }
   }, []);
 
@@ -148,10 +144,6 @@ function App() {
               <Redirect to="/home" />
             </Route>
             <Route exact strict path="/home" component={Home}></Route>
-            <Route exact strict path="/economy" component={Economy}></Route>
-            <Route exact strict path="/foundation" component={Foundation}></Route>
-            <Route exact strict path="/community" component={Community}></Route>
-            <Route exact strict path="/zfuel" component={ZFuel}></Route>
             <Route path="/error">
               <Wrap />
             </Route>

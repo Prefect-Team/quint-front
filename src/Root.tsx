@@ -16,7 +16,6 @@ const Root: FC = () => {
   useEffect(() => {
     initLocale();
   }, []);
-
   return (
     <Web3ContextProvider>
       <QueryClientProvider client={queryClient}>
