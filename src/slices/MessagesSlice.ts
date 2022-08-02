@@ -14,7 +14,6 @@ export interface Message {
 
 interface MessagesState {
   items: Array<Message>;
-  isUpdate: boolean;
 }
 
 // Adds a message to the store
@@ -32,7 +31,6 @@ const createMessage = function (state: MessagesState, severity: string, title: s
 };
 const initialState: MessagesState = {
   items: [],
-  isUpdate: false,
 };
 const messagesSlice = createSlice({
   name: "messages",

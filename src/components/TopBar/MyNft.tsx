@@ -5,8 +5,9 @@ import { useState, useEffect } from "react";
 import { Nft_ADDRESS, Nft_ABI, Referral_ADDRESS, Referral_ABI } from "src/contract";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { CUR_NETWORK_ID } from "src/constants/network";
-import { error, info } from "../../slices/MessagesSlice";
-import { useDispatch } from "react-redux";
+import { error } from "../../slices/MessagesSlice";
+// import {updateInfo} from "../../slices/UserInfo"
+import { useDispatch, useSelector } from "react-redux";
 import { bnToNum } from "src/helpers";
 import { ethers } from "ethers";
 interface listObj {
@@ -16,16 +17,40 @@ interface listObj {
 function MyNft() {
   const [nftBlance, setNftBalance] = useState<number>(0);
   const [isShowNft, setShowNft] = useState(false);
+  const state = useSelector(state => state);
+  // if (state.userinfo) {
+  //   console.log(state.userinfo);
+  // }
+  // console.log(state, "====");
   const [loading, setLoading] = useState(false);
   const { connected, provider, address, connect, networkId } = useWeb3Context();
   const signer = provider.getSigner();
   const [list, setList] = useState<Array<listObj>>([]);
   const dispatch = useDispatch();
-  const showNft = () => {
+  const showNft = async () => {
     if (!connected) {
       connect();
     } else {
       setShowNft(!isShowNft);
+      // try {
+      //   const getBalanceInfo = new ethers.Contract(Nft_ADDRESS, Nft_ABI, signer);
+      //   const nftLevelInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      //   const list: any = [];
+      //   for (let i = 0; i < nftBlance; i++) {
+      //     const txTwo = await getBalanceInfo.tokenOfOwnerByIndex(address, i);
+      //     const id: number = bnToNum(txTwo);
+      //     const levelTx = await nftLevelInfo.fetchNFTLevel(id);
+      //     const levelTxNum = bnToNum(levelTx);
+      //     list.push({ id: id, level: levelTxNum });
+      //   }
+      //   console.log(list, "liost");
+      //   setList(list);
+      //   setLoading(false);
+      // } catch (err) {
+      //   console.log({ err });
+      //   setLoading(false);
+      //   dispatch(error(t`Fail to getBalanceInfo`));
+      // }
     }
   };
   const fetchBalanceOf = async () => {
@@ -35,6 +60,7 @@ function MyNft() {
       const nftLevelInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const tx = await getBalanceInfo.balanceOf(address);
       const banlance = bnToNum(tx);
+      setNftBalance(banlance);
       console.log(banlance, "balance");
       const list: any = [];
       for (let i = 0; i < banlance; i++) {
@@ -46,9 +72,9 @@ function MyNft() {
       }
       console.log(list, "liost");
       setList(list);
-      setNftBalance(banlance);
+
       setLoading(false);
-      dispatch(info(t`Success to getBalanceInfo`));
+      // dispatch(info(t`Success to getBalanceInfo`));
     } catch (err) {
       console.log({ err });
       setLoading(false);

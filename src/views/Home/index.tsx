@@ -13,9 +13,9 @@ import Partner1inch from "../../assets/images/linch_logo.png";
 import PartnerCertik from "../../assets/images/certik.png";
 import PartnerShark from "../../assets/images/sharkteam.png";
 
-import nftImg1 from "../../assets/images/Mask_Group.png";
-import nftImg2 from "../../assets/images/Mask_Group2.png";
-import nftImg3 from "../../assets/images/Mask_Group3.png";
+import nftImg1 from "../../assets/images/Mask_Group.jpg";
+import nftImg2 from "../../assets/images/Mask_Group2.jpg";
+import nftImg3 from "../../assets/images/Mask_Group3.jpg";
 import humanImg from "../../assets/images/human.png";
 import bigImg from "../../assets/images/big_bgblock.png";
 import phoneBigImg from "../../assets/images/phone_centerbg.png";
@@ -45,7 +45,7 @@ import { Referral_ADDRESS, Referral_ABI, ERC20_ABI } from "src/contract";
 import { ethers } from "ethers";
 import { bnToNum, formatMBTC } from "src/helpers";
 import BN from "bignumber.js";
-
+// import { updateStatus } from "../../slices/UserInfo";
 export function Home() {
   const maxInt = new BN("2").pow(new BN("256").minus(new BN("1")));
   const history = useHistory();
@@ -266,6 +266,7 @@ export function Home() {
   // 买入NFT
   const buyNft = async (type: string) => {
     console.log(type, "type");
+
     setLoading(true);
     try {
       const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
@@ -289,9 +290,10 @@ export function Home() {
       } else {
         const tx = await PurchaseInfo.Purchase(referralCode, type);
       }
-
+      // dispatch(updateStatus());
       setLoading(false);
       getUserInfo();
+      window.location.reload();
     } catch (err) {
       console.log({ err });
       setLoading(false);

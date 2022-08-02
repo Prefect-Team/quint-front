@@ -3,28 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 // import { t } from "@lingui/macro";
 // import { ethers } from "ethers";
 
-export interface Userinfo {
-  nft: number;
-  share: string;
-  referralCode: string;
-}
-
-interface MessagesState {
-  info: Userinfo;
-}
-
 const initialState = {
-  nft: 0,
-  share: "0",
-  referralCode: "master",
+  isUpdate: false,
 };
 
-const getBaseInfo = createSlice({
+const updateInfo = createSlice({
   name: "messages",
   initialState,
-  reducers: {},
+  reducers: {
+    updateStatus(state) {
+      state.isUpdate = !state.isUpdate;
+    },
+  },
 });
 
-export const {} = getBaseInfo.actions;
+export const { updateStatus } = updateInfo.actions;
 
-export default getBaseInfo.reducer;
+export default updateInfo.reducer;
