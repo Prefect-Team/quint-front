@@ -7,7 +7,7 @@ import Logo from "../../assets/images/Vector.png";
 import LogoCoin from "../../assets/images/logo-3.png";
 // import companyLogo from "../../assets/images/Frame.png";
 import MenuClose from "../../assets/icons/nav-close.svg";
-import Social from "../../components/Sidebar/Social";
+// import Social from "../../components/Sidebar/Social";
 // import logoUrl from "../../assets/images/bottom_logo.png";
 import Wallet from "../TopBar/Wallet";
 import Messages from "../Messages/Messages";
@@ -24,12 +24,13 @@ import {
   // MenuItem,
   Collapse,
   // Button,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
+  // Accordion,
+  // AccordionSummary,
+  // AccordionDetails,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import { Menu as MenuIcon, ExpandMore as ExpandMoreIcon } from "@material-ui/icons";
+// ExpandMore as ExpandMoreIcon
+import { Menu as MenuIcon } from "@material-ui/icons";
 
 import Headroom from "headroom.js";
 import { useWeb3Context } from "src/hooks/web3Context";
@@ -127,7 +128,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
             width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
-          <div className="top_cont">
+          {/* <div className="top_cont">
             <div className="left_first">
               <img src={isFoundation ? LogoCoin : Logo} alt="Quint" className="header-logo" />
             </div>
@@ -207,7 +208,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
             <div className="right_con">
               <Social />
             </div>
-          </div>
+          </div> */}
         </Container>
       </div>
     </div>

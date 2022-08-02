@@ -41,7 +41,7 @@ import { useWeb3Context } from "src/hooks/web3Context";
 import { useHistory, useLocation } from "react-router-dom";
 import { error, info } from "../../slices/MessagesSlice";
 import { useDispatch } from "react-redux";
-import { Referral_ADDRESS, Referral_ABI, ERC20_ADDRESS, ERC20_ABI } from "src/contract";
+import { Referral_ADDRESS, Referral_ABI, ERC20_ABI } from "src/contract";
 import { ethers } from "ethers";
 import { bnToNum, formatMBTC } from "src/helpers";
 import BN from "bignumber.js";
@@ -158,31 +158,13 @@ export function Home() {
   const [shareNume, setShareNume] = useState(0);
   const [nftListPrice, setNftListPrice] = useState<Array<string>>([]);
   const [referralCode, setReferralCode] = useState<string>("");
+  const [ERC20Address, setERC20Address] = useState("");
   const dispatch = useDispatch();
   const handleChangeLink = (e: any) => {
     setLink(e.target.value);
   };
   const handleChangeAdress = (e: any) => {
     setAddress(e.target.value);
-  };
-
-  const checkApproved = async () => {
-    try {
-      const allowanceInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
-      const allowance = await allowanceInfo.allowance(address, ERC20_ADDRESS);
-      console.log(allowance, "allowanceallowance");
-      if (allowance.toString() === "0" || allowance.toString().length < 1) {
-        const approvalInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
-        // const txTwo = await approvalInfo.approve(txOne, maxInt.c?.join(""));
-        // const txCB = await txTwo.wait();
-        // console.log(txCB, "txCD");
-        // return txCB;
-      } else {
-        return {};
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   // 拿到nft价格
@@ -287,22 +269,28 @@ export function Home() {
     setLoading(true);
     try {
       const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
-      const txOne = await PurchaseInfo.fetchPaytype();
-
-      const approvalInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
-      console.log(txOne, maxInt.c?.join(""));
-      const txTwo = await approvalInfo.approve(Referral_ADDRESS, maxInt.c?.join(""));
-      const txCB = await txTwo.wait();
-      // const txCB = await checkApproved(txOne);
-      console.log(txCB, "txcB");
-      if (txCB.status) {
-        // const url = referralCode;
-        console.log(referralCode, type);
-        const tx = await PurchaseInfo.Purchase(referralCode, type);
-        console.log(tx, "tx买入");
+      let ercaddress = "";
+      if (!ERC20Address) {
+        ercaddress = await PurchaseInfo.fetchPaytype();
+        console.log(ercaddress, "txOne");
+        setERC20Address(ercaddress);
       }
+      const approvalInfo = new ethers.Contract(ERC20Address || ercaddress, ERC20_ABI, signer);
+
+      const allowance = await approvalInfo.allowance(address, Referral_ADDRESS);
+      if (bnToNum(allowance) === 0) {
+        const txTwo = await approvalInfo.approve(Referral_ADDRESS, maxInt.c?.join(""));
+        const txCB = await txTwo.wait();
+        if (txCB.status) {
+          // const url = referralCode;
+          console.log(referralCode, type);
+          const tx = await PurchaseInfo.Purchase(referralCode, type);
+        }
+      } else {
+        const tx = await PurchaseInfo.Purchase(referralCode, type);
+      }
+
       setLoading(false);
-      // dispatch(info(t`Success to shareWithdraw`));
       getUserInfo();
     } catch (err) {
       console.log({ err });
@@ -310,11 +298,11 @@ export function Home() {
       dispatch(error(t`Fail to shareWithdraw`));
     }
   };
+
   useEffect(() => {
     if (provider && networkId === CUR_NETWORK_ID && address) {
       // 执行合约操作
       getPrice(["1", "2", "3"]);
-      checkApproved();
       getUserInfo();
       if (!search) {
         getAddress();
@@ -532,7 +520,7 @@ export function Home() {
           </div>
         </Container>
       </div>
-      <div className="block4">
+      {/* <div className="block4">
         <Container
           style={{
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
@@ -590,7 +578,7 @@ export function Home() {
             </div>
           )}
         </Container>
-      </div>
+      </div> */}
       <Backdrop open={loading} className="loading_box">
         <CircularProgress color="inherit" />
         <Typography variant="h5" style={{ marginLeft: "1rem" }}>
