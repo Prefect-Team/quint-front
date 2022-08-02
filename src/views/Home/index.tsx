@@ -45,7 +45,7 @@ import { Referral_ADDRESS, Referral_ABI, ERC20_ABI } from "src/contract";
 import { ethers } from "ethers";
 import { bnToNum, formatMBTC } from "src/helpers";
 import BN from "bignumber.js";
-// import { updateStatus } from "../../slices/UserInfo";
+import { updateStatus } from "../../slices/UserInfo";
 export function Home() {
   const maxInt = new BN("2").pow(new BN("256").minus(new BN("1")));
   const history = useHistory();
@@ -290,7 +290,7 @@ export function Home() {
       } else {
         const tx = await PurchaseInfo.Purchase(referralCode, type);
       }
-      // dispatch(updateStatus());
+      dispatch(updateStatus());
       setLoading(false);
       getUserInfo();
       window.location.reload();

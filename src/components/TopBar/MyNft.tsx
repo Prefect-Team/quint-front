@@ -17,11 +17,11 @@ interface listObj {
 function MyNft() {
   const [nftBlance, setNftBalance] = useState<number>(0);
   const [isShowNft, setShowNft] = useState(false);
-  const state = useSelector(state => state);
+  const state: any = useSelector(state => state);
   // if (state.userinfo) {
   //   console.log(state.userinfo);
   // }
-  // console.log(state, "====");
+  console.log(state.userinfo.isUpdate, "====");
   const [loading, setLoading] = useState(false);
   const { connected, provider, address, connect, networkId } = useWeb3Context();
   const signer = provider.getSigner();
@@ -86,7 +86,7 @@ function MyNft() {
       // 执行合约操作
       fetchBalanceOf();
     }
-  }, [connected]);
+  }, [connected, state]);
   return (
     <div className="nft_container">
       <Button className="wallet_btn nft_btn" onClick={showNft}>
