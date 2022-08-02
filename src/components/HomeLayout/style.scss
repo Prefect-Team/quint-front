@@ -1,5 +1,16 @@
 .home {
   background: #040407;
+  .loading_box {
+    z-index: 1200;
+    .MuiCircularProgress-indeterminate {
+      .MuiCircularProgress-svg {
+        color: #fff;
+      }
+    }
+    .MuiTypography-h5 {
+      color: #fff;
+    }
+  }
 }
 .fixed-header {
   background-color: rgba(255, 255, 255, 0) !important;
@@ -48,9 +59,8 @@
     color: #777e91;
   }
   .wallet_icon {
-    
     width: 2rem;
-   height: 2rem;
+    height: 2rem;
     margin-left: 2rem;
     color: #777e91;
   }
@@ -75,7 +85,7 @@
       border-radius: 50px;
     }
     .nft_btn {
-      background: #58BD7D;
+      background: #58bd7d;
       width: 165px;
       height: 44px;
       margin-right: 24px;
@@ -121,16 +131,16 @@
           height: 100%;
           overflow: scroll;
           li {
-           width: 220px;
-           height: 280px;
-          padding: 24px 12px;
-          box-sizing: border-box;
-          background: rgba(255, 255, 255, 0.07);
-          border: 0.767568px solid rgba(255, 255, 255, 0.3);
-          border-radius: 12px;
-          margin-right: 44px;
-          margin-bottom: 24px;
-          .img_box {
+            width: 220px;
+            height: 280px;
+            padding: 24px 12px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.07);
+            border: 0.767568px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            margin-right: 44px;
+            margin-bottom: 24px;
+            .img_box {
               width: 100%;
               height: 160px;
               border-radius: 5px;
@@ -150,19 +160,18 @@
             p {
               margin-top: 5px;
               font-size: 20px;
-              color: #58BD7D;
+              color: #58bd7d;
               span {
                 color: #fff;
               }
             }
           }
-          li:nth-child(3n){
+          li:nth-child(3n) {
             margin-right: 0;
           }
         }
       }
     }
-
   }
 }
 .header-logo {
@@ -287,7 +296,7 @@
     .right_con {
       display: flex;
       .nft_btn {
-        background: #58BD7D;
+        background: #58bd7d;
         width: 88px;
         height: 34px;
         margin-right: 24px;
@@ -304,7 +313,7 @@
           transition: height linear 0.3s;
           width: 256px;
           height: 0;
-          background: #23262F;
+          background: #23262f;
           box-shadow: 0px 16px 64px -48px rgba(31, 47, 70, 0.4);
           border-radius: 12px;
           backdrop-filter: blur(30);
@@ -316,7 +325,7 @@
           height: 634px;
           padding: 24px 16px;
           box-sizing: border-box;
-          
+
           &::before {
             content: "";
             width: 32px;
@@ -337,14 +346,14 @@
             overflow: scroll;
             height: 100%;
             li {
-             width: 220px;
-             height: 280px;
-            padding: 24px 12px;
-            box-sizing: border-box;
-            background: rgba(255, 255, 255, 0.07);
-            border: 0.767568px solid rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            margin-bottom: 24px;
+              width: 220px;
+              height: 280px;
+              padding: 24px 12px;
+              box-sizing: border-box;
+              background: rgba(255, 255, 255, 0.07);
+              border: 0.767568px solid rgba(255, 255, 255, 0.3);
+              border-radius: 12px;
+              margin-bottom: 24px;
               img {
                 width: 100%;
                 height: auto;
@@ -352,7 +361,7 @@
               p {
                 margin-top: 5px;
                 font-size: 20px;
-                color: #58BD7D;
+                color: #58bd7d;
                 span {
                   color: #fff;
                 }

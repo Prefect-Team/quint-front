@@ -62,22 +62,6 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
       name: t`Home`,
       href: "#/home",
     },
-    // {
-    //   name: t`undetermined`,
-    //   href: "#/community",
-    // },
-    // {
-    //   name: t`undetermined`,
-    //   href: "#/zfuel",
-    // },
-    // {
-    //   name: t`undetermined`,
-    //   href: "#/community",
-    // },
-    // {
-    //   name: t`undetermined`,
-    //   href: "#/zfuel",
-    // },
   ];
 
   return (

@@ -43,7 +43,7 @@ import { error, info } from "../../slices/MessagesSlice";
 import { useDispatch } from "react-redux";
 import { Referral_ADDRESS, Referral_ABI, ERC20_ADDRESS, ERC20_ABI } from "src/contract";
 import { ethers } from "ethers";
-import { bnToNum } from "src/helpers";
+import { bnToNum, formatMBTC } from "src/helpers";
 import BN from "bignumber.js";
 
 export function Home() {
@@ -155,6 +155,7 @@ export function Home() {
   const [linkParam, setLinkParam] = useState<string>("");
   const [share, setShare] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [shareNume, setShareNume] = useState(0);
   const [nftListPrice, setNftListPrice] = useState<Array<string>>([]);
   const [referralCode, setReferralCode] = useState<string>("");
   const dispatch = useDispatch();
@@ -165,16 +166,17 @@ export function Home() {
     setAddress(e.target.value);
   };
 
-  const checkApproved = async (txOne: string) => {
+  const checkApproved = async () => {
     try {
       const allowanceInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
       const allowance = await allowanceInfo.allowance(address, ERC20_ADDRESS);
+      console.log(allowance, "allowanceallowance");
       if (allowance.toString() === "0" || allowance.toString().length < 1) {
         const approvalInfo = new ethers.Contract(ERC20_ADDRESS, ERC20_ABI, signer);
-        const txTwo = await approvalInfo.approve(txOne, maxInt.c?.join(""));
-        const txCB = await txTwo.wait();
-        console.log(txCB, "txCD");
-        return txCB;
+        // const txTwo = await approvalInfo.approve(txOne, maxInt.c?.join(""));
+        // const txCB = await txTwo.wait();
+        // console.log(txCB, "txCD");
+        // return txCB;
       } else {
         return {};
       }
@@ -195,7 +197,8 @@ export function Home() {
         fetchPriceContract.fetchPrice(type[2]),
       ])
         .then(res => {
-          const priceList = res.map(item => bnToNum(item).toString());
+          console.log(res, "==-");
+          const priceList = res.map(item => formatMBTC(bnToNum(item)));
           setNftListPrice(priceList);
         })
         .catch(err => {
@@ -213,14 +216,16 @@ export function Home() {
   // 获取用户信息
   const getUserInfo = async () => {
     setLoading(true);
+    console.log(loading, "loading");
     try {
       // 用户信息
       const fetchUserInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const tx = await fetchUserInfo.fetchUserData(address);
-      console.log(tx, "userinfo");
+      console.log(tx, "userinfo", loading);
       const code = bnToNum(tx.Parent).toString();
-      const share = bnToNum(tx.Share).toString();
-
+      const share = formatMBTC(bnToNum(tx.Share));
+      const shareNume = bnToNum(tx.Sale);
+      setShareNume(shareNume);
       setShare(share);
       setLinkParam(code);
       setLoading(false);
@@ -309,6 +314,7 @@ export function Home() {
     if (provider && networkId === CUR_NETWORK_ID && address) {
       // 执行合约操作
       getPrice(["1", "2", "3"]);
+      checkApproved();
       getUserInfo();
       if (!search) {
         getAddress();
@@ -416,10 +422,10 @@ export function Home() {
           </div>
           <div className="bottom_container">
             <div className="top_word">
-              <p className="first">Total rewards</p>
+              <p className="first">Total Referral</p>
               <p className="second">
-                <span className="number">{share}</span>
-                <span className="cont">Quint</span>
+                <span className="number">{shareNume}</span>
+                <span className="cont"></span>
               </p>
               <p className="third">
                 You're earning of the trading fees your <br />
@@ -585,7 +591,7 @@ export function Home() {
           )}
         </Container>
       </div>
-      <Backdrop open={loading}>
+      <Backdrop open={loading} className="loading_box">
         <CircularProgress color="inherit" />
         <Typography variant="h5" style={{ marginLeft: "1rem" }}>
           {t`Communicating with blockchain nodes...`}
