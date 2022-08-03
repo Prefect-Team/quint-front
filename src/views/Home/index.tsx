@@ -337,7 +337,7 @@ export function Home() {
               <button onClick={toSwap} className="open_SWAP">
                 Buy on Pancakeswap
               </button>
-              <p className="bottom_arrow"></p>
+              {/* <p className="bottom_arrow"></p> */}
             </div>
           </Box>
         </Container>
@@ -378,7 +378,7 @@ export function Home() {
                       </div>
                       <div className="bottom_li">
                         <p className="title_bottom">Current Price</p>
-                        <p className="content_bottom">{nftListPrice[index]} QuintNFT</p>
+                        <p className="content_bottom">{nftListPrice[index]} Quint</p>
                       </div>
                       <div className="buy_box">
                         <button onClick={() => buyNft((index + 1).toString())}>Buy Now</button>
