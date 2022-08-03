@@ -1,9 +1,9 @@
-import { Link, SvgIcon, useMediaQuery } from "@material-ui/core";
-import { ReactComponent as Telegram } from "../../assets/images/telegram-line.svg";
-import { ReactComponent as Github } from "../../assets/images/github.svg";
-import { ReactComponent as Facebook } from "../../assets/images/Facebook.svg";
-import { ReactComponent as Twitter } from "../../assets/images/Twitter.svg";
-import { ReactComponent as Instagram } from "../../assets/images/Instagram.svg";
+import { Link, useMediaQuery } from "@material-ui/core";
+// import { ReactComponent as Telegram } from "../../assets/images/telegram-line.svg";
+// import { ReactComponent as Github } from "../../assets/images/github.svg";
+// import { ReactComponent as Facebook } from "../../assets/images/Facebook.svg";
+// import { ReactComponent as Twitter } from "../../assets/images/Twitter.svg";
+// import { ReactComponent as Instagram } from "../../assets/images/Instagram.svg";
 
 import React from "react";
 import { useLocation } from "react-router-dom";
@@ -18,28 +18,33 @@ const Social: React.FC = () => {
   return (
     <div className="social-row">
       <div className="social-row-icon add_margin">
-        <Link href="#" target="_blank" className="social-row-icon">
-          <SvgIcon component={Facebook} />
+        <Link href="#home" className="social-row-icon">
+          {/* <SvgIcon component={Facebook} /> */}
+          <span>Home</span>
         </Link>
       </div>
       <div className="social-row-icon add_margin">
-        <Link href="#" target="_blank" className="social-row-icon">
-          <SvgIcon component={Twitter} />
+        <Link href="#marketPlace" className="social-row-icon">
+          {/* <SvgIcon component={Twitter} /> */}
+          <span>NFT MarketPlace</span>
         </Link>
       </div>
       <div className="social-row-icon add_margin">
-        <Link href="#" target="_blank" className="social-row-icon">
-          <SvgIcon component={Instagram} />
+        <Link href="#claim" className="social-row-icon">
+          {/* <SvgIcon component={Instagram} /> */}
+          <span>Claim</span>
         </Link>
       </div>
       <div className="social-row-icon add_margin">
-        <Link href="#" target="_blank">
-          <SvgIcon component={Github} />
+        <Link href="#about">
+          {/* <SvgIcon component={Github} /> */}
+          <span>About</span>
         </Link>
       </div>
       <div className="social-row-icon add_margin">
-        <Link href="#" target="_blank" className="social-row-icon">
-          <SvgIcon component={Telegram} />
+        <Link href="#work" className="social-row-icon">
+          {/* <SvgIcon component={Telegram} /> */}
+          <span>How it work</span>
         </Link>
       </div>
     </div>

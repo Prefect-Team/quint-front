@@ -7,7 +7,7 @@ import Logo from "../../assets/images/Vector.png";
 import LogoCoin from "../../assets/images/logo-3.png";
 // import companyLogo from "../../assets/images/Frame.png";
 import MenuClose from "../../assets/icons/nav-close.svg";
-// import Social from "../../components/Sidebar/Social";
+import Social from "../../components/Sidebar/Social";
 // import logoUrl from "../../assets/images/bottom_logo.png";
 import Wallet from "../TopBar/Wallet";
 import Messages from "../Messages/Messages";
@@ -61,7 +61,23 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
   const links = [
     {
       name: t`Home`,
-      href: "#/home",
+      href: "#home",
+    },
+    {
+      name: t`NFT MarketPlace`,
+      href: "#marketPlace",
+    },
+    {
+      name: t`Claim`,
+      href: "#claim",
+    },
+    {
+      name: t`About`,
+      href: "#about",
+    },
+    {
+      name: t`How it work`,
+      href: "#work",
     },
   ];
 
@@ -76,7 +92,9 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {links.map((link, index) => (
                 <Link href={link.href} underline="none" key={index} onClick={handleCloseNavMenu}>
-                  <Typography variant="h6">{link.name}</Typography>
+                  <Typography variant="h6" style={{ fontSize: "17px" }}>
+                    {link.name}
+                  </Typography>
                 </Link>
               ))}
             </Box>
@@ -128,11 +146,11 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
             width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
-          {/* <div className="top_cont">
+          <div className="top_cont">
             <div className="left_first">
               <img src={isFoundation ? LogoCoin : Logo} alt="Quint" className="header-logo" />
             </div>
-            {isSmallScreen || isVerySmallScreen ? (
+            {/* {isSmallScreen || isVerySmallScreen ? (
               <Accordion className="foot_according">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                   <Typography>footer nav</Typography>
@@ -172,44 +190,37 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
               </Accordion>
             ) : (
               <Box style={{ width: "100%", display: "flex" }}>
-                <div className="left_second">
-                  <Link underline="none">About</Link>
-                  <Link underline="none">Projects</Link>
-                  <Link underline="none">What We Do</Link>
-                  <Link underline="none">Press</Link>
-                  <Link underline="none">Press</Link>
-                </div>
-                <div className="left_second">
-                  <Link underline="none" className="concact">
-                    contact
-                  </Link>
-                  <Link underline="none">Projects</Link>
-                  <Link underline="none">What We Do</Link>
-                  <Link underline="none">Press</Link>
-                  <Link underline="none">Press</Link>
-                </div>
-                <div className="left_second last_left">
-                  <Link underline="none" className="concact">
-                    newsletter
-                  </Link>
-                  <Link underline="none" className="newsletter">
-                    Subscribe our newsletter
-                  </Link>
-                  <div className="input_box">
-                    <input type="text" placeholder="Enter your email" />
-                    <p className="go_bg"></p>
-                  </div>
-                </div>
+                <p className="content">
+                  <span>QUINT</span> is the revolutionary token bringing real-world rewards to investors by linking the
+                  metaverse with reality. Revolutionary super-staking pools deliver returns while unlocking exclusive
+                  lifestyle perks. With a Boutique NFT Market Place, Quint Shop and more!
+                </p>
               </Box>
-            )}
+            )} */}
+            <Box style={{ width: "100%", display: "flex" }}>
+              <p className="content">
+                <span>QUINT</span> is the revolutionary token bringing real-world rewards to investors by linking the
+                metaverse with reality. Revolutionary super-staking pools deliver returns while unlocking exclusive
+                lifestyle perks. With a Boutique NFT Market Place, Quint Shop and more!
+              </p>
+            </Box>
           </div>
-          <div className="bottom_cont">
-            <div className="left_text">Copyright © </div>
+        </Container>
+        <div className="bottom_cont">
+          <Container
+            style={{
+              paddingTop: isSmallScreen || isVerySmallScreen ? "2rem" : "0",
+              paddingBottom: isSmallScreen || isVerySmallScreen ? "2rem" : "0rem",
+              width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
+              display: isSmallScreen || isVerySmallScreen ? "block" : "flex",
+            }}
+          >
+            <div className="left_text"></div>
             <div className="right_con">
               <Social />
             </div>
-          </div> */}
-        </Container>
+          </Container>
+        </div>
       </div>
     </div>
   );

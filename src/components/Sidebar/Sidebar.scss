@@ -6,7 +6,7 @@
 }
 
 .MuiDrawer-paper .MuiPaper-root {
-  background-color: rgba(255, 255, 255, .05);
+  background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(60px);
   border-radius: 0 !important;
 }
@@ -17,7 +17,12 @@
 .MuiDrawer-paper {
   .dapp-sidebar {
     height: 100%;
-    background: linear-gradient(115.84deg, rgba(37, 237, 188, 0) -5.09%, rgba(255, 255, 255, 0.26) -5.08%, rgba(255, 255, 255, 0.15) 101.74%);
+    background: linear-gradient(
+      115.84deg,
+      rgba(37, 237, 188, 0) -5.09%,
+      rgba(255, 255, 255, 0.26) -5.08%,
+      rgba(255, 255, 255, 0.15) 101.74%
+    );
     backdrop-filter: blur(114.321px);
   }
 }
@@ -40,7 +45,12 @@
     // background: url(../../assets/images/side-bg.png) no-repeat center;
     // background-size: calc(100% - 4px) calc(100% - 4px);
     background: #393939;
-    background: linear-gradient(116.29deg, #393939 -29.94%, rgba(255, 255, 255, 0.26) -29.93%, rgba(255, 255, 255, 0.15) 101.76%);
+    background: linear-gradient(
+      116.29deg,
+      #393939 -29.94%,
+      rgba(255, 255, 255, 0.26) -29.93%,
+      rgba(255, 255, 255, 0.15) 101.76%
+    );
     backdrop-filter: blur(100px);
     /* Note: backdrop-filter has minimal browser support */
 
@@ -61,10 +71,8 @@
           }
         }
       }
-      
     }
   }
-
 }
 
 .dapp-menu-social {
@@ -80,7 +88,6 @@
         }
       }
     }
-    
   }
 }
 
@@ -103,15 +110,15 @@
       justify-content: space-around;
       align-items: center;
       border-radius: 10px;
-      border: 1px solid #25EDBC;
-      background: linear-gradient(279.23deg, #1A002F -0.02%, #085240 100.02%);
+      border: 1px solid #25edbc;
+      background: linear-gradient(279.23deg, #1a002f -0.02%, #085240 100.02%);
       .social-row {
         width: 100%;
         .social-row-icon {
           .MuiLink-root {
-            color: #25EDBC;
+            color: #25edbc;
             svg {
-              color: #25EDBC;
+              color: #25edbc;
             }
           }
         }
@@ -145,9 +152,9 @@
   font-size: 20px;
   font-family: Manrope-SemiBold, Manrope;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 20px;
-  border-bottom: 2px solid #D39B33;
+  border-bottom: 2px solid #d39b33;
 
   .avatar {
     margin-right: 8px;
@@ -166,7 +173,6 @@
   .dapp-nav {
     display: flex;
     flex-flow: column;
-    
   }
 }
 
@@ -262,7 +268,7 @@
   text-align: left;
   padding-left: 33px;
 
-  >p {
+  > p {
     margin-left: 33px;
   }
 
@@ -278,7 +284,11 @@
   display: flex;
   justify-content: space-around;
   .add_margin {
-    margin-left: 26px;
+    margin-right: 100px;
+    a {
+      color: #777e90;
+      text-decoration: none;
+    }
   }
   .social-row-icon {
     .MuiTypography-root {
@@ -372,26 +382,25 @@
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        transition: background .1s ease-in-out;
+        transition: background 0.1s ease-in-out;
         display: flex;
         // justify-content: flex-end;
         align-items: center;
         padding-right: 0.5rem;
-        
+
         .MuiTypography-h6 {
           // margin-top: 3.2rem;
           margin-left: 2.5rem;
           text-align: center;
-          &>.MuiBox-root>div {
+          & > .MuiBox-root > div {
             width: 100%;
           }
           &:hover {
-            color: #25EDBC;
-            ;
+            color: #25edbc;
           }
         }
         &::after {
-          content: '';
+          content: "";
           width: 24px;
           height: 24px;
           line-height: 24px;
@@ -425,21 +434,20 @@
         // justify-content: flex-end;
         align-items: center;
         padding-right: 0.5rem;
-        
       }
       .MuiLink-root:hover {
-        color: #25EDBC !important;
+        color: #25edbc !important;
       }
       svg {
         display: none !important;
       }
-      
 
       &:nth-child(1) .button-dapp-menu {
         &:after {
           background-image: url(../../assets/icons/dashboard.svg);
         }
-        &:hover:after, &.active:after {
+        &:hover:after,
+        &.active:after {
           background-image: url(../../assets/icons/analysis.svg);
         }
       }
@@ -448,7 +456,8 @@
         &:after {
           background-image: url(../../assets/icons/mine.svg);
         }
-        &:hover:after, &.active:after {
+        &:hover:after,
+        &.active:after {
           background-image: url(../../assets/icons/Vector_16.svg);
         }
       }
@@ -457,7 +466,8 @@
         &:after {
           background-image: url(../../assets/icons/pool.svg);
         }
-        &:hover:after, &.active:after {
+        &:hover:after,
+        &.active:after {
           background-image: url(../../assets/icons/Polygon_new.svg);
         }
       }
@@ -466,7 +476,8 @@
         &:after {
           background-image: url(../../assets/icons/mint.svg);
         }
-        &:hover:after, &.active:after {
+        &:hover:after,
+        &.active:after {
           background-image: url(../../assets/icons/mintnew_active.svg);
         }
       }
@@ -475,7 +486,8 @@
         &:after {
           background-image: url(../../assets/icons/market.svg);
         }
-        &:hover:after, &.active:after {
+        &:hover:after,
+        &.active:after {
           background-image: url(../../assets/icons/Lock.svg);
         }
       }
@@ -493,36 +505,36 @@
         font-size: 20px;
         line-height: 24px;
       }
-      .MuiLink-root.active>.MuiTypography-h6::before {
+      .MuiLink-root.active > .MuiTypography-h6::before {
         content: "";
         display: block;
         width: 0px;
         height: 0px;
         border-bottom: 5px solid #000;
         border-left: -1px solid transparent;
-         width: 15px;
-         height: 15px;
+        width: 15px;
+        height: 15px;
         position: absolute;
         border-radius: 0 0 15px 0;
         top: -9px;
         left: 9.23rem;
         z-index: 10;
-       }
-       .MuiLink-root.active>.MuiTypography-h6::after {
+      }
+      .MuiLink-root.active > .MuiTypography-h6::after {
         content: "";
         display: block;
         width: 0px;
         height: 0px;
         border-top: 5px solid #000;
         border-right: -1px solid transparent;
-         width: 15px;
-         height: 15px;
+        width: 15px;
+        height: 15px;
         position: absolute;
         border-radius: 0 15px 0 0;
         bottom: -9px;
         left: 9.25rem;
         z-index: 10;
-       }
+      }
     }
   }
 }
@@ -547,7 +559,7 @@
       .MuiLink-root {
         padding-left: 20px;
         &::after {
-          content: '';
+          content: "";
           width: 24px;
           height: 24px;
           line-height: 24px;
@@ -595,8 +607,8 @@
             height: 0px;
             border-top: 5px solid #000;
             border-right: -1px solid transparent;
-             width: 15px;
-             height: 15px;
+            width: 15px;
+            height: 15px;
             position: absolute;
             border-radius: 0 15px 0 0;
             bottom: -10px;
@@ -611,7 +623,7 @@
       svg {
         opacity: 0;
       }
-      &:nth-child(1){
+      &:nth-child(1) {
         .MuiLink-root::after {
           background-image: url(../../assets/icons/dashboard.svg);
         }
@@ -620,7 +632,7 @@
         }
       }
 
-      &:nth-child(2){
+      &:nth-child(2) {
         .MuiLink-root::after {
           background-image: url(../../assets/icons/mine.svg);
         }
@@ -629,7 +641,7 @@
         }
       }
 
-      &:nth-child(3){
+      &:nth-child(3) {
         .MuiLink-root::after {
           background-image: url(../../assets/icons/pool.svg);
         }
@@ -638,7 +650,7 @@
         }
       }
 
-      &:nth-child(4){
+      &:nth-child(4) {
         .MuiLink-root::after {
           background-image: url(../../assets/icons/mint.svg);
         }
@@ -647,7 +659,7 @@
         }
       }
 
-      &:nth-child(5){
+      &:nth-child(5) {
         .MuiLink-root::after {
           background-image: url(../../assets/icons/market.svg);
         }

@@ -315,7 +315,7 @@ export function Home() {
   }, [connected]);
   return (
     <div className={isSmallScreen ? "isMobile" : ""}>
-      <div className="block1">
+      <div className="block1" id="home">
         <Container
           style={{
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
@@ -334,7 +334,7 @@ export function Home() {
           </Box>
         </Container>
       </div>
-      <div className="block2">
+      <div className="block2" id="marketPlace">
         <Container
           style={{
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
@@ -395,7 +395,7 @@ export function Home() {
           <img src={isSmallScreen || isVerySmallScreen ? phoneBigImg : bigImg} alt="" />
         </Container>
       </div>
-      <div className="block2 other_box">
+      <div className="block2 other_box" id="claim">
         <Container
           style={{
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
@@ -522,7 +522,48 @@ export function Home() {
           </div>
         </Container>
       </div>
-      {/* <div className="block4">
+      <div className="about_box" id="about">
+        <Container
+          style={{
+            paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            paddingRight: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            paddingTop: isSmallScreen || isVerySmallScreen ? "0rem" : "0",
+            width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
+          }}
+        >
+          <div className="content_container">
+            <p className="title">About</p>
+            <p className="subt_itle">CONNECTING THE METAVERSE TOTHE REAL WORLD --</p>
+            <p className="content">
+              <span>QUINT</span> has been commissioned by a team of investors who have strived to build a legacy
+              ecosystem that reflects their accomplishments in life. While catering to the needs of like-minded
+              connoisseurs through bringing to them a Boutique NFT Marketplace, Team Quint also wanted to give a taste
+              of luxury to QUINT’s worldwide token holders through its revolutionary super-staking platform.
+            </p>
+            <p className="content">
+              At <span>Quint</span>, we like to do things differently! That's why apart from the regular staking
+              options, we are bringing to you Super-staking Pools. These pools will yield real-world incentives such as
+              complimentary stays in your dream destinations, supercar experiences, discounts on property purchases,
+              hotel bookings, restaurants, spas and much more while also offering breathtaking prizes through our Luxury
+              Raffle Pools.
+            </p>
+            <p className="content">
+              <span>QUINT's</span> boutique NFT Marketplace will allow connoisseurs from across the globe to not just
+              get their tailor-made NFTs designed by creative minds with an inherent eye for luxury but also get those
+              freshly minted NFTs installed into Token Frames and delivered to their doorsteps.
+            </p>
+            <p className="content">
+              While building on the token's 'Super-staking Pools' concept, <span>QUINT</span> aims to add unique
+              real-world collectibles to its treasury, the future upside of which will be distributed amongst the
+              Super-staking Pool stakers. Another one of QUINT's key future goals is to develop luxury physical real
+              estate and make the QUINT investors fractional owners in proportion of their investment in the Quint's
+              DeFi ecosystem. These will be first of their kind DeFi usages in the crypto world and would ensure that
+              the TVL of the Project has hard assets to boast of; not just borrowed tokens from a partner DeFi protocol!
+            </p>
+          </div>
+        </Container>
+      </div>
+      <div className="block4" id="work">
         <Container
           style={{
             paddingLeft: isSmallScreen || isVerySmallScreen ? "0rem" : "2rem",
@@ -565,13 +606,13 @@ export function Home() {
                         <div className="steps">{item.steps}</div>
                         <div className="bottom_con">
                           <p className="title">{item.title}</p>
-                          {item.content.map((ite, inx) => {
+                          {/* {item.content.map((ite, inx) => {
                             return (
                               <p key={inx + "con"} className="sub_title">
                                 {ite}
                               </p>
                             );
-                          })}
+                          })} */}
                         </div>
                       </li>
                     );
@@ -580,7 +621,7 @@ export function Home() {
             </div>
           )}
         </Container>
-      </div> */}
+      </div>
       <Backdrop open={loading} className="loading_box">
         <CircularProgress color="inherit" />
         <Typography variant="h5" style={{ marginLeft: "1rem" }}>
