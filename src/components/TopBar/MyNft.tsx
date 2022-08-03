@@ -21,7 +21,7 @@ function MyNft() {
   // if (state.userinfo) {
   //   console.log(state.userinfo);
   // }
-  console.log(state.userinfo.isUpdate, "====");
+  // console.log(state.userinfo.isUpdate, "====");
   const [loading, setLoading] = useState(false);
   const { connected, provider, address, connect, networkId } = useWeb3Context();
   const signer = provider.getSigner();
