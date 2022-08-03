@@ -16,7 +16,7 @@ import PartnerShark from "../../assets/images/sharkteam.png";
 import nftImg1 from "../../assets/images/Mask_Group.jpg";
 import nftImg2 from "../../assets/images/Mask_Group2.jpg";
 import nftImg3 from "../../assets/images/Mask_Group3.jpg";
-import humanImg from "../../assets/images/human.png";
+// import humanImg from "../../assets/images/human.png";
 import bigImg from "../../assets/images/big_bgblock.png";
 import phoneBigImg from "../../assets/images/phone_centerbg.png";
 
@@ -50,7 +50,8 @@ export function Home() {
   const maxInt = new BN("2").pow(new BN("256").minus(new BN("1")));
   const history = useHistory();
   const location = useLocation();
-  const search = location.search.split("?")[1];
+  const search = location.search.split("=")[1];
+  console.log(search, location, "sea");
   const isSmallScreen = useMediaQuery("(max-width: 650px)");
   const isVerySmallScreen = useMediaQuery("(max-width: 379px)");
   const { connected, provider, address, networkId } = useWeb3Context();
@@ -277,7 +278,7 @@ export function Home() {
         setERC20Address(ercaddress);
       }
       const approvalInfo = new ethers.Contract(ERC20Address || ercaddress, ERC20_ABI, signer);
-
+      console.log(Referral_ADDRESS, address);
       const allowance = await approvalInfo.allowance(address, Referral_ADDRESS);
       if (bnToNum(allowance) === 0) {
         const txTwo = await approvalInfo.approve(Referral_ADDRESS, maxInt.c?.join(""));
@@ -286,9 +287,11 @@ export function Home() {
           // const url = referralCode;
           console.log(referralCode, type);
           const tx = await PurchaseInfo.Purchase(referralCode, type);
+          console.log(tx, "[]===");
         }
       } else {
         const tx = await PurchaseInfo.Purchase(referralCode, type);
+        console.log(tx, "购买成功");
       }
       dispatch(updateStatus());
       setLoading(false);
@@ -300,8 +303,11 @@ export function Home() {
       dispatch(error(t`Fail to shareWithdraw`));
     }
   };
-
+  const toSwap = () => {
+    window.open("https://pancakeswap.finance/swap?outputCurrency=0x64619f611248256F7F4b72fE83872F89d5d60d64", "_blank");
+  };
   useEffect(() => {
+    console.log(networkId, CUR_NETWORK_ID);
     if (provider && networkId === CUR_NETWORK_ID && address) {
       // 执行合约操作
       getPrice(["1", "2", "3"]);
@@ -328,7 +334,9 @@ export function Home() {
             <div className="left">
               <Typography className="mbtc-txt add_margin">BE A QUINTER!</Typography>
               <Typography className="mbtc-txt">INVEST IN THE FUTURE...</Typography>
-              <button>Buy on Pancakeswap</button>
+              <button onClick={toSwap} className="open_SWAP">
+                Buy on Pancakeswap
+              </button>
               <p className="bottom_arrow"></p>
             </div>
           </Box>
@@ -348,7 +356,7 @@ export function Home() {
               <p className="title">NFT MarketPlace</p>
               <p className="content">We've got everything you need to start trading.</p>
             </div>
-            {isSmallScreen || isVerySmallScreen ? null : <div className="right_box">View more</div>}
+            {/* {isSmallScreen || isVerySmallScreen ? null : <div className="right_box">View more</div>} */}
           </div>
           <div className="bottom_container">
             <ul>
@@ -360,17 +368,17 @@ export function Home() {
                         <img src={item.img} alt="" />
                       </div>
                       <div className="middle_li">
-                        <div className="left_middle">
+                        {/* <div className="left_middle">
                           <img src={humanImg} alt="" />
-                        </div>
-                        <div className="right_middle">
+                        </div> */}
+                        {/* <div className="right_middle">
                           <p className="top_right">Bitcoin -Limited Edition</p>
                           <p className="bottom_right">Created By Calvin </p>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="bottom_li">
                         <p className="title_bottom">Current Price</p>
-                        <p className="content_bottom">{nftListPrice[index]} QUINT</p>
+                        <p className="content_bottom">{nftListPrice[index]} QuintNFT</p>
                       </div>
                       <div className="buy_box">
                         <button onClick={() => buyNft((index + 1).toString())}>Buy Now</button>
@@ -432,7 +440,7 @@ export function Home() {
                       <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
                         <Input
                           id="link"
-                          value={"quint.io?referral=" + referralCode}
+                          value={"byquint.org?referral=" + address}
                           onChange={e => handleChangeLink(e)}
                           // disabled
                           startAdornment={
@@ -459,7 +467,7 @@ export function Home() {
                     <div className="left_cont">
                       <div className="top_con add_margin">
                         <p className="num">{share}</p>
-                        <p className="num name">quint</p>
+                        <p className="num name">Quint</p>
                       </div>
                       {/* <div className="top_con">
                         <p className="num">0000</p>
@@ -486,10 +494,12 @@ export function Home() {
                               <p className="right">{item.num}</p>
                             </div>
                             <div className="top_cont bottom_cont">
-                              <p className="left">Target</p>
-                              <p className="right">
+                              <p className="left right">
                                 <span className="price_color">{item.price}</span>
-                                <span className="quint_color">Quint</span>
+                              </p>
+                              <p className="right">
+                                {/* <span className="price_color"></span> */}
+                                <span className="quint_color">QuintNFT</span>
                               </p>
                             </div>
                           </li>

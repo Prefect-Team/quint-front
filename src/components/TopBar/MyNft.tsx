@@ -103,10 +103,10 @@ function MyNft() {
                 <li key={index}>
                   <div className={"img_box img_box" + item.level}></div>
                   <p>
-                    NTF Grade：<span>{item.level}</span>
+                    NTF Grade：<span>{item.id}</span>
                   </p>
                   <p>
-                    NTF id：<span>{item.id}</span>
+                    NTF id：<span>{item.level}</span>
                   </p>
                 </li>
               );

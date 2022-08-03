@@ -10,7 +10,7 @@ import {
   MBTCStaking_ADDRESS,
   mBTC_ADDRESS,
   MFuel_ABI,
-  mFuel_ADDRESS,
+  // mFuel_ADDRESS,
   NFTMiner_ADDRESS,
 } from "src/contract";
 import { useAppSelector, useWeb3Context } from "src/hooks";
@@ -20,12 +20,14 @@ import QuintLogo from "../../../assets/images/quint_logo.png";
 // import NtfIcon from "../../../assets/icons/ntf_btczlogo.png";
 // import MFuelIcon from "../../../views/TreasuryDashboard/assets/mfuel-logo2.png";
 import WalletAddressEns from "./WalletAddressEns";
+import { Referral_ADDRESS, Referral_ABI, ERC20_ABI } from "src/contract";
 // import { useMBTCPrice } from "src/hooks/useProtocolMetrics";
 // import { formatNumber } from "../../../helpers";
 import { useDispatch } from "react-redux";
 import { Encrypt } from "src/helpers/aes";
 import baseUrl from "src/helpers/baseUrl";
 import { CUR_NETWORK_ID } from "src/constants/network";
+import { bnToNum, formatMBTC } from "src/helpers";
 const DisconnectButton = () => {
   const { disconnect } = useWeb3Context();
   return (
@@ -51,6 +53,8 @@ const WalletTotalValue = () => {
   const [currency, setCurrency] = useState<"USD" | "OHM">("USD");
   const [mbtcBalance, setMbtcBalance] = useState<string>("0");
   const [mfuelBalance, setMfuelBalance] = useState<string>("0");
+  const [ERC20Address, setERC20Address] = useState("");
+  const [quintBalance, setQuintBalance] = useState("0");
   const [num, setNum] = useState<number>(0);
   const dispatch = useDispatch();
 
@@ -68,14 +72,22 @@ const WalletTotalValue = () => {
     }
   };
 
-  const getMfuel = async () => {
+  const getCoinNum = async () => {
     try {
-      const mfuelContract = new ethers.Contract(mFuel_ADDRESS, MFuel_ABI, signer);
-      const tx = await mfuelContract.balanceOf(userAddress);
-      const mfuelBalance = (tx / Math.pow(10, 18)).toFixed(2);
-      setMfuelBalance(mfuelBalance || "0");
+      const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      let ercaddress = "";
+      if (!ERC20Address) {
+        ercaddress = await PurchaseInfo.fetchPaytype();
+        console.log(ercaddress, "txOne");
+        setERC20Address(ercaddress);
+      }
+      const approvalInfo = new ethers.Contract(ERC20Address || ercaddress, ERC20_ABI, signer);
+
+      const balance = await approvalInfo.balanceOf(userAddress);
+      const num = formatMBTC(bnToNum(balance));
+      setQuintBalance(num);
     } catch (err) {
-      console.log(err);
+      console.log({ err });
     }
   };
 
@@ -128,6 +140,7 @@ const WalletTotalValue = () => {
         // getMBTCToken();
         // getMfuel();
         // getNftNum();
+        getCoinNum();
       }
     } catch (err) {
       console.log(err);
@@ -150,7 +163,7 @@ const WalletTotalValue = () => {
             <img src={QuintLogo} className="icon" />
             <div className="name">{t`Quint`}</div>
           </div>
-          <div className="count-only">{mbtcBalance}</div>
+          <div className="count-only">{quintBalance}</div>
           {/* <div className="value">≈$10000</div> */}
         </div>
         {/* <div className="address-list-item">

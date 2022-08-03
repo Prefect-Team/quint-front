@@ -10,6 +10,9 @@
     margin-top: 104px;
     .left {
       width: 544px;
+      .open_SWAP {
+        cursor: pointer;
+      }
       .mbtc-txt {
         font-size: 64px;
         color: #fcfcfd;
@@ -150,13 +153,13 @@
         }
         .buy_box {
           display: flex;
-          justify-content: flex-end;
+          justify-content: center;
           margin-top: 32px;
           padding-right: 32px;
           button {
             background: #3772ff;
             border-radius: 90px;
-            width: 115px;
+            width: 240px;
             height: 48px;
             display: flex;
             justify-content: center;
@@ -351,7 +354,7 @@
               }
             }
             .add_margin {
-              margin-bottom: 24px;
+              // margin-bottom: 24px;
             }
           }
           .right_cont {
