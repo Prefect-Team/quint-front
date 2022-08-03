@@ -440,7 +440,7 @@ export function Home() {
                       <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
                         <Input
                           id="link"
-                          value={"byquint.org?referral=" + address}
+                          value={"byquint.org/#/home?referral=" + address}
                           onChange={e => handleChangeLink(e)}
                           // disabled
                           startAdornment={
