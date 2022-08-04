@@ -61,7 +61,7 @@ function MyNft() {
       const tx = await getBalanceInfo.balanceOf(address);
       const banlance = bnToNum(tx);
       setNftBalance(banlance);
-      console.log(banlance, "balance");
+      // console.log(banlance, "balance");
       const list: any = [];
       for (let i = 0; i < banlance; i++) {
         const txTwo = await getBalanceInfo.tokenOfOwnerByIndex(address, i);
@@ -70,7 +70,7 @@ function MyNft() {
         const levelTxNum = bnToNum(levelTx);
         list.push({ id: id, level: levelTxNum });
       }
-      console.log(list, "liost");
+      // console.log(list, "liost");
       setList(list);
 
       setLoading(false);

@@ -78,7 +78,7 @@ const WalletTotalValue = () => {
       let ercaddress = "";
       if (!ERC20Address) {
         ercaddress = await PurchaseInfo.fetchPaytype();
-        console.log(ercaddress, "txOne");
+        // console.log(ercaddress, "txOne");
         setERC20Address(ercaddress);
       }
       const approvalInfo = new ethers.Contract(ERC20Address || ercaddress, ERC20_ABI, signer);

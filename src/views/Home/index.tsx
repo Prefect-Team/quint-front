@@ -51,17 +51,12 @@ export function Home() {
   const history = useHistory();
   const location = useLocation();
   const search = location.search.split("=")[1];
-  console.log(search, location, "sea");
   const isSmallScreen = useMediaQuery("(max-width: 650px)");
   const isVerySmallScreen = useMediaQuery("(max-width: 379px)");
   const { connected, provider, address, networkId } = useWeb3Context();
   const signer = provider.getSigner();
   // usePathForNetwork({ pathName: "home", networkID: networkId, history });
-
-  const paperHandler = () => {
-    window.open(window.location.origin + "/whitepaper.pdf");
-  };
-
+  // console.log(address, "address");
   const partners = [
     "",
     PartnerBitcoin,
@@ -157,7 +152,7 @@ export function Home() {
   const [share, setShare] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [shareNume, setShareNume] = useState(0);
-  const [nftListPrice, setNftListPrice] = useState<Array<string>>([]);
+  const [nftListPrice, setNftListPrice] = useState<Array<string>>(["50", "100", "200"]);
   const [referralCode, setReferralCode] = useState<string>("");
   const [ERC20Address, setERC20Address] = useState("");
   const dispatch = useDispatch();
@@ -169,27 +164,19 @@ export function Home() {
   };
 
   // 拿到nft价格
-  const getPrice = async (type: Array<string>) => {
+  const getPrice = async (type: Array<number>) => {
     setLoading(true);
     try {
-      // await checkMfuelApproved();
       const fetchPriceContract = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
-      Promise.all([
+      console.log(fetchPriceContract, Referral_ADDRESS, "Referral_ADDRESS");
+      const txList = await Promise.all([
         fetchPriceContract.fetchPrice(type[0]),
         fetchPriceContract.fetchPrice(type[1]),
         fetchPriceContract.fetchPrice(type[2]),
-      ])
-        .then(res => {
-          console.log(res, "==-");
-          const priceList = res.map(item => formatMBTC(bnToNum(item)));
-          setNftListPrice(priceList);
-        })
-        .catch(err => {
-          setLoading(false);
-          dispatch(error(t`Fail to fetchPrice`));
-        });
+      ]);
+      const priceList = txList.map(item => formatMBTC(bnToNum(item)));
+      setNftListPrice(priceList);
       setLoading(false);
-      // dispatch(info(t`Success to fetchPrice`));
     } catch (err) {
       console.log({ err });
       setLoading(false);
@@ -232,17 +219,13 @@ export function Home() {
     }
   };
   // 获取推荐码
-  const getAddress = async () => {
+  const getAddressCode = async () => {
     setLoading(true);
     try {
       const fetchAdress = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const tx = await fetchAdress.fetchMasterAddress();
-      console.log(tx, "address");
       setReferralCode(tx);
-      // const code = bnToNum(tx.Parent).toString();
-      // const share = bnToNum(tx.Share).toString();
       setLoading(false);
-      // dispatch(info(t`Success to unstake`));
     } catch (err) {
       console.log({ err });
       setLoading(false);
@@ -267,53 +250,55 @@ export function Home() {
   // 买入NFT
   const buyNft = async (type: string) => {
     console.log(type, "type");
-
-    setLoading(true);
-    try {
-      const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
-      let ercaddress = "";
-      if (!ERC20Address) {
-        ercaddress = await PurchaseInfo.fetchPaytype();
-        console.log(ercaddress, "txOne");
-        setERC20Address(ercaddress);
-      }
-      const approvalInfo = new ethers.Contract(ERC20Address || ercaddress, ERC20_ABI, signer);
-      console.log(Referral_ADDRESS, address);
-      const allowance = await approvalInfo.allowance(address, Referral_ADDRESS);
-      if (bnToNum(allowance) === 0) {
-        const txTwo = await approvalInfo.approve(Referral_ADDRESS, maxInt.c?.join(""));
-        const txCB = await txTwo.wait();
-        if (txCB.status) {
-          // const url = referralCode;
-          console.log(referralCode, type);
-          const tx = await PurchaseInfo.Purchase(referralCode, type);
-          console.log(tx, "[]===");
+    if (!connected) {
+      dispatch(error(t`please connect wallet first`));
+    } else {
+      setLoading(true);
+      try {
+        const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+        let ercaddress = "";
+        if (!ERC20Address) {
+          ercaddress = await PurchaseInfo.fetchPaytype();
+          console.log(ercaddress, "txOne");
+          setERC20Address(ercaddress);
         }
-      } else {
-        const tx = await PurchaseInfo.Purchase(referralCode, type);
-        console.log(tx, "购买成功");
+        const approvalInfo = new ethers.Contract(ERC20Address || ercaddress, ERC20_ABI, signer);
+        console.log(Referral_ADDRESS, address);
+        const allowance = await approvalInfo.allowance(address, Referral_ADDRESS);
+        if (bnToNum(allowance) === 0) {
+          const txTwo = await approvalInfo.approve(Referral_ADDRESS, maxInt.c?.join(""));
+          const txCB = await txTwo.wait();
+          if (txCB.status) {
+            // const url = referralCode;
+            console.log(referralCode, type);
+            const tx = await PurchaseInfo.Purchase(referralCode, type);
+            console.log(tx, "[]===");
+          }
+        } else {
+          const tx = await PurchaseInfo.Purchase(referralCode, type);
+          console.log(tx, "购买成功");
+        }
+        dispatch(updateStatus());
+        setLoading(false);
+        getUserInfo();
+        window.location.reload();
+      } catch (err) {
+        console.log({ err });
+        setLoading(false);
+        dispatch(error(t`Fail to Purchase`));
       }
-      dispatch(updateStatus());
-      setLoading(false);
-      getUserInfo();
-      window.location.reload();
-    } catch (err) {
-      console.log({ err });
-      setLoading(false);
-      dispatch(error(t`Fail to shareWithdraw`));
     }
   };
   const toSwap = () => {
     window.open("https://pancakeswap.finance/swap?outputCurrency=0x64619f611248256F7F4b72fE83872F89d5d60d64", "_blank");
   };
   useEffect(() => {
-    console.log(networkId, CUR_NETWORK_ID);
     if (provider && networkId === CUR_NETWORK_ID && address) {
       // 执行合约操作
-      getPrice(["1", "2", "3"]);
+      getPrice([1, 2, 3]);
       getUserInfo();
       if (!search) {
-        getAddress();
+        getAddressCode();
       } else {
         getRerferralInfo();
       }
@@ -422,7 +407,7 @@ export function Home() {
             <div className="top_word">
               <p className="first">Total Referral</p>
               <p className="second">
-                <span className="number">{shareNume}</span>
+                <span className="number">{shareNume || 0}</span>
                 <span className="cont"></span>
               </p>
               <p className="third">
@@ -466,7 +451,7 @@ export function Home() {
                   <div className="content_box">
                     <div className="left_cont">
                       <div className="top_con add_margin">
-                        <p className="num">{share}</p>
+                        <p className="num">{Number(share) * 0.9 || 0}</p>
                         <p className="num name">Quint</p>
                       </div>
                       {/* <div className="top_con">
