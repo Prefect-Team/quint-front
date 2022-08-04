@@ -451,13 +451,13 @@ export function Home() {
                   <div className="content_box">
                     <div className="left_cont">
                       <div className="top_con add_margin">
-                        <p className="num">{Number(share) * 0.9 || 0}</p>
+                        <p className="num">{Math.floor(Number(share) * 0.9) || 0}</p>
                         <p className="num name">Quint</p>
                       </div>
-                      {/* <div className="top_con">
-                        <p className="num">0000</p>
-                        <p className="num name">Quint</p>
-                      </div> */}
+                      <p className="reason_word">
+                        Since QUINT has an expensive handling fee when transferring , the dividends that can be obtained
+                        are different
+                      </p>
                     </div>
                     <div className="right_cont" onClick={getWithdraw}>
                       Claim rewards
