@@ -339,7 +339,9 @@ export function Home() {
           <div className="top_container">
             <div className="left_box">
               <p className="title">NFT MarketPlace</p>
-              <p className="content">We've got everything you need to start trading.</p>
+              <p className="content">
+                Exclusive Referral NFTs Buy an exclusive NFT and get your referrals to purchase. Unlock crypto rewards!
+              </p>
             </div>
             {/* {isSmallScreen || isVerySmallScreen ? null : <div className="right_box">View more</div>} */}
           </div>
@@ -400,19 +402,19 @@ export function Home() {
           <div className="top_container">
             <div className="left_box">
               <p className="title">Referral</p>
-              <p className="content">VERY GOAL HAS ITS OWN PATH TO SUCCESS</p>
+              <p className="content">Every goal has its own path to success</p>
             </div>
           </div>
           <div className="bottom_container">
             <div className="top_word">
-              <p className="first">Total Referral</p>
+              <p className="first">Total Referrals</p>
               <p className="second">
                 <span className="number">{shareNume || 0}</span>
                 <span className="cont"></span>
               </p>
               <p className="third">
-                You're earning of the trading fees your <br />
-                referrals pay. Learn more
+                Earn fees on what your referrals <br />
+                purchase and trade.
               </p>
             </div>
             <div className="center_content">
@@ -425,7 +427,7 @@ export function Home() {
                       <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
                         <Input
                           id="link"
-                          value={"byquint.org/#/home?referral=" + address}
+                          value={"buyquint.org /#/home?referral=" + address}
                           onChange={e => handleChangeLink(e)}
                           // disabled
                           startAdornment={
@@ -484,7 +486,7 @@ export function Home() {
                               </p>
                               <p className="right">
                                 {/* <span className="price_color"></span> */}
-                                <span className="quint_color">QuintNFT</span>
+                                <span className="quint_color">QuintNFTs</span>
                               </p>
                             </div>
                           </li>
@@ -567,8 +569,8 @@ export function Home() {
             width: isSmallScreen || isVerySmallScreen ? "100%" : "1120px",
           }}
         >
-          <p className="big_title">How it work</p>
-          <p className="contro">Provide you with a convenient and fast way to make money</p>
+          <p className="big_title">How it Works</p>
+          <p className="contro">A fast way of earning rewards and making money!</p>
           {isSmallScreen || isVerySmallScreen ? (
             <div className="phone_content_box">
               <ul>

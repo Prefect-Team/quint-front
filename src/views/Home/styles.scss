@@ -6,6 +6,7 @@
   color: #fff;
   background: url("../../assets/images/top_bg.png") no-repeat center;
   background-size: cover;
+  font-family: "PingFang SC";
   .box_contianer {
     margin-top: 104px;
     .left {
@@ -197,7 +198,7 @@
   .top_container {
     .left_box {
       .content {
-        width: 232px;
+        width: 270px;
       }
     }
   }
@@ -840,6 +841,12 @@
               }
             }
           }
+        }
+      }
+      .foot_cont {
+        .cont {
+          line-height: 20px;
+          font-size: 12px;
         }
       }
       .action_conatiner {

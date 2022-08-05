@@ -13,7 +13,7 @@
 html,
 body,
 #root {
-  font-family: "Square";
+  font-family: "PingFang SC";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #000000 url("./assets/svg/bg_ellipse.svg") no-repeat;
@@ -33,7 +33,7 @@ body {
   flex-direction: column;
   z-index: 1;
   background-size: cover;
-  font-family: "Square";
+  font-family: "PingFang SC";
   overflow: hidden;
   transition: all ease 0.33ms;
 }
