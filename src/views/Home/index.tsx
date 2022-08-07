@@ -31,7 +31,7 @@ import {
   Typography,
   Box,
   FormControl,
-  InputAdornment,
+  // InputAdornment,
   Input,
   Backdrop,
   CircularProgress,
@@ -421,7 +421,7 @@ export function Home() {
               <div className="add_phone_bg">
                 <p className="title">Invite friends to earn money</p>
                 <div className="second_line">
-                  <div className="left">
+                  {/* <div className="left">
                     <p className="title_second">Referral link</p>
                     <div className="input_box link_box">
                       <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
@@ -429,7 +429,6 @@ export function Home() {
                           id="link"
                           value={"buyquint.org /#/home?referral=" + address}
                           onChange={e => handleChangeLink(e)}
-                          // disabled
                           startAdornment={
                             <InputAdornment position="start">
                               <span style={{ color: "#58BD7D" }}>https://</span>
@@ -438,12 +437,12 @@ export function Home() {
                         />
                       </FormControl>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="left">
                     <p className="title_second">Referral code</p>
                     <div className="input_box">
                       <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
-                        <Input id="address" value={referralCode} onChange={e => handleChangeAdress(e)} />
+                        <Input id="address" value="master" onChange={e => handleChangeAdress(e)} />
                       </FormControl>
                     </div>
                   </div>
