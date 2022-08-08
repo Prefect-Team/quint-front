@@ -160,6 +160,7 @@ export function Home() {
     setLink(e.target.value);
   };
   const handleChangeAdress = (e: any) => {
+    console.log(e, "123123");
     setReferralCode(e.target.value);
   };
 
@@ -197,7 +198,12 @@ export function Home() {
       const shareNume = bnToNum(tx.Sale);
       setShareNume(shareNume);
       setShare(share);
-      setLinkParam(code);
+      if (code == "0") {
+        setReferralCode(code);
+      } else {
+        setReferralCode(tx.Parent);
+        console.log(tx.Parent, "parent");
+      }
       setLoading(false);
       // dispatch(info(t`Success to unstake`));
     } catch (err) {
@@ -224,7 +230,10 @@ export function Home() {
     try {
       const fetchAdress = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const tx = await fetchAdress.fetchMasterAddress();
-      setReferralCode(tx);
+      console.log(tx, "tuijian", referralCode);
+      if (referralCode == "0") {
+        setReferralCode(tx);
+      }
       setLoading(false);
     } catch (err) {
       console.log({ err });
@@ -249,7 +258,7 @@ export function Home() {
   };
   // 买入NFT
   const buyNft = async (type: string) => {
-    console.log(type, "type");
+    console.log(type, "type", referralCode);
     if (!connected) {
       dispatch(error(t`please connect wallet first`));
     } else {
@@ -442,12 +451,9 @@ export function Home() {
                     <p className="title_second">Referral code</p>
                     <div className="input_box">
                       <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
-                        <Input
-                          id="address"
-                          value={linkParam == "0" ? referralCode : linkParam}
-                          onChange={e => handleChangeAdress(e)}
-                        />
+                        <Input id="address" value={referralCode} onChange={e => handleChangeAdress(e)} />
                       </FormControl>
+                      {/* <button onClick={sureCode}>Sure</button> */}
                     </div>
                   </div>
                 </div>
