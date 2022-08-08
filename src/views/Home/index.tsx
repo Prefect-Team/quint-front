@@ -160,7 +160,7 @@ export function Home() {
     setLink(e.target.value);
   };
   const handleChangeAdress = (e: any) => {
-    setAddress(e.target.value);
+    setReferralCode(e.target.value);
   };
 
   // 拿到nft价格
@@ -297,11 +297,11 @@ export function Home() {
       // 执行合约操作
       getPrice([1, 2, 3]);
       getUserInfo();
-      if (!search) {
-        getAddressCode();
-      } else {
-        getRerferralInfo();
-      }
+      getAddressCode();
+      // if (!search) {
+      // } else {
+      //   getRerferralInfo();
+      // }
     }
   }, [connected]);
   return (
@@ -442,7 +442,11 @@ export function Home() {
                     <p className="title_second">Referral code</p>
                     <div className="input_box">
                       <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
-                        <Input id="address" value="master" onChange={e => handleChangeAdress(e)} />
+                        <Input
+                          id="address"
+                          value={linkParam == "0" ? referralCode : linkParam}
+                          onChange={e => handleChangeAdress(e)}
+                        />
                       </FormControl>
                     </div>
                   </div>
