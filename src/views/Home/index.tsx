@@ -24,6 +24,7 @@ import firstWork from "../../assets/images/Composition_04.png";
 import secondWork from "../../assets/images/Composition_13.png";
 import thirdWork from "../../assets/images/Composition_11.png";
 import forthWork from "../../assets/images/Composition_06.png";
+import fifthWork from "../../assets/images/Composition_026.png";
 import { useEffect, useState } from "react";
 import {
   Container,
@@ -136,29 +137,30 @@ export function Home() {
     {
       img: thirdWork,
       steps: "Step 3",
-      title: "Buy NFT using Quint",
+      title: "First purchase input your referral address and confirm",
       content: ["Copywriting", "Copywriting", "Copywriting"],
     },
     {
       img: forthWork,
       steps: "Step 4",
-      title: "Refer friends get rewards",
+      title: "Buy NFT using Quint",
+      content: ["Copywriting", "Copywriting", "Copywriting"],
+    },
+    {
+      img: fifthWork,
+      steps: "Step 5",
+      title: "Refer friends get rewards with your referral code",
       content: ["Copywriting", "Copywriting", "Copywriting"],
     },
   ];
-  const [link, setLink] = useState<string>("");
-  const [urlAddress, setAddress] = useState<string>("");
-  const [linkParam, setLinkParam] = useState<string>("");
   const [share, setShare] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [shareNume, setShareNume] = useState(0);
   const [nftListPrice, setNftListPrice] = useState<Array<string>>(["50", "100", "200"]);
   const [referralCode, setReferralCode] = useState<string>("");
   const [ERC20Address, setERC20Address] = useState("");
+  const [actionStatus, setActionStatus] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const handleChangeLink = (e: any) => {
-    setLink(e.target.value);
-  };
   const handleChangeAdress = (e: any) => {
     console.log(e, "123123");
     setReferralCode(e.target.value);
@@ -198,11 +200,12 @@ export function Home() {
       const shareNume = bnToNum(tx.Sale);
       setShareNume(shareNume);
       setShare(share);
-      if (code == "0") {
-        setReferralCode(code);
-      } else {
+      if (code != "0") {
         setReferralCode(tx.Parent);
-        console.log(tx.Parent, "parent");
+        setActionStatus(true);
+      } else {
+        setReferralCode("");
+        setActionStatus(false);
       }
       setLoading(false);
       // dispatch(info(t`Success to unstake`));
@@ -212,7 +215,27 @@ export function Home() {
       dispatch(error(t`Fail to fetchUserInfo`));
     }
   };
-
+  // 设置父级邀请码
+  const setParentCode = async () => {
+    setLoading(true);
+    try {
+      const referralContract = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+      const tx = await referralContract.setParent(referralCode);
+      console.log(tx, "[]==");
+      if (tx) {
+        // window.location.reload();
+        // getUserInfo();
+        setActionStatus(true);
+      } else {
+        dispatch(error(t`Fail to set referral address`));
+      }
+      setLoading(false);
+    } catch (err) {
+      console.log({ err });
+      setLoading(false);
+      dispatch(error(t`Fail to setParent`));
+    }
+  };
   // 获取推荐人信息
   const getRerferralInfo = async () => {
     const fetchUserInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
@@ -231,9 +254,7 @@ export function Home() {
       const fetchAdress = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
       const tx = await fetchAdress.fetchMasterAddress();
       console.log(tx, "tuijian", referralCode);
-      if (referralCode == "0") {
-        setReferralCode(tx);
-      }
+      setReferralCode(tx);
       setLoading(false);
     } catch (err) {
       console.log({ err });
@@ -263,38 +284,40 @@ export function Home() {
       dispatch(error(t`please connect wallet first`));
     } else {
       setLoading(true);
-      try {
-        const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
-        let ercaddress = "";
-        if (!ERC20Address) {
-          ercaddress = await PurchaseInfo.fetchPaytype();
-          console.log(ercaddress, "txOne");
-          setERC20Address(ercaddress);
-        }
-        const approvalInfo = new ethers.Contract(ERC20Address || ercaddress, ERC20_ABI, signer);
-        console.log(Referral_ADDRESS, address);
-        const allowance = await approvalInfo.allowance(address, Referral_ADDRESS);
-        if (bnToNum(allowance) === 0) {
-          const txTwo = await approvalInfo.approve(Referral_ADDRESS, maxInt.c?.join(""));
-          const txCB = await txTwo.wait();
-          if (txCB.status) {
-            // const url = referralCode;
-            console.log(referralCode, type);
-            const tx = await PurchaseInfo.Purchase(referralCode, type);
-            console.log(tx, "[]===");
+      if (!referralCode) {
+        dispatch(error(t`please set referral address first`));
+      } else {
+        try {
+          const PurchaseInfo = new ethers.Contract(Referral_ADDRESS, Referral_ABI, signer);
+          let ercaddress = "";
+          if (!ERC20Address) {
+            ercaddress = await PurchaseInfo.fetchPaytype();
+            console.log(ercaddress, "txOne");
+            setERC20Address(ercaddress);
           }
-        } else {
-          const tx = await PurchaseInfo.Purchase(referralCode, type);
-          console.log(tx, "购买成功");
+          const approvalInfo = new ethers.Contract(ERC20Address || ercaddress, ERC20_ABI, signer);
+          console.log(Referral_ADDRESS, address);
+          const allowance = await approvalInfo.allowance(address, Referral_ADDRESS);
+          if (bnToNum(allowance) === 0) {
+            const txTwo = await approvalInfo.approve(Referral_ADDRESS, maxInt.c?.join(""));
+            const txCB = await txTwo.wait();
+            if (txCB.status) {
+              const tx = await PurchaseInfo.Purchase(type);
+              console.log(tx, "[]===");
+            }
+          } else {
+            const tx = await PurchaseInfo.Purchase(type);
+            console.log(tx, "购买成功");
+          }
+          dispatch(updateStatus());
+          setLoading(false);
+          getUserInfo();
+          window.location.reload();
+        } catch (err) {
+          console.log({ err });
+          setLoading(false);
+          dispatch(error(t`Fail to Purchase`));
         }
-        dispatch(updateStatus());
-        setLoading(false);
-        getUserInfo();
-        window.location.reload();
-      } catch (err) {
-        console.log({ err });
-        setLoading(false);
-        dispatch(error(t`Fail to Purchase`));
       }
     }
   };
@@ -306,7 +329,7 @@ export function Home() {
       // 执行合约操作
       getPrice([1, 2, 3]);
       getUserInfo();
-      getAddressCode();
+      // getAddressCode();
       // if (!search) {
       // } else {
       //   getRerferralInfo();
@@ -430,30 +453,33 @@ export function Home() {
               <div className="add_phone_bg">
                 <p className="title">Invite friends to earn money</p>
                 <div className="second_line">
-                  {/* <div className="left">
-                    <p className="title_second">Referral link</p>
-                    <div className="input_box link_box">
-                      <FormControl className="slippage-input add_icon" variant="outlined" color="primary" size="small">
-                        <Input
-                          id="link"
-                          value={"buyquint.org /#/home?referral=" + address}
-                          onChange={e => handleChangeLink(e)}
-                          startAdornment={
-                            <InputAdornment position="start">
-                              <span style={{ color: "#58BD7D" }}>https://</span>
-                            </InputAdornment>
-                          }
-                        />
+                  <div className="left">
+                    <p className="title_second">MY Referral code</p>
+                    <div className="input_box link_box1">
+                      <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
+                        <Input id="link" value={address} disabled />
                       </FormControl>
                     </div>
-                  </div> */}
+                  </div>
                   <div className="left">
-                    <p className="title_second">Referral code</p>
+                    <p className="title_second">Your Referral AdDReSS</p>
                     <div className="input_box">
                       <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
-                        <Input id="address" value={referralCode} onChange={e => handleChangeAdress(e)} />
+                        <Input
+                          id="address"
+                          placeholder="please input your referral address"
+                          value={referralCode}
+                          disabled={actionStatus}
+                          onChange={e => handleChangeAdress(e)}
+                        />
                       </FormControl>
-                      {/* <button onClick={sureCode}>Sure</button> */}
+                      <button
+                        onClick={setParentCode}
+                        disabled={actionStatus}
+                        className={actionStatus ? "not_click" : "can_click"}
+                      >
+                        CONFIRM
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -514,13 +540,15 @@ export function Home() {
                 <p className="title">BEFORE YOU START</p>
                 <div className="request">
                   <p className="cont">
-                    1. Download Dapp Wallet app or extension
+                    1. Connect wallet
                     <br />
-                    2. Switch to Binance Smart Chain Network
+                    2. Buy Quint on Pancakeswap
                     <br />
-                    3. Transfer BNB tokens to your Quint wallet
+                    3. First purchase input your referral address and confirm
                     <br />
-                    4. Get an invitation code
+                    4. Buy NFT using Quint
+                    <br />
+                    5. Refer friends get rewards with your referral code
                   </p>
                 </div>
               </div>
