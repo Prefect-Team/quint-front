@@ -454,7 +454,7 @@ export function Home() {
                 <p className="title">Invite friends to earn money</p>
                 <div className="second_line">
                   <div className="left">
-                    <p className="title_second">MY Referral code</p>
+                    <p className="title_second">My referral code</p>
                     <div className="input_box link_box1">
                       <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
                         <Input id="link" value={address} disabled />
@@ -462,7 +462,7 @@ export function Home() {
                     </div>
                   </div>
                   <div className="left">
-                    <p className="title_second">Your Referral AdDReSS</p>
+                    <p className="title_second">Wallet address who referred me</p>
                     <div className="input_box">
                       <FormControl className="slippage-input" variant="outlined" color="primary" size="small">
                         <Input
