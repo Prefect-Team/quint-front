@@ -407,7 +407,7 @@ export function Home() {
                 })}
             </ul>
           </div>
-          {isSmallScreen || isVerySmallScreen ? <div className="phone_right_box">View more</div> : null}
+          {/* {isSmallScreen || isVerySmallScreen ? <div className="phone_right_box">View more</div> : null} */}
         </Container>
       </div>
       <div className="block3">

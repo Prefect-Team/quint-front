@@ -1,8 +1,8 @@
 {
-  "short_name": "BTCZ",
+  "short_name": "Quint",
   "start_url": ".",
   "homepage": "./",
-  "name": "BTCZ",
+  "name": "Quint",
   "launch_path": "/public/index.html",
   "icons": [
     {
