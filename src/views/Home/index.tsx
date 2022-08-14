@@ -488,7 +488,7 @@ export function Home() {
                   <div className="content_box">
                     <div className="left_cont">
                       <div className="top_con add_margin">
-                        <p className="num">{Math.floor(Number(share) * 0.9) || 0}</p>
+                        <p className="num">{share || 0}</p>
                         <p className="num name">Quint</p>
                       </div>
                       <p className="reason_word">
