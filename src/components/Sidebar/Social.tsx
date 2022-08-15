@@ -44,7 +44,7 @@ const Social: React.FC = () => {
       <div className="social-row-icon add_margin">
         <Link href="#work" className="social-row-icon">
           {/* <SvgIcon component={Telegram} /> */}
-          <span>How it work</span>
+          <span>How it works</span>
         </Link>
       </div>
     </div>

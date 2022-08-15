@@ -76,7 +76,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
       href: "#about",
     },
     {
-      name: t`How it work`,
+      name: t`How it works`,
       href: "#work",
     },
   ];

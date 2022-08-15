@@ -82,7 +82,7 @@ export function Home() {
   const forthList = [
     {
       num: "25%",
-      price: "0",
+      price: "1",
     },
     {
       num: "30%",
@@ -488,7 +488,7 @@ export function Home() {
                   <div className="content_box">
                     <div className="left_cont">
                       <div className="top_con add_margin">
-                        <p className="num">{share || 0}</p>
+                        <p className="num">{Number(share).toFixed(2) || 0}</p>
                         <p className="num name">Quint</p>
                       </div>
                       <p className="reason_word">
